@@ -5,7 +5,7 @@ namespace OpenDota.NET.Tests
     using System.Threading.Tasks;
 
     using OpenDotaDotNet;
-    using OpenDotaDotNet.Dtos;
+    using OpenDotaDotNet.Models.Players;
 
     using Xunit;
     using Xunit.Abstractions;

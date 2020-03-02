@@ -1,7 +1,6 @@
 ﻿using OpenDotaDotNet.Models.Players;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using OpenDotaDotNet.Dtos;
 
 namespace OpenDotaDotNet.Interfaces
 {
