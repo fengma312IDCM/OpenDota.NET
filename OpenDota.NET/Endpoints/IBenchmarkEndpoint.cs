@@ -7,7 +7,7 @@
     public interface IBenchmarkEndpoint
     {
         /// <summary>
-        /// Benchmarks of average stat values for a hero
+        /// Benchmarks of average stat values for a hero.
         /// </summary>
         /// <param name="heroId"></param>
         /// <returns></returns>

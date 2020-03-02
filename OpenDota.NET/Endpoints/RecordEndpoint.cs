@@ -1,13 +1,13 @@
-﻿using Newtonsoft.Json;
-
-using OpenDotaDotNet.Models.Records;
-
-using System.Collections.Generic;
-using System.Threading.Tasks;
-
-namespace OpenDotaDotNet.Endpoints
+﻿namespace OpenDotaDotNet.Endpoints
 {
-    class RecordEndpoint : IRecordEndpoint
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+
+    using Newtonsoft.Json;
+
+    using OpenDotaDotNet.Models.Records;
+
+    public class RecordEndpoint : IRecordEndpoint
     {
         private const string Records = "records/{0}";
 
@@ -19,10 +19,10 @@ namespace OpenDotaDotNet.Endpoints
         }
 
         /// <summary>
-        /// Get top performances in a stat
+        /// Get top performances in a stat.
         /// </summary>
-        /// <param name="field">Field name to query</param>
-        /// <returns></returns>
+        /// <param name="field">Field name to query.</param>
+        /// <returns>Top performances in a stat.</returns>
         public async Task<List<Record>> GetRecordsByFieldAsync(RecordField field)
         {
             var response = await this.requester.GetRequestResponseMessageAsync(string.Format(Records, field.Value));

@@ -1,12 +1,12 @@
-﻿using Newtonsoft.Json;
-
-using OpenDotaDotNet.Models.Rankings;
-
-using System.Collections.Generic;
-using System.Threading.Tasks;
-
-namespace OpenDotaDotNet.Endpoints
+﻿namespace OpenDotaDotNet.Endpoints
 {
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+
+    using Newtonsoft.Json;
+
+    using OpenDotaDotNet.Models.Rankings;
+
     public class RankingEndpoint : IRankingEndpoint
     {
         private const string Rankings = "rankings";
@@ -19,13 +19,13 @@ namespace OpenDotaDotNet.Endpoints
         }
 
         /// <summary>
-        /// Top players by hero
+        /// Gets top players by hero.
         /// </summary>
         /// <param name="heroId"></param>
-        /// <returns></returns>
+        /// <returns>Top players by hero.</returns>
         public async Task<HeroRanking> GetHeroRankingsAsync(int heroId)
         {
-            var addedArguments = CreateArgumentListForHeroRankingsRequest(heroId);
+            var addedArguments = this.CreateArgumentListForHeroRankingsRequest(heroId);
 
             var response = await this.requester.GetRequestResponseMessageAsync(Rankings, addedArguments);
 
@@ -36,7 +36,6 @@ namespace OpenDotaDotNet.Endpoints
             return heroRankings;
         }
 
-        #region Helper
         private List<string> CreateArgumentListForHeroRankingsRequest(int? heroId = null)
         {
             var addedArguments = new List<string>();
@@ -48,6 +47,5 @@ namespace OpenDotaDotNet.Endpoints
 
             return addedArguments;
         }
-        #endregion
     }
 }

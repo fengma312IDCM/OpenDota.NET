@@ -1,12 +1,12 @@
-﻿using Newtonsoft.Json;
-
-using OpenDotaDotNet.Models.FindMatches;
-
-using System.Collections.Generic;
-using System.Threading.Tasks;
-
-namespace OpenDotaDotNet.Endpoints
+﻿namespace OpenDotaDotNet.Endpoints
 {
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+
+    using Newtonsoft.Json;
+
+    using OpenDotaDotNet.Models.FindMatches;
+
     public class FindMatchEndpoint : IFindMatchEndpoint
     {
         private const string FindMatchesByHeroPlayed = "findMatches";
@@ -19,14 +19,14 @@ namespace OpenDotaDotNet.Endpoints
         }
 
         /// <summary>
-        /// Finds matches by heroes played (currently includes matches played after April 2019)
+        /// Finds matches by heroes played (currently includes matches played after April 2019).
         /// </summary>
         /// <param name="teamA"></param>
         /// <param name="teamB"></param>
-        /// <returns></returns>
+        /// <returns>Matched found.</returns>
         public async Task<List<FindMatch>> FindMatchesByHeroesPlayedAsync(List<int> teamA = null, List<int> teamB = null)
         {
-            var addedArguments = CreateArgumentListForFindMatchesRequest(teamA, teamB);
+            var addedArguments = this.CreateArgumentListForFindMatchesRequest(teamA, teamB);
 
             var response = await this.requester.GetRequestResponseMessageAsync(FindMatchesByHeroPlayed, addedArguments);
 
@@ -37,7 +37,6 @@ namespace OpenDotaDotNet.Endpoints
             return findMatches;
         }
 
-        #region Helper
         private List<string> CreateArgumentListForFindMatchesRequest(List<int> teamA = null, List<int> teamB = null)
         {
             var addedArguments = new List<string>();
@@ -60,6 +59,5 @@ namespace OpenDotaDotNet.Endpoints
 
             return addedArguments;
         }
-        #endregion
     }
 }

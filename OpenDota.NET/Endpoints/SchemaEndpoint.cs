@@ -1,12 +1,12 @@
-﻿using Newtonsoft.Json;
-
-using OpenDotaDotNet.Models.Schema;
-
-using System.Collections.Generic;
-using System.Threading.Tasks;
-
-namespace OpenDotaDotNet.Endpoints
+﻿namespace OpenDotaDotNet.Endpoints
 {
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+
+    using Newtonsoft.Json;
+
+    using OpenDotaDotNet.Models.Schema;
+
     public class SchemaEndpoint : ISchemaEndpoint
     {
         private const string GetDatabaseSchema = "schema";
@@ -19,9 +19,9 @@ namespace OpenDotaDotNet.Endpoints
         }
 
         /// <summary>
-        /// Get database schema
+        /// Get database schema.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Database schema.</returns>
         public async Task<List<DatabaseSchema>> GetDatabaseSchemaAsync()
         {
             var response = await this.requester.GetRequestResponseMessageAsync(GetDatabaseSchema);

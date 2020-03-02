@@ -8,7 +8,7 @@
     public interface IFindMatchEndpoint
     {
         /// <summary>
-        /// Finds matches by heroes played (currently includes matches played after April 2019)
+        /// Finds matches by heroes played (currently includes matches played after April 2019).
         /// </summary>
         /// <param name="teamA"></param>
         /// <param name="teamB"></param>

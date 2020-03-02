@@ -1,13 +1,13 @@
-﻿using Newtonsoft.Json;
-
-using OpenDotaDotNet.Models.ProPlayers;
-
-using System.Collections.Generic;
-using System.Threading.Tasks;
-
-namespace OpenDotaDotNet.Endpoints
+﻿namespace OpenDotaDotNet.Endpoints
 {
-    class ProPlayerEndpoint : IProPlayerEndpoint
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+
+    using Newtonsoft.Json;
+
+    using OpenDotaDotNet.Models.ProPlayers;
+
+    public class ProPlayerEndpoint : IProPlayerEndpoint
     {
         private const string ProPlayers = "proPlayers";
 
@@ -19,9 +19,9 @@ namespace OpenDotaDotNet.Endpoints
         }
 
         /// <summary>
-        /// Get list of pro players
+        /// Get list of pro players.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>List of pro players.</returns>
         public async Task<List<ProPlayer>> GetProPlayersAsync()
         {
             var response = await this.requester.GetRequestResponseMessageAsync(ProPlayers);

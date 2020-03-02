@@ -7,7 +7,7 @@
     public interface IMetadataEndpoint
     {
         /// <summary>
-        /// Site metadata
+        /// Site metadata.
         /// </summary>
         /// <returns></returns>
         Task<Metadata> GetMetadataAsync();

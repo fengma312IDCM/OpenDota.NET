@@ -8,7 +8,7 @@
     public interface IHeroStatsEndpoint
     {
         /// <summary>
-        /// Get stats about hero performance in recent matches
+        /// Get stats about hero performance in recent matches.
         /// </summary>
         /// <returns></returns>
         Task<List<HeroStats>> GetHeroStatsAsync();

@@ -1,12 +1,12 @@
-﻿using Newtonsoft.Json;
-
-using OpenDotaDotNet.Models.HeroStats;
-
-using System.Collections.Generic;
-using System.Threading.Tasks;
-
-namespace OpenDotaDotNet.Endpoints
+﻿namespace OpenDotaDotNet.Endpoints
 {
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+
+    using Newtonsoft.Json;
+
+    using OpenDotaDotNet.Models.HeroStats;
+
     public class HeroStatsEndpoint : IHeroStatsEndpoint
     {
         private const string HeroStats = "heroStats";
@@ -19,9 +19,9 @@ namespace OpenDotaDotNet.Endpoints
         }
 
         /// <summary>
-        /// Get stats about hero performance in recent matches
+        /// Get stats about hero performance in recent matches.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Stats about hero performance in recent matches.</returns>
         public async Task<List<HeroStats>> GetHeroStatsAsync()
         {
             var response = await this.requester.GetRequestResponseMessageAsync(HeroStats);

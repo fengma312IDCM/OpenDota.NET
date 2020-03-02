@@ -8,7 +8,7 @@
     public interface ISchemaEndpoint
     {
         /// <summary>
-        /// Get database schema
+        /// Get database schema.
         /// </summary>
         /// <returns></returns>
         Task<List<DatabaseSchema>> GetDatabaseSchemaAsync();

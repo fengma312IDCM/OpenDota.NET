@@ -1,12 +1,12 @@
-﻿using Newtonsoft.Json;
-
-using OpenDotaDotNet.Models.Benchmarks;
-
-using System.Collections.Generic;
-using System.Threading.Tasks;
-
-namespace OpenDotaDotNet.Endpoints
+﻿namespace OpenDotaDotNet.Endpoints
 {
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+
+    using Newtonsoft.Json;
+
+    using OpenDotaDotNet.Models.Benchmarks;
+
     public class BenchmarksEndpoint : IBenchmarkEndpoint
     {
         private const string Benchmarks = "benchmarks";
@@ -20,7 +20,7 @@ namespace OpenDotaDotNet.Endpoints
 
         public async Task<HeroBenchmark> GetHeroBenchmarkAsync(int heroId)
         {
-            var addedArguments = CreateArgumentListForBenchmarksRequest(heroId);
+            var addedArguments = this.CreateArgumentListForBenchmarksRequest(heroId);
 
             var response = await this.requester.GetRequestResponseMessageAsync(Benchmarks, addedArguments);
 
@@ -31,7 +31,6 @@ namespace OpenDotaDotNet.Endpoints
             return heroBenchmarks;
         }
 
-        #region Helper
         private List<string> CreateArgumentListForBenchmarksRequest(int? heroId = null)
         {
             var addedArguments = new List<string>();
@@ -43,6 +42,5 @@ namespace OpenDotaDotNet.Endpoints
 
             return addedArguments;
         }
-        #endregion
     }
 }

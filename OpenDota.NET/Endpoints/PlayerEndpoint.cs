@@ -1,13 +1,13 @@
-﻿using Newtonsoft.Json;
-
-using OpenDotaDotNet.Models.Players;
-
-using System.Collections.Generic;
-using System.Threading.Tasks;
-
-namespace OpenDotaDotNet.Endpoints
+﻿namespace OpenDotaDotNet.Endpoints
 {
-    class PlayerEndpoint : IPlayerEndpoint
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+
+    using Newtonsoft.Json;
+
+    using OpenDotaDotNet.Models.Players;
+
+    public class PlayerEndpoint : IPlayerEndpoint
     {
         private const string PlayerByIdUrl = "players/{0}";
         private const string PlayerWinLossByIdUrl = "players/{0}/wl";
@@ -19,8 +19,8 @@ namespace OpenDotaDotNet.Endpoints
         private const string PlayerTotals = "players/{0}/totals";
         private const string PlayerCounts = "players/{0}/counts";
         private const string PlayerHistograms = "players/{0}/histograms/{1}";
-        private const string PlayerWardmap = "players/{0}/wardmap";
-        private const string PlayerWordcloud = "players/{0}/wordcloud";
+        private const string PlayerWardMap = "players/{0}/wardmap";
+        private const string PlayerWordCloud = "players/{0}/wordcloud";
         private const string PlayerRatings = "players/{0}/ratings";
         private const string PlayerHeroRankings = "players/{0}/rankings";
         private const string RefreshPlayerMatchHistory = "players/{0}/refresh";
@@ -33,10 +33,10 @@ namespace OpenDotaDotNet.Endpoints
         }
 
         /// <summary>
-        /// Player data
+        /// Gets player data.
         /// </summary>
-        /// <param name="playerId">Steam32 account ID</param>
-        /// <returns></returns>
+        /// <param name="playerId">Steam32 account ID.</param>
+        /// <returns>Player data.</returns>
         public async Task<Player> GetPlayerByIdAsync(long playerId)
         {
             var response = await this.requester.GetRequestResponseMessageAsync(string.Format(PlayerByIdUrl, playerId));
@@ -49,14 +49,14 @@ namespace OpenDotaDotNet.Endpoints
         }
 
         /// <summary>
-        /// Win/Loss count
+        /// Gets win/Loss count.
         /// </summary>
-        /// <param name="playerId">Steam32 account ID</param>
-        /// <param name="parameters">Query parameters</param>
-        /// <returns></returns>
+        /// <param name="playerId">Steam32 account ID.</param>
+        /// <param name="parameters">Query parameters.</param>
+        /// <returns>Win/Loss count.</returns>
         public async Task<PlayerWinLoss> GetPlayerWinLossByIdAsync(long playerId, PlayerEndpointParameters parameters = null)
         {
-            var addedArguments = CreateArgumentListForPlayerEndpointRequest(parameters);
+            var addedArguments = this.CreateArgumentListForPlayerEndpointRequest(parameters);
 
             var response = await this.requester.GetRequestResponseMessageAsync(string.Format(PlayerWinLossByIdUrl, playerId), addedArguments);
 
@@ -68,10 +68,10 @@ namespace OpenDotaDotNet.Endpoints
         }
 
         /// <summary>
-        /// Recent matches played
+        /// Gets recent matches played.
         /// </summary>
-        /// <param name="playerId">Steam32 account ID</param>
-        /// <returns></returns>
+        /// <param name="playerId">Steam32 account ID.</param>
+        /// <returns>Recent matches played.</returns>
         public async Task<List<PlayerRecentMatch>> GetPlayerRecentMatchesAsync(long playerId)
         {
             var response = await this.requester.GetRequestResponseMessageAsync(string.Format(PlayerRecentMatches, playerId));
@@ -84,31 +84,29 @@ namespace OpenDotaDotNet.Endpoints
         }
 
         /// <summary>
-        /// Matches played
+        /// Gets matches played.
         /// </summary>
-        /// <param name="playerId">Steam32 account ID</param>
-        /// <param name="parameters">Query parameters</param>
-        /// <returns></returns>
+        /// <param name="playerId">Steam32 account ID.</param>
+        /// <param name="parameters">Query parameters.</param>
+        /// <returns>Matches played.</returns>
         public async Task<List<PlayerMatch>> GetPlayerMatchesAsync(long playerId, PlayerEndpointParameters parameters = null)
         {
-            var addedArguments = CreateArgumentListForPlayerEndpointRequest(parameters);
+            var addedArguments = this.CreateArgumentListForPlayerEndpointRequest(parameters);
             var response = await this.requester.GetRequestResponseMessageAsync(string.Format(PlayerMatches, playerId), addedArguments);
             response.EnsureSuccessStatusCode();
-            // test
             var playerMatches = JsonConvert.DeserializeObject<List<PlayerMatch>>(await response.Content.ReadAsStringAsync());
-
             return playerMatches;
         }
 
         /// <summary>
-        /// Heroes played
+        /// Gets heroes played.
         /// </summary>
-        /// <param name="playerId">Steam32 account ID</param>
-        /// <param name="parameters">Query Parameters</param>
-        /// <returns></returns>
+        /// <param name="playerId">Steam32 account ID.</param>
+        /// <param name="parameters">Query Parameters.</param>
+        /// <returns>Heroes played.</returns>
         public async Task<List<PlayerHero>> GetPlayerHeroesAsync(long playerId, PlayerEndpointParameters parameters = null)
         {
-            var addedArguments = CreateArgumentListForPlayerEndpointRequest(parameters);
+            var addedArguments = this.CreateArgumentListForPlayerEndpointRequest(parameters);
 
             var response = await this.requester.GetRequestResponseMessageAsync(string.Format(PlayerHeroes, playerId), addedArguments);
 
@@ -120,14 +118,14 @@ namespace OpenDotaDotNet.Endpoints
         }
 
         /// <summary>
-        /// Players played with
+        /// Gets players played with.
         /// </summary>
-        /// <param name="playerId">Steam32 account ID</param>
-        /// <param name="parameters">Query Parameters</param>
-        /// <returns></returns>
+        /// <param name="playerId">Steam32 account ID.</param>
+        /// <param name="parameters">Query Parameters.</param>
+        /// <returns>Players played with.</returns>
         public async Task<List<PlayerPeer>> GetPlayerPeersAsync(long playerId, PlayerEndpointParameters parameters)
         {
-            var addedArguments = CreateArgumentListForPlayerEndpointRequest(parameters);
+            var addedArguments = this.CreateArgumentListForPlayerEndpointRequest(parameters);
 
             var response = await this.requester.GetRequestResponseMessageAsync(string.Format(PlayerPeers, playerId), addedArguments);
 
@@ -139,14 +137,14 @@ namespace OpenDotaDotNet.Endpoints
         }
 
         /// <summary>
-        /// Pro players played with
+        /// Gets pro players played with.
         /// </summary>
-        /// <param name="playerId">Steam32 account ID</param>
-        /// <param name="parameters">Query Parameters</param>
-        /// <returns></returns>
+        /// <param name="playerId">Steam32 account ID.</param>
+        /// <param name="parameters">Query Parameters.</param>
+        /// <returns>Pro players played with.</returns>
         public async Task<List<PlayerPro>> GetPlayerProsAsync(long playerId, PlayerEndpointParameters parameters)
         {
-            var addedArguments = CreateArgumentListForPlayerEndpointRequest(parameters);
+            var addedArguments = this.CreateArgumentListForPlayerEndpointRequest(parameters);
 
             var response = await this.requester.GetRequestResponseMessageAsync(string.Format(PlayerPros, playerId), addedArguments);
 
@@ -158,14 +156,14 @@ namespace OpenDotaDotNet.Endpoints
         }
 
         /// <summary>
-        /// Totals in stats
+        /// Gets totals in stats.
         /// </summary>
-        /// <param name="playerId">Steam32 account ID</param>
-        /// <param name="parameters">Query Parameters</param>
-        /// <returns></returns>
+        /// <param name="playerId">Steam32 account ID.</param>
+        /// <param name="parameters">Query Parameters.</param>
+        /// <returns>Totals in stats.</returns>
         public async Task<List<PlayerTotal>> GetPlayerTotalsAsync(long playerId, PlayerEndpointParameters parameters)
         {
-            var addedArguments = CreateArgumentListForPlayerEndpointRequest(parameters);
+            var addedArguments = this.CreateArgumentListForPlayerEndpointRequest(parameters);
 
             var response = await this.requester.GetRequestResponseMessageAsync(string.Format(PlayerTotals, playerId), addedArguments);
 
@@ -177,14 +175,14 @@ namespace OpenDotaDotNet.Endpoints
         }
 
         /// <summary>
-        /// Counts in categories
+        /// Gets counts in categories.
         /// </summary>
-        /// <param name="playerId">Steam32 account ID</param>
-        /// <param name="parameters">Query Parameters</param>
-        /// <returns></returns>
+        /// <param name="playerId">Steam32 account ID.</param>
+        /// <param name="parameters">Query Parameters.</param>
+        /// <returns>Counts in categories.</returns>
         public async Task<PlayerCount> GetPlayerCountsAsync(long playerId, PlayerEndpointParameters parameters)
         {
-            var addedArguments = CreateArgumentListForPlayerEndpointRequest(parameters);
+            var addedArguments = this.CreateArgumentListForPlayerEndpointRequest(parameters);
 
             var response = await this.requester.GetRequestResponseMessageAsync(string.Format(PlayerCounts, playerId), addedArguments);
 
@@ -196,15 +194,15 @@ namespace OpenDotaDotNet.Endpoints
         }
 
         /// <summary>
-        /// Distribution of matches in a single stat
+        /// Gets distribution of matches in a single stat.
         /// </summary>
-        /// <param name="playerId">Steam32 account ID</param>
-        /// <param name="field">Field to aggregate on</param>
-        /// <param name="parameters">Query Parameters</param>
-        /// <returns></returns>
+        /// <param name="playerId">Steam32 account ID.</param>
+        /// <param name="field">Field to aggregate on.</param>
+        /// <param name="parameters">Query Parameters.</param>
+        /// <returns>Distribution of matches in a single stat.</returns>
         public async Task<List<PlayerHistogram>> GetPlayerHistogramsAsync(long playerId, string field, PlayerEndpointParameters parameters)
         {
-            var addedArguments = CreateArgumentListForPlayerEndpointRequest(parameters);
+            var addedArguments = this.CreateArgumentListForPlayerEndpointRequest(parameters);
 
             var response = await this.requester.GetRequestResponseMessageAsync(string.Format(PlayerHistograms, playerId, field), addedArguments);
 
@@ -216,48 +214,48 @@ namespace OpenDotaDotNet.Endpoints
         }
 
         /// <summary>
-        /// Wards placed in matches played
+        /// Gets wards placed in matches played.
         /// </summary>
-        /// <param name="playerId">Steam32 account ID</param>
-        /// <param name="parameters">Query Parameters</param>
-        /// <returns></returns>
-        public async Task<PlayerWardmap> GetPlayerWardmapAsync(long playerId, PlayerEndpointParameters parameters)
+        /// <param name="playerId">Steam32 account ID.</param>
+        /// <param name="parameters">Query Parameters.</param>
+        /// <returns>Wards placed in matches played.</returns>
+        public async Task<PlayerWardmap> GetPlayerWardMapAsync(long playerId, PlayerEndpointParameters parameters)
         {
-            var addedArguments = CreateArgumentListForPlayerEndpointRequest(parameters);
+            var addedArguments = this.CreateArgumentListForPlayerEndpointRequest(parameters);
 
-            var response = await this.requester.GetRequestResponseMessageAsync(string.Format(PlayerWardmap, playerId), addedArguments);
+            var response = await this.requester.GetRequestResponseMessageAsync(string.Format(PlayerWardMap, playerId), addedArguments);
 
             response.EnsureSuccessStatusCode();
 
-            var playerWardmap = JsonConvert.DeserializeObject<PlayerWardmap>(await response.Content.ReadAsStringAsync());
+            var playerWardMap = JsonConvert.DeserializeObject<PlayerWardmap>(await response.Content.ReadAsStringAsync());
 
-            return playerWardmap;
+            return playerWardMap;
         }
 
         /// <summary>
-        /// Words said/read in matches played
+        /// Gets words said/read in matches played.
         /// </summary>
-        /// <param name="playerId">Steam32 account ID</param>
-        /// <param name="parameters">Query Parameters</param>
-        /// <returns></returns>
-        public async Task<PlayerWordcloud> GetPlayerWordcloudAsync(long playerId, PlayerEndpointParameters parameters)
+        /// <param name="playerId">Steam32 account ID.</param>
+        /// <param name="parameters">Query Parameters.</param>
+        /// <returns>Words said/read in matches played.</returns>
+        public async Task<PlayerWordcloud> GetPlayerWordCloudAsync(long playerId, PlayerEndpointParameters parameters)
         {
-            var addedArguments = CreateArgumentListForPlayerEndpointRequest(parameters);
+            var addedArguments = this.CreateArgumentListForPlayerEndpointRequest(parameters);
 
-            var response = await this.requester.GetRequestResponseMessageAsync(string.Format(PlayerWordcloud, playerId), addedArguments);
+            var response = await this.requester.GetRequestResponseMessageAsync(string.Format(PlayerWordCloud, playerId), addedArguments);
 
             response.EnsureSuccessStatusCode();
 
-            var playerWordcloud = JsonConvert.DeserializeObject<PlayerWordcloud>(await response.Content.ReadAsStringAsync());
+            var playerWordCloud = JsonConvert.DeserializeObject<PlayerWordcloud>(await response.Content.ReadAsStringAsync());
 
-            return playerWordcloud;
+            return playerWordCloud;
         }
 
         /// <summary>
-        /// Player rating history
+        /// Gets player rating history.
         /// </summary>
-        /// <param name="playerId">Steam32 account ID</param>
-        /// <returns></returns>
+        /// <param name="playerId">Steam32 account ID.</param>
+        /// <returns>Player rating history.</returns>
         public async Task<List<PlayerRating>> GetPlayerRatingsAsync(long playerId)
         {
             var response = await this.requester.GetRequestResponseMessageAsync(string.Format(PlayerRatings, playerId));
@@ -270,10 +268,10 @@ namespace OpenDotaDotNet.Endpoints
         }
 
         /// <summary>
-        /// Player hero rankings
+        /// Gets player hero rankings.
         /// </summary>
-        /// <param name="playerId">Steam32 account ID</param>
-        /// <returns></returns>
+        /// <param name="playerId">Steam32 account ID.</param>
+        /// <returns>Player hero rankings.</returns>
         public async Task<List<PlayerHeroRanking>> GetPlayerHeroRankingsAsync(long playerId)
         {
             var response = await this.requester.GetRequestResponseMessageAsync(string.Format(PlayerHeroRankings, playerId));
@@ -286,10 +284,10 @@ namespace OpenDotaDotNet.Endpoints
         }
 
         /// <summary>
-        /// Refresh player match history
+        /// Gets refresh player match history.
         /// </summary>
         /// <param name="playerId"></param>
-        /// <returns></returns>
+        /// <returns>Refresh player match history.</returns>
         public async Task<bool> RefreshPlayerMatchHistoryAsync(long playerId)
         {
             var response = await this.requester.PostRequest(string.Format(RefreshPlayerMatchHistory, playerId));
@@ -299,12 +297,14 @@ namespace OpenDotaDotNet.Endpoints
             return true;
         }
 
-        #region Helper
         private List<string> CreateArgumentListForPlayerEndpointRequest(PlayerEndpointParameters parameters)
         {
             var addedArguments = new List<string>();
 
-            if (parameters == null) return addedArguments;
+            if (parameters == null)
+            {
+                return addedArguments;
+            }
 
             if (parameters.Limit != null)
             {
@@ -418,6 +418,5 @@ namespace OpenDotaDotNet.Endpoints
 
             return addedArguments;
         }
-        #endregion
     }
 }

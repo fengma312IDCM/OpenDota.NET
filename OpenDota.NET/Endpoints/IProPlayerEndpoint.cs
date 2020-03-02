@@ -8,7 +8,7 @@
     public interface IProPlayerEndpoint
     {
         /// <summary>
-        /// Get list of pro players
+        /// Get list of pro players.
         /// </summary>
         /// <returns></returns>
         Task<List<ProPlayer>> GetProPlayersAsync();

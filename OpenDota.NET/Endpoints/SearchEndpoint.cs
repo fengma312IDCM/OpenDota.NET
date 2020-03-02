@@ -1,12 +1,12 @@
-﻿using Newtonsoft.Json;
-
-using OpenDotaDotNet.Models.Search;
-
-using System.Collections.Generic;
-using System.Threading.Tasks;
-
-namespace OpenDotaDotNet.Endpoints
+﻿namespace OpenDotaDotNet.Endpoints
 {
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+
+    using Newtonsoft.Json;
+
+    using OpenDotaDotNet.Models.Search;
+
     public class SearchEndpoint : ISearchEndpoint
     {
         private const string Search = "search";
@@ -22,10 +22,10 @@ namespace OpenDotaDotNet.Endpoints
         /// Search players by personaname.
         /// </summary>
         /// <param name="query"></param>
-        /// <returns></returns>
+        /// <returns>Players by personaname.</returns>
         public async Task<List<SearchPlayerResponse>> GetPlayersByNameAsync(string query)
         {
-            var addedArguments = CreateArgumentListForSearchPlayersRequest(query);
+            var addedArguments = this.CreateArgumentListForSearchPlayersRequest(query);
 
             var response = await this.requester.GetRequestResponseMessageAsync(Search, addedArguments);
 
@@ -36,7 +36,6 @@ namespace OpenDotaDotNet.Endpoints
             return players;
         }
 
-        #region Helper
         private List<string> CreateArgumentListForSearchPlayersRequest(string query = null)
         {
             var addedArguments = new List<string>();
@@ -48,6 +47,5 @@ namespace OpenDotaDotNet.Endpoints
 
             return addedArguments;
         }
-        #endregion
     }
 }

@@ -1,11 +1,11 @@
-﻿using Newtonsoft.Json;
-
-using OpenDotaDotNet.Models.Distributions;
-
-using System.Threading.Tasks;
-
-namespace OpenDotaDotNet.Endpoints
+﻿namespace OpenDotaDotNet.Endpoints
 {
+    using System.Threading.Tasks;
+
+    using Newtonsoft.Json;
+
+    using OpenDotaDotNet.Models.Distributions;
+
     public class MmrDistributionEndpoint : IMmrDistributionEndpoint
     {
         private const string MmrDistribution = "distributions";
@@ -18,9 +18,9 @@ namespace OpenDotaDotNet.Endpoints
         }
 
         /// <summary>
-        /// Distributions of MMR data by bracket and country
+        /// Gets distributions of MMR data by bracket and country.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Distributions of MMR data by bracket and country.</returns>
         public async Task<MmrDistribution> GetMmrDistributionAsync()
         {
             var response = await this.requester.GetRequestResponseMessageAsync(MmrDistribution);

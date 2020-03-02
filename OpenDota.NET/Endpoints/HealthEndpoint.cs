@@ -1,11 +1,11 @@
-﻿using Newtonsoft.Json;
-
-using OpenDotaDotNet.Models.HealthStatus;
-
-using System.Threading.Tasks;
-
-namespace OpenDotaDotNet.Endpoints
+﻿namespace OpenDotaDotNet.Endpoints
 {
+    using System.Threading.Tasks;
+
+    using Newtonsoft.Json;
+
+    using OpenDotaDotNet.Models.HealthStatus;
+
     public class HealthEndpoint : IHealthEndpoint
     {
         private const string ServiceHealth = "health";
@@ -18,9 +18,9 @@ namespace OpenDotaDotNet.Endpoints
         }
 
         /// <summary>
-        /// Get service health data
+        /// Get service health data.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Service health data.</returns>
         public async Task<ServiceHealth> GetServiceHealthDataAsync()
         {
             var response = await this.requester.GetRequestResponseMessageAsync(ServiceHealth);

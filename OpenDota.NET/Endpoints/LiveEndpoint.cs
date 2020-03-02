@@ -1,12 +1,12 @@
-﻿using Newtonsoft.Json;
-
-using OpenDotaDotNet.Models.Live;
-
-using System.Collections.Generic;
-using System.Threading.Tasks;
-
-namespace OpenDotaDotNet.Endpoints
+﻿namespace OpenDotaDotNet.Endpoints
 {
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+
+    using Newtonsoft.Json;
+
+    using OpenDotaDotNet.Models.Live;
+
     public class LiveEndpoint : ILiveEndpoint
     {
         private const string TopLiveGames = "live";
@@ -19,9 +19,9 @@ namespace OpenDotaDotNet.Endpoints
         }
 
         /// <summary>
-        /// Get top currently ongoing live games
+        /// Get top currently ongoing live games.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Top currently ongoing live games.</returns>
         public async Task<List<LiveGame>> GetTopLiveGamesAsync()
         {
             var response = await this.requester.GetRequestResponseMessageAsync(TopLiveGames);

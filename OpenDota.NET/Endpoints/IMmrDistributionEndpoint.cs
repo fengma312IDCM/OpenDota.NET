@@ -7,7 +7,7 @@
     public interface IMmrDistributionEndpoint
     {
         /// <summary>
-        /// Distributions of MMR data by bracket and country
+        /// Distributions of MMR data by bracket and country.
         /// </summary>
         /// <returns></returns>
         Task<MmrDistribution> GetMmrDistributionAsync();

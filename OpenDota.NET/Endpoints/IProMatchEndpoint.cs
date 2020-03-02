@@ -8,9 +8,9 @@
     public interface IProMatchEndpoint
     {
         /// <summary>
-        /// Get list of pro matches
+        /// Get list of pro matches.
         /// </summary>
-        /// <param name="lessThanMatchId">Get matches with a match ID lower than this value</param>
+        /// <param name="lessThanMatchId">Get matches with a match ID lower than this value.</param>
         /// <returns></returns>
         Task<List<ProMatch>> GetProMatchesAsync(long? lessThanMatchId = null);
     }

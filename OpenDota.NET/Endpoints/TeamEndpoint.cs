@@ -1,12 +1,12 @@
-﻿using Newtonsoft.Json;
-
-using OpenDotaDotNet.Models.Teams;
-
-using System.Collections.Generic;
-using System.Threading.Tasks;
-
-namespace OpenDotaDotNet.Endpoints
+﻿namespace OpenDotaDotNet.Endpoints
 {
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+
+    using Newtonsoft.Json;
+
+    using OpenDotaDotNet.Models.Teams;
+
     public class TeamEndpoint : ITeamEndpoint
     {
         private const string GetTeams = "teams";
@@ -23,9 +23,9 @@ namespace OpenDotaDotNet.Endpoints
         }
 
         /// <summary>
-        /// Get team data
+        /// Get teams data.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Teams data.</returns>
         public async Task<List<Team>> GetTeamsAsync()
         {
             var response = await this.requester.GetRequestResponseMessageAsync(GetTeams);
@@ -38,10 +38,10 @@ namespace OpenDotaDotNet.Endpoints
         }
 
         /// <summary>
-        /// Get data for a team
+        /// Get data for a team.
         /// </summary>
         /// <param name="teamId"></param>
-        /// <returns></returns>
+        /// <returns>Data for a team.</returns>
         public async Task<Team> GetTeamByIdAsync(int teamId)
         {
             var response = await this.requester.GetRequestResponseMessageAsync(string.Format(GetTeamById, teamId));
@@ -54,10 +54,10 @@ namespace OpenDotaDotNet.Endpoints
         }
 
         /// <summary>
-        /// Get matches for a team
+        /// Get matches for a team.
         /// </summary>
         /// <param name="teamId"></param>
-        /// <returns></returns>
+        /// <returns>Matches for a team.</returns>
         public async Task<List<TeamMatch>> GetTeamMatchesByIdAsync(int teamId)
         {
             var response = await this.requester.GetRequestResponseMessageAsync(string.Format(GetTeamMatchesById, teamId));
@@ -70,10 +70,10 @@ namespace OpenDotaDotNet.Endpoints
         }
 
         /// <summary>
-        /// Get players who have played for a team
+        /// Get players who have played for a team.
         /// </summary>
         /// <param name="teamId"></param>
-        /// <returns></returns>
+        /// <returns>Players who have played for a team.</returns>
         public async Task<List<TeamPlayer>> GetTeamPlayersByIdAsync(int teamId)
         {
             var response = await this.requester.GetRequestResponseMessageAsync(string.Format(GetTeamPlayersById, teamId));
@@ -86,10 +86,10 @@ namespace OpenDotaDotNet.Endpoints
         }
 
         /// <summary>
-        /// Get heroes for a team
+        /// Get heroes for a team.
         /// </summary>
         /// <param name="teamId"></param>
-        /// <returns></returns>
+        /// <returns>Heroes for a team.</returns>
         public async Task<List<TeamHero>> GetTeamHeroesByIdAsync(int teamId)
         {
             var response = await this.requester.GetRequestResponseMessageAsync(string.Format(GetTeamHeroesById, teamId));

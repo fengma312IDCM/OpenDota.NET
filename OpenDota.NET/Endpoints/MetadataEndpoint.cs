@@ -1,12 +1,12 @@
-﻿using Newtonsoft.Json;
-
-using OpenDotaDotNet.Models.Metadata;
-
-using System.Threading.Tasks;
-
-namespace OpenDotaDotNet.Endpoints
+﻿namespace OpenDotaDotNet.Endpoints
 {
-    class MetadataEndpoint : IMetadataEndpoint
+    using System.Threading.Tasks;
+
+    using Newtonsoft.Json;
+
+    using OpenDotaDotNet.Models.Metadata;
+
+    public class MetadataEndpoint : IMetadataEndpoint
     {
         private const string Metadata = "metadata";
 
@@ -18,9 +18,9 @@ namespace OpenDotaDotNet.Endpoints
         }
 
         /// <summary>
-        /// Site metadata
+        /// Gets site metadata.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Site metadata.</returns>
         public async Task<Metadata> GetMetadataAsync()
         {
             var response = await this.requester.GetRequestResponseMessageAsync(Metadata);

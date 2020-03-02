@@ -7,7 +7,7 @@
     public interface IHealthEndpoint
     {
         /// <summary>
-        /// Get service health data
+        /// Get service health data.
         /// </summary>
         /// <returns></returns>
         Task<ServiceHealth> GetServiceHealthDataAsync();

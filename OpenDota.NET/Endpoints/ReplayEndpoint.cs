@@ -1,12 +1,12 @@
-﻿using Newtonsoft.Json;
-
-using OpenDotaDotNet.Models.Replays;
-
-using System.Collections.Generic;
-using System.Threading.Tasks;
-
-namespace OpenDotaDotNet.Endpoints
+﻿namespace OpenDotaDotNet.Endpoints
 {
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+
+    using Newtonsoft.Json;
+
+    using OpenDotaDotNet.Models.Replays;
+
     public class ReplayEndpoint : IReplayEndpoint
     {
         private const string ReplayData = "replays";
@@ -19,13 +19,13 @@ namespace OpenDotaDotNet.Endpoints
         }
 
         /// <summary>
-        /// Get data to construct a replay URL with
+        /// Get data to construct a replay URL with.
         /// </summary>
-        /// <param name="matchIds">Match IDs (array)</param>
-        /// <returns></returns>
+        /// <param name="matchIds">Match IDs (array).</param>
+        /// <returns>Data to construct a replay URL with.</returns>
         public async Task<List<Replay>> GetReplayDataAsync(List<long> matchIds)
         {
-            var addedArguments = CreateArgumentListForReplaysRequest(matchIds);
+            var addedArguments = this.CreateArgumentListForReplaysRequest(matchIds);
 
             var response = await this.requester.GetRequestResponseMessageAsync(ReplayData, addedArguments);
 
@@ -36,14 +36,13 @@ namespace OpenDotaDotNet.Endpoints
             return heroBenchmarks;
         }
 
-        #region Helper
-        private List<string> CreateArgumentListForReplaysRequest(List<long> matchIds = null)
+        private List<string> CreateArgumentListForReplaysRequest(IReadOnlyCollection<long> matchIds = null)
         {
             var addedArguments = new List<string>();
 
             if (matchIds != null)
             {
-                foreach(var matchId in matchIds)
+                foreach (var matchId in matchIds)
                 {
                     addedArguments.Add($@"match_id={matchId}");
                 }
@@ -51,6 +50,5 @@ namespace OpenDotaDotNet.Endpoints
 
             return addedArguments;
         }
-        #endregion
     }
 }

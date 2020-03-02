@@ -1,7 +1,7 @@
-﻿using Newtonsoft.Json;
-
-namespace OpenDotaDotNet.Models.HealthStatus
+﻿namespace OpenDotaDotNet.Models.HealthStatus
 {
+    using Newtonsoft.Json;
+
     public class ServiceHealth
     {
         [JsonProperty("parseDelay")]

@@ -8,7 +8,7 @@
     public interface ILiveEndpoint
     {
         /// <summary>
-        /// Get top currently ongoing live games
+        /// Get top currently ongoing live games.
         /// </summary>
         /// <returns></returns>
         Task<List<LiveGame>> GetTopLiveGamesAsync();

@@ -1,13 +1,13 @@
-﻿using Newtonsoft.Json;
-
-using OpenDotaDotNet.Models.ProMatches;
-
-using System.Collections.Generic;
-using System.Threading.Tasks;
-
-namespace OpenDotaDotNet.Endpoints
+﻿namespace OpenDotaDotNet.Endpoints
 {
-    class ProMatchesEndpoint : IProMatchEndpoint
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+
+    using Newtonsoft.Json;
+
+    using OpenDotaDotNet.Models.ProMatches;
+
+    public class ProMatchesEndpoint : IProMatchEndpoint
     {
         private const string ProMatches = "proMatches";
 
@@ -19,13 +19,13 @@ namespace OpenDotaDotNet.Endpoints
         }
 
         /// <summary>
-        /// Get list of pro matches
+        /// Get list of pro matches.
         /// </summary>
         /// <param name="lessThanMatchId"></param>
-        /// <returns></returns>
+        /// <returns>List of pro matches.</returns>
         public async Task<List<ProMatch>> GetProMatchesAsync(long? lessThanMatchId = null)
         {
-            var addedArguments = CreateArgumentListForProMatchesRequest(lessThanMatchId);
+            var addedArguments = this.CreateArgumentListForProMatchesRequest(lessThanMatchId);
 
             var response = await this.requester.GetRequestResponseMessageAsync(ProMatches, addedArguments);
 
@@ -36,7 +36,6 @@ namespace OpenDotaDotNet.Endpoints
             return proMatches;
         }
 
-        #region Helper
         private List<string> CreateArgumentListForProMatchesRequest(long? lessThanMatchId = null)
         {
             var addedArguments = new List<string>();
@@ -48,6 +47,5 @@ namespace OpenDotaDotNet.Endpoints
 
             return addedArguments;
         }
-        #endregion
     }
 }

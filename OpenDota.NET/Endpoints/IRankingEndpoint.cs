@@ -7,7 +7,7 @@
     public interface IRankingEndpoint
     {
         /// <summary>
-        /// Top players by hero
+        /// Top players by hero.
         /// </summary>
         /// <param name="heroId"></param>
         /// <returns></returns>

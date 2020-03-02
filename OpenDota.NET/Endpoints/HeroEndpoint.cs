@@ -1,12 +1,12 @@
-﻿using Newtonsoft.Json;
-
-using OpenDotaDotNet.Models.Heroes;
-
-using System.Collections.Generic;
-using System.Threading.Tasks;
-
-namespace OpenDotaDotNet.Endpoints
+﻿namespace OpenDotaDotNet.Endpoints
 {
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+
+    using Newtonsoft.Json;
+
+    using OpenDotaDotNet.Models.Heroes;
+
     public class HeroEndpoint : IHeroEndpoint
     {
         private const string Heroes = "heroes";
@@ -23,9 +23,9 @@ namespace OpenDotaDotNet.Endpoints
         }
 
         /// <summary>
-        /// Get hero data
+        /// Get hero data.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Hero data.</returns>
         public async Task<List<Hero>> GetHeroesAsync()
         {
             var response = await this.requester.GetRequestResponseMessageAsync(Heroes);
@@ -38,10 +38,10 @@ namespace OpenDotaDotNet.Endpoints
         }
 
         /// <summary>
-        /// Get recent matches with a hero
+        /// Get recent matches with a hero.
         /// </summary>
         /// <param name="heroId"></param>
-        /// <returns></returns>
+        /// <returns>Recent matches with a hero.</returns>
         public async Task<List<HeroMatch>> GetHeroMatchesAsync(int heroId)
         {
             var response = await this.requester.GetRequestResponseMessageAsync(string.Format(HeroMatches, heroId));
@@ -54,10 +54,10 @@ namespace OpenDotaDotNet.Endpoints
         }
 
         /// <summary>
-        /// Get results against other heroes for a hero
+        /// Get results against other heroes for a hero.
         /// </summary>
         /// <param name="heroId"></param>
-        /// <returns></returns>
+        /// <returns>Results against other heroes for a hero.</returns>
         public async Task<List<HeroMatchup>> GetHeroMatchupsAsync(int heroId)
         {
             var response = await this.requester.GetRequestResponseMessageAsync(string.Format(HeroMatchups, heroId));
@@ -70,10 +70,10 @@ namespace OpenDotaDotNet.Endpoints
         }
 
         /// <summary>
-        /// Get hero performance over a range of match durations
+        /// Get hero performance over a range of match durations.
         /// </summary>
         /// <param name="heroId"></param>
-        /// <returns></returns>
+        /// <returns>Hero performance over a range of match durations.</returns>
         public async Task<List<HeroDuration>> GetHeroDurationsAsync(int heroId)
         {
             var response = await this.requester.GetRequestResponseMessageAsync(string.Format(HeroDurations, heroId));
@@ -86,10 +86,10 @@ namespace OpenDotaDotNet.Endpoints
         }
 
         /// <summary>
-        /// Get players who have played this hero
+        /// Get players who have played this hero.
         /// </summary>
         /// <param name="heroId"></param>
-        /// <returns></returns>
+        /// <returns>Players who have played this hero.</returns>
         public async Task<List<HeroPlayer>> GetHeroPlayersAsync(int heroId)
         {
             var response = await this.requester.GetRequestResponseMessageAsync(string.Format(HeroPlayers, heroId));

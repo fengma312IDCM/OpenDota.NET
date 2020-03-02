@@ -1,12 +1,12 @@
-﻿using Newtonsoft.Json;
-
-using OpenDotaDotNet.Models.Leagues;
-
-using System.Collections.Generic;
-using System.Threading.Tasks;
-
-namespace OpenDotaDotNet.Endpoints
+﻿namespace OpenDotaDotNet.Endpoints
 {
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+
+    using Newtonsoft.Json;
+
+    using OpenDotaDotNet.Models.Leagues;
+
     public class LeagueEndpoint : ILeagueEndpoint
     {
         private const string Leagues = "leagues";
@@ -19,9 +19,9 @@ namespace OpenDotaDotNet.Endpoints
         }
 
         /// <summary>
-        /// Get league data
+        /// Get league data.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>League data.</returns>
         public async Task<List<League>> GetLeaguesAsync()
         {
             var response = await this.requester.GetRequestResponseMessageAsync(Leagues);

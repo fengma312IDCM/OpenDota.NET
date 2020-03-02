@@ -8,7 +8,7 @@
     public interface ILeagueEndpoint
     {
         /// <summary>
-        /// Get league data
+        /// Get league data.
         /// </summary>
         /// <returns></returns>
         Task<List<League>> GetLeaguesAsync();

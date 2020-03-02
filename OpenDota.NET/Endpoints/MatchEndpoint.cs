@@ -1,10 +1,11 @@
-﻿using System.Threading.Tasks;
-using Newtonsoft.Json;
-
-using OpenDotaDotNet.Models.Matches;
-
-namespace OpenDotaDotNet.Endpoints
+﻿namespace OpenDotaDotNet.Endpoints
 {
+    using System.Threading.Tasks;
+
+    using Newtonsoft.Json;
+
+    using OpenDotaDotNet.Models.Matches;
+
     public class MatchEndpoint : IMatchEndpoint
     {
         private const string MatchByIdUrl = "matches/{0}";
