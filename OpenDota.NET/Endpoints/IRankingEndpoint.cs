@@ -1,8 +1,9 @@
-﻿using OpenDotaDotNet.Models.Rankings;
-using System.Threading.Tasks;
-
-namespace OpenDotaDotNet.Interfaces
+﻿namespace OpenDotaDotNet.Endpoints
 {
+    using System.Threading.Tasks;
+
+    using OpenDotaDotNet.Models.Rankings;
+
     public interface IRankingEndpoint
     {
         /// <summary>

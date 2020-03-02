@@ -1,4 +1,4 @@
-﻿namespace OpenDotaDotNet.Interfaces
+﻿namespace OpenDotaDotNet.Endpoints
 {
     using System.Threading.Tasks;
 

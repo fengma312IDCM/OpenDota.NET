@@ -1,6 +1,6 @@
 ﻿namespace OpenDotaDotNet
 {
-    using OpenDotaDotNet.Interfaces;
+    using OpenDotaDotNet.Endpoints;
 
     public interface IOpenDotaApi
     {

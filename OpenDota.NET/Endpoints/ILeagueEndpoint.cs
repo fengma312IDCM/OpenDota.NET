@@ -1,9 +1,10 @@
-﻿using OpenDotaDotNet.Models.Leagues;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-
-namespace OpenDotaDotNet.Interfaces
+﻿namespace OpenDotaDotNet.Endpoints
 {
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+
+    using OpenDotaDotNet.Models.Leagues;
+
     public interface ILeagueEndpoint
     {
         /// <summary>

@@ -1,9 +1,10 @@
-﻿using OpenDotaDotNet.Models.Search;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-
-namespace OpenDotaDotNet.Interfaces
+﻿namespace OpenDotaDotNet.Endpoints
 {
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+
+    using OpenDotaDotNet.Models.Search;
+
     public interface ISearchEndpoint
     {
         /// <summary>

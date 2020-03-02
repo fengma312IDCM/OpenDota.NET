@@ -1,8 +1,9 @@
-﻿using OpenDotaDotNet.Models.Metadata;
-using System.Threading.Tasks;
-
-namespace OpenDotaDotNet.Interfaces
+﻿namespace OpenDotaDotNet.Endpoints
 {
+    using System.Threading.Tasks;
+
+    using OpenDotaDotNet.Models.Metadata;
+
     public interface IMetadataEndpoint
     {
         /// <summary>

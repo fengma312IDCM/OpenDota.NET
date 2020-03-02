@@ -1,5 +1,5 @@
 ﻿using Newtonsoft.Json;
-using OpenDotaDotNet.Interfaces;
+
 using OpenDotaDotNet.Models.Search;
 
 using System.Collections.Generic;

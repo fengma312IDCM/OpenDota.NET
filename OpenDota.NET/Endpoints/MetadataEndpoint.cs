@@ -1,5 +1,5 @@
 ﻿using Newtonsoft.Json;
-using OpenDotaDotNet.Interfaces;
+
 using OpenDotaDotNet.Models.Metadata;
 
 using System.Threading.Tasks;

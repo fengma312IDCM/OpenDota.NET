@@ -1,9 +1,10 @@
-﻿using OpenDotaDotNet.Models.Players;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-
-namespace OpenDotaDotNet.Interfaces
+﻿namespace OpenDotaDotNet.Endpoints
 {
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+
+    using OpenDotaDotNet.Models.Players;
+
     public interface IPlayerEndpoint
     {
         Task<Player> GetPlayerByIdAsync(long playerId);

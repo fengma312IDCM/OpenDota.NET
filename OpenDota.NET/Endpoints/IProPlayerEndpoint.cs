@@ -1,9 +1,10 @@
-﻿using OpenDotaDotNet.Models.ProPlayers;
-using System.Threading.Tasks;
-using System.Collections.Generic;
-
-namespace OpenDotaDotNet.Interfaces
+﻿namespace OpenDotaDotNet.Endpoints
 {
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+
+    using OpenDotaDotNet.Models.ProPlayers;
+
     public interface IProPlayerEndpoint
     {
         /// <summary>

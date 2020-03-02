@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Newtonsoft.Json;
-using OpenDotaDotNet.Interfaces;
+
 using OpenDotaDotNet.Models.Matches;
 
 namespace OpenDotaDotNet.Endpoints

@@ -1,9 +1,10 @@
-﻿using OpenDotaDotNet.Models.Live;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-
-namespace OpenDotaDotNet.Interfaces
+﻿namespace OpenDotaDotNet.Endpoints
 {
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+
+    using OpenDotaDotNet.Models.Live;
+
     public interface ILiveEndpoint
     {
         /// <summary>

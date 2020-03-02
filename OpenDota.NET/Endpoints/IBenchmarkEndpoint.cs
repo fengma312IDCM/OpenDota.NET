@@ -1,8 +1,9 @@
-﻿using OpenDotaDotNet.Models.Benchmarks;
-using System.Threading.Tasks;
-
-namespace OpenDotaDotNet.Interfaces
+﻿namespace OpenDotaDotNet.Endpoints
 {
+    using System.Threading.Tasks;
+
+    using OpenDotaDotNet.Models.Benchmarks;
+
     public interface IBenchmarkEndpoint
     {
         /// <summary>

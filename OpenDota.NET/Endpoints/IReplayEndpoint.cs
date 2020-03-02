@@ -1,9 +1,10 @@
-﻿using OpenDotaDotNet.Models.Replays;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-
-namespace OpenDotaDotNet.Interfaces
+﻿namespace OpenDotaDotNet.Endpoints
 {
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+
+    using OpenDotaDotNet.Models.Replays;
+
     public interface IReplayEndpoint
     {
         /// <summary>

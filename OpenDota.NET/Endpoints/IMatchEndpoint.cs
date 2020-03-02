@@ -1,8 +1,9 @@
-﻿using OpenDotaDotNet.Models.Matches;
-using System.Threading.Tasks;
-
-namespace OpenDotaDotNet.Interfaces
+﻿namespace OpenDotaDotNet.Endpoints
 {
+    using System.Threading.Tasks;
+
+    using OpenDotaDotNet.Models.Matches;
+
     public interface IMatchEndpoint
     {
         /// <summary>

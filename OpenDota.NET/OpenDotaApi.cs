@@ -3,7 +3,6 @@
     using System.Net;
 
     using OpenDotaDotNet.Endpoints;
-    using OpenDotaDotNet.Interfaces;
 
     /// <summary>
     /// The OpenDota API provides Dota 2 related data including advanced match data extracted from match replays.
