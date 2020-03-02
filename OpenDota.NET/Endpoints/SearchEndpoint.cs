@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using OpenDotaDotNet.Interfaces;
 using OpenDotaDotNet.Models.Search;
-using OpenDotaDotNet.Requests;
+
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -11,11 +11,11 @@ namespace OpenDotaDotNet.Endpoints
     {
         private const string Search = "search";
 
-        private readonly Request _request;
+        private readonly Requester requester;
 
-        public SearchEndpoint(Request request)
+        public SearchEndpoint(Requester requester)
         {
-            _request = request;
+            this.requester = requester;
         }
 
         /// <summary>
@@ -27,7 +27,7 @@ namespace OpenDotaDotNet.Endpoints
         {
             var addedArguments = CreateArgumentListForSearchPlayersRequest(query);
 
-            var response = await _request.GetRequestResponseMessageAsync(Search, addedArguments);
+            var response = await this.requester.GetRequestResponseMessageAsync(Search, addedArguments);
 
             response.EnsureSuccessStatusCode();
 

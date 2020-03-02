@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using OpenDotaDotNet.Interfaces;
 using OpenDotaDotNet.Models.HeroStats;
-using OpenDotaDotNet.Requests;
+
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -11,11 +11,11 @@ namespace OpenDotaDotNet.Endpoints
     {
         private const string HeroStats = "heroStats";
 
-        private readonly Request _request;
+        private readonly Requester requester;
 
-        public HeroStatsEndpoint(Request request)
+        public HeroStatsEndpoint(Requester requester)
         {
-            _request = request;
+            this.requester = requester;
         }
 
         /// <summary>
@@ -24,7 +24,7 @@ namespace OpenDotaDotNet.Endpoints
         /// <returns></returns>
         public async Task<List<HeroStats>> GetHeroStatsAsync()
         {
-            var response = await _request.GetRequestResponseMessageAsync(HeroStats);
+            var response = await this.requester.GetRequestResponseMessageAsync(HeroStats);
 
             response.EnsureSuccessStatusCode();
 

@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using OpenDotaDotNet.Interfaces;
 using OpenDotaDotNet.Models.Leagues;
-using OpenDotaDotNet.Requests;
+
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -11,11 +11,11 @@ namespace OpenDotaDotNet.Endpoints
     {
         private const string Leagues = "leagues";
 
-        private readonly Request _request;
+        private readonly Requester requester;
 
-        public LeagueEndpoint(Request request)
+        public LeagueEndpoint(Requester requester)
         {
-            _request = request;
+            this.requester = requester;
         }
 
         /// <summary>
@@ -24,7 +24,7 @@ namespace OpenDotaDotNet.Endpoints
         /// <returns></returns>
         public async Task<List<League>> GetLeaguesAsync()
         {
-            var response = await _request.GetRequestResponseMessageAsync(Leagues);
+            var response = await this.requester.GetRequestResponseMessageAsync(Leagues);
 
             response.EnsureSuccessStatusCode();
 

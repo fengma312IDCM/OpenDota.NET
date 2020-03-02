@@ -1,15 +1,15 @@
-﻿using OpenDotaDotNet.Interfaces;
-
-namespace OpenDotaDotNet
+﻿namespace OpenDotaDotNet
 {
-    interface IOpenDotaApi
+    using OpenDotaDotNet.Interfaces;
+
+    public interface IOpenDotaApi
     {
         IMatchEndpoint Matches { get; }
 
         IPlayerEndpoint Player { get; }
 
         IProPlayerEndpoint ProPlayers { get; }
-        
+
         IProMatchEndpoint ProMatches { get; }
 
         IPublicMatchEndpoint PublicMatches { get; }
@@ -39,7 +39,7 @@ namespace OpenDotaDotNet
         ILeagueEndpoint League { get; }
 
         ITeamEndpoint Team { get; }
-        
+
         IReplayEndpoint Replay { get; }
 
         IRecordEndpoint Record { get; }

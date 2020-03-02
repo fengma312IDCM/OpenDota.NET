@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using OpenDotaDotNet.Interfaces;
 using OpenDotaDotNet.Models.ProPlayers;
-using OpenDotaDotNet.Requests;
+
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -11,11 +11,11 @@ namespace OpenDotaDotNet.Endpoints
     {
         private const string ProPlayers = "proPlayers";
 
-        private readonly Request _request;
+        private readonly Requester requester;
 
-        public ProPlayerEndpoint(Request request)
+        public ProPlayerEndpoint(Requester requester)
         {
-            _request = request;
+            this.requester = requester;
         }
 
         /// <summary>
@@ -24,7 +24,7 @@ namespace OpenDotaDotNet.Endpoints
         /// <returns></returns>
         public async Task<List<ProPlayer>> GetProPlayersAsync()
         {
-            var response = await _request.GetRequestResponseMessageAsync(ProPlayers);
+            var response = await this.requester.GetRequestResponseMessageAsync(ProPlayers);
 
             response.EnsureSuccessStatusCode();
 

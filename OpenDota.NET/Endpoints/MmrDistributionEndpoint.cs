@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using OpenDotaDotNet.Interfaces;
 using OpenDotaDotNet.Models.Distributions;
-using OpenDotaDotNet.Requests;
+
 using System.Threading.Tasks;
 
 namespace OpenDotaDotNet.Endpoints
@@ -10,11 +10,11 @@ namespace OpenDotaDotNet.Endpoints
     {
         private const string MmrDistribution = "distributions";
 
-        private readonly Request _request;
+        private readonly Requester requester;
 
-        public MmrDistributionEndpoint(Request request)
+        public MmrDistributionEndpoint(Requester requester)
         {
-            _request = request;
+            this.requester = requester;
         }
 
         /// <summary>
@@ -23,7 +23,7 @@ namespace OpenDotaDotNet.Endpoints
         /// <returns></returns>
         public async Task<MmrDistribution> GetMmrDistributionAsync()
         {
-            var response = await _request.GetRequestResponseMessageAsync(MmrDistribution);
+            var response = await this.requester.GetRequestResponseMessageAsync(MmrDistribution);
 
             response.EnsureSuccessStatusCode();
 

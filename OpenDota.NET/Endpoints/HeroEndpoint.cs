@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using OpenDotaDotNet.Interfaces;
 using OpenDotaDotNet.Models.Heroes;
-using OpenDotaDotNet.Requests;
+
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -15,11 +15,11 @@ namespace OpenDotaDotNet.Endpoints
         private const string HeroDurations = "heroes/{0}/durations";
         private const string HeroPlayers = "heroes/{0}/players";
 
-        private readonly Request _request;
+        private readonly Requester requester;
 
-        public HeroEndpoint(Request request)
+        public HeroEndpoint(Requester requester)
         {
-            _request = request;
+            this.requester = requester;
         }
 
         /// <summary>
@@ -28,7 +28,7 @@ namespace OpenDotaDotNet.Endpoints
         /// <returns></returns>
         public async Task<List<Hero>> GetHeroesAsync()
         {
-            var response = await _request.GetRequestResponseMessageAsync(Heroes);
+            var response = await this.requester.GetRequestResponseMessageAsync(Heroes);
 
             response.EnsureSuccessStatusCode();
 
@@ -44,7 +44,7 @@ namespace OpenDotaDotNet.Endpoints
         /// <returns></returns>
         public async Task<List<HeroMatch>> GetHeroMatchesAsync(int heroId)
         {
-            var response = await _request.GetRequestResponseMessageAsync(string.Format(HeroMatches, heroId));
+            var response = await this.requester.GetRequestResponseMessageAsync(string.Format(HeroMatches, heroId));
 
             response.EnsureSuccessStatusCode();
 
@@ -60,7 +60,7 @@ namespace OpenDotaDotNet.Endpoints
         /// <returns></returns>
         public async Task<List<HeroMatchup>> GetHeroMatchupsAsync(int heroId)
         {
-            var response = await _request.GetRequestResponseMessageAsync(string.Format(HeroMatchups, heroId));
+            var response = await this.requester.GetRequestResponseMessageAsync(string.Format(HeroMatchups, heroId));
 
             response.EnsureSuccessStatusCode();
 
@@ -76,7 +76,7 @@ namespace OpenDotaDotNet.Endpoints
         /// <returns></returns>
         public async Task<List<HeroDuration>> GetHeroDurationsAsync(int heroId)
         {
-            var response = await _request.GetRequestResponseMessageAsync(string.Format(HeroDurations, heroId));
+            var response = await this.requester.GetRequestResponseMessageAsync(string.Format(HeroDurations, heroId));
 
             response.EnsureSuccessStatusCode();
 
@@ -92,7 +92,7 @@ namespace OpenDotaDotNet.Endpoints
         /// <returns></returns>
         public async Task<List<HeroPlayer>> GetHeroPlayersAsync(int heroId)
         {
-            var response = await _request.GetRequestResponseMessageAsync(string.Format(HeroPlayers, heroId));
+            var response = await this.requester.GetRequestResponseMessageAsync(string.Format(HeroPlayers, heroId));
 
             response.EnsureSuccessStatusCode();
 

@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using OpenDotaDotNet.Interfaces;
 using OpenDotaDotNet.Models.Benchmarks;
-using OpenDotaDotNet.Requests;
+
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -11,18 +11,18 @@ namespace OpenDotaDotNet.Endpoints
     {
         private const string Benchmarks = "benchmarks";
 
-        private readonly Request _request;
+        private readonly Requester requester;
 
-        public BenchmarksEndpoint(Request request)
+        public BenchmarksEndpoint(Requester requester)
         {
-            _request = request;
+            this.requester = requester;
         }
 
         public async Task<HeroBenchmark> GetHeroBenchmarkAsync(int heroId)
         {
             var addedArguments = CreateArgumentListForBenchmarksRequest(heroId);
 
-            var response = await _request.GetRequestResponseMessageAsync(Benchmarks, addedArguments);
+            var response = await this.requester.GetRequestResponseMessageAsync(Benchmarks, addedArguments);
 
             response.EnsureSuccessStatusCode();
 

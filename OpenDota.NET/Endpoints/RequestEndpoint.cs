@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using OpenDotaDotNet.Interfaces;
 using OpenDotaDotNet.Models.Request;
-using OpenDotaDotNet.Requests;
+
 using System.Threading.Tasks;
 
 namespace OpenDotaDotNet.Endpoints
@@ -11,21 +11,21 @@ namespace OpenDotaDotNet.Endpoints
         private const string GetParseState = "request/{0}";
         private const string SubmitNewParse = "request/{0}";
 
-        private readonly Request _request;
+        private readonly Requester requester;
 
-        public RequestEndpoint(Request request)
+        public RequestEndpoint(Requester requester)
         {
-            _request = request;
+            this.requester = requester;
         }
 
         /// <summary>
-        /// Get parse request state
+        /// Get parse requester state
         /// </summary>
         /// <param name="jobId"></param>
         /// <returns></returns>
         public async Task<ParseRequestState> GetParseRequestStateAsync(long jobId)
         {
-            var response = await _request.GetRequestResponseMessageAsync(string.Format(GetParseState, jobId));
+            var response = await this.requester.GetRequestResponseMessageAsync(string.Format(GetParseState, jobId));
 
             response.EnsureSuccessStatusCode();
 
@@ -35,13 +35,13 @@ namespace OpenDotaDotNet.Endpoints
         }
 
         /// <summary>
-        /// Submit a new parse request
+        /// Submit a new parse requester
         /// </summary>
         /// <param name="matchId"></param>
         /// <returns></returns>
         public async Task<ParseRequest> SubmitNewParseRequestAsync(long matchId)
         {
-            var response = await _request.PostRequest(string.Format(SubmitNewParse, matchId));
+            var response = await this.requester.PostRequest(string.Format(SubmitNewParse, matchId));
 
             response.EnsureSuccessStatusCode();
 

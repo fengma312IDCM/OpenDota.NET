@@ -3,7 +3,6 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using OpenDotaDotNet.Interfaces;
 using OpenDotaDotNet.Models.Scenarios;
-using OpenDotaDotNet.Requests;
 
 namespace OpenDotaDotNet.Endpoints
 {
@@ -13,11 +12,11 @@ namespace OpenDotaDotNet.Endpoints
         private const string WinRateForHeroesInCertainLaneRole = "scenarios/laneRoles";
         private const string MiscellaneousTeamScenarios = "scenarios/misc";
 
-        private readonly Request _request;
+        private readonly Requester requester;
 
-        public ScenariosEndpoint(Request request)
+        public ScenariosEndpoint(Requester requester)
         {
-            _request = request;
+            this.requester = requester;
         }
 
         /// <summary>
@@ -30,7 +29,7 @@ namespace OpenDotaDotNet.Endpoints
         {
             var addedArguments = CreateArgumentListForScenariosRequest(item, heroId);
 
-            var response = await _request.GetRequestResponseMessageAsync(WinrateForCertainItemTimings, addedArguments);
+            var response = await this.requester.GetRequestResponseMessageAsync(WinrateForCertainItemTimings, addedArguments);
 
             response.EnsureSuccessStatusCode();
 
@@ -49,7 +48,7 @@ namespace OpenDotaDotNet.Endpoints
         {
             var addedArguments = CreateArgumentListForScenariosRequest(null, heroId, laneRole);
 
-            var response = await _request.GetRequestResponseMessageAsync(WinRateForHeroesInCertainLaneRole, addedArguments);
+            var response = await this.requester.GetRequestResponseMessageAsync(WinRateForHeroesInCertainLaneRole, addedArguments);
 
             response.EnsureSuccessStatusCode();
 
@@ -66,7 +65,7 @@ namespace OpenDotaDotNet.Endpoints
         {
             var addedArguments = CreateArgumentListForScenariosRequest(null, null, null, scenario);
 
-            var response = await _request.GetRequestResponseMessageAsync(MiscellaneousTeamScenarios, addedArguments);
+            var response = await this.requester.GetRequestResponseMessageAsync(MiscellaneousTeamScenarios, addedArguments);
 
             response.EnsureSuccessStatusCode();
 

@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using OpenDotaDotNet.Interfaces;
 using OpenDotaDotNet.Models.HealthStatus;
-using OpenDotaDotNet.Requests;
+
 using System.Threading.Tasks;
 
 namespace OpenDotaDotNet.Endpoints
@@ -10,11 +10,11 @@ namespace OpenDotaDotNet.Endpoints
     {
         private const string ServiceStatistics = "status";
 
-        private readonly Request _request;
+        private readonly Requester requester;
 
-        public StatusEndpoint(Request request)
+        public StatusEndpoint(Requester requester)
         {
-            _request = request;
+            this.requester = requester;
         }
 
         /// <summary>
@@ -23,7 +23,7 @@ namespace OpenDotaDotNet.Endpoints
         /// <returns></returns>
         public async Task<ServiceStatistics> GetServiceStatisticsAsync()
         {
-            var response = await _request.GetRequestResponseMessageAsync(ServiceStatistics);
+            var response = await this.requester.GetRequestResponseMessageAsync(ServiceStatistics);
 
             response.EnsureSuccessStatusCode();
 

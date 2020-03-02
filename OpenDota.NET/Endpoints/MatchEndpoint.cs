@@ -2,7 +2,6 @@
 using Newtonsoft.Json;
 using OpenDotaDotNet.Interfaces;
 using OpenDotaDotNet.Models.Matches;
-using OpenDotaDotNet.Requests;
 
 namespace OpenDotaDotNet.Endpoints
 {
@@ -10,16 +9,16 @@ namespace OpenDotaDotNet.Endpoints
     {
         private const string MatchByIdUrl = "matches/{0}";
 
-        private readonly Request _request;
+        private readonly Requester requester;
 
-        public MatchEndpoint(Request request)
+        public MatchEndpoint(Requester requester)
         {
-            _request = request;
+            this.requester = requester;
         }
 
         public async Task<Match> GetMatchByIdAsync(long matchId)
         {
-            var response = await _request.GetRequestResponseMessageAsync(string.Format(MatchByIdUrl, matchId));
+            var response = await this.requester.GetRequestResponseMessageAsync(string.Format(MatchByIdUrl, matchId));
 
             response.EnsureSuccessStatusCode();
 

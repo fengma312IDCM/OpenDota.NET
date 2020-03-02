@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using OpenDotaDotNet.Interfaces;
 using OpenDotaDotNet.Models.Replays;
-using OpenDotaDotNet.Requests;
+
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -11,11 +11,11 @@ namespace OpenDotaDotNet.Endpoints
     {
         private const string ReplayData = "replays";
 
-        private readonly Request _request;
+        private readonly Requester requester;
 
-        public ReplayEndpoint(Request request)
+        public ReplayEndpoint(Requester requester)
         {
-            _request = request;
+            this.requester = requester;
         }
 
         /// <summary>
@@ -27,7 +27,7 @@ namespace OpenDotaDotNet.Endpoints
         {
             var addedArguments = CreateArgumentListForReplaysRequest(matchIds);
 
-            var response = await _request.GetRequestResponseMessageAsync(ReplayData, addedArguments);
+            var response = await this.requester.GetRequestResponseMessageAsync(ReplayData, addedArguments);
 
             response.EnsureSuccessStatusCode();
 

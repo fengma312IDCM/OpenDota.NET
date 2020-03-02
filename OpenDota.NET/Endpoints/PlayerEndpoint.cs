@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using OpenDotaDotNet.Interfaces;
 using OpenDotaDotNet.Models.Players;
-using OpenDotaDotNet.Requests;
+
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using OpenDotaDotNet.Dtos;
@@ -26,11 +26,11 @@ namespace OpenDotaDotNet.Endpoints
         private const string PlayerHeroRankings = "players/{0}/rankings";
         private const string RefreshPlayerMatchHistory = "players/{0}/refresh";
 
-        private readonly Request _request;
+        private readonly Requester requester;
 
-        public PlayerEndpoint(Request request)
+        public PlayerEndpoint(Requester requester)
         {
-            _request = request;
+            this.requester = requester;
         }
 
         /// <summary>
@@ -40,7 +40,7 @@ namespace OpenDotaDotNet.Endpoints
         /// <returns></returns>
         public async Task<Player> GetPlayerByIdAsync(long playerId)
         {
-            var response = await _request.GetRequestResponseMessageAsync(string.Format(PlayerByIdUrl, playerId));
+            var response = await this.requester.GetRequestResponseMessageAsync(string.Format(PlayerByIdUrl, playerId));
 
             response.EnsureSuccessStatusCode();
 
@@ -59,7 +59,7 @@ namespace OpenDotaDotNet.Endpoints
         {
             var addedArguments = CreateArgumentListForPlayerEndpointRequest(parameters);
 
-            var response = await _request.GetRequestResponseMessageAsync(string.Format(PlayerWinLossByIdUrl, playerId), addedArguments);
+            var response = await this.requester.GetRequestResponseMessageAsync(string.Format(PlayerWinLossByIdUrl, playerId), addedArguments);
 
             response.EnsureSuccessStatusCode();
 
@@ -75,7 +75,7 @@ namespace OpenDotaDotNet.Endpoints
         /// <returns></returns>
         public async Task<List<PlayerRecentMatch>> GetPlayerRecentMatchesAsync(long playerId)
         {
-            var response = await _request.GetRequestResponseMessageAsync(string.Format(PlayerRecentMatches, playerId));
+            var response = await this.requester.GetRequestResponseMessageAsync(string.Format(PlayerRecentMatches, playerId));
 
             response.EnsureSuccessStatusCode();
 
@@ -93,7 +93,7 @@ namespace OpenDotaDotNet.Endpoints
         public async Task<List<PlayerMatch>> GetPlayerMatchesAsync(long playerId, PlayerEndpointParameters parameters = null)
         {
             var addedArguments = CreateArgumentListForPlayerEndpointRequest(parameters);
-            var response = await _request.GetRequestResponseMessageAsync(string.Format(PlayerMatches, playerId), addedArguments);
+            var response = await this.requester.GetRequestResponseMessageAsync(string.Format(PlayerMatches, playerId), addedArguments);
             response.EnsureSuccessStatusCode();
             // test
             var playerMatches = JsonConvert.DeserializeObject<List<PlayerMatch>>(await response.Content.ReadAsStringAsync());
@@ -111,7 +111,7 @@ namespace OpenDotaDotNet.Endpoints
         {
             var addedArguments = CreateArgumentListForPlayerEndpointRequest(parameters);
 
-            var response = await _request.GetRequestResponseMessageAsync(string.Format(PlayerHeroes, playerId), addedArguments);
+            var response = await this.requester.GetRequestResponseMessageAsync(string.Format(PlayerHeroes, playerId), addedArguments);
 
             response.EnsureSuccessStatusCode();
 
@@ -130,7 +130,7 @@ namespace OpenDotaDotNet.Endpoints
         {
             var addedArguments = CreateArgumentListForPlayerEndpointRequest(parameters);
 
-            var response = await _request.GetRequestResponseMessageAsync(string.Format(PlayerPeers, playerId), addedArguments);
+            var response = await this.requester.GetRequestResponseMessageAsync(string.Format(PlayerPeers, playerId), addedArguments);
 
             response.EnsureSuccessStatusCode();
 
@@ -149,7 +149,7 @@ namespace OpenDotaDotNet.Endpoints
         {
             var addedArguments = CreateArgumentListForPlayerEndpointRequest(parameters);
 
-            var response = await _request.GetRequestResponseMessageAsync(string.Format(PlayerPros, playerId), addedArguments);
+            var response = await this.requester.GetRequestResponseMessageAsync(string.Format(PlayerPros, playerId), addedArguments);
 
             response.EnsureSuccessStatusCode();
 
@@ -168,7 +168,7 @@ namespace OpenDotaDotNet.Endpoints
         {
             var addedArguments = CreateArgumentListForPlayerEndpointRequest(parameters);
 
-            var response = await _request.GetRequestResponseMessageAsync(string.Format(PlayerTotals, playerId), addedArguments);
+            var response = await this.requester.GetRequestResponseMessageAsync(string.Format(PlayerTotals, playerId), addedArguments);
 
             response.EnsureSuccessStatusCode();
 
@@ -187,7 +187,7 @@ namespace OpenDotaDotNet.Endpoints
         {
             var addedArguments = CreateArgumentListForPlayerEndpointRequest(parameters);
 
-            var response = await _request.GetRequestResponseMessageAsync(string.Format(PlayerCounts, playerId), addedArguments);
+            var response = await this.requester.GetRequestResponseMessageAsync(string.Format(PlayerCounts, playerId), addedArguments);
 
             response.EnsureSuccessStatusCode();
 
@@ -207,7 +207,7 @@ namespace OpenDotaDotNet.Endpoints
         {
             var addedArguments = CreateArgumentListForPlayerEndpointRequest(parameters);
 
-            var response = await _request.GetRequestResponseMessageAsync(string.Format(PlayerHistograms, playerId, field), addedArguments);
+            var response = await this.requester.GetRequestResponseMessageAsync(string.Format(PlayerHistograms, playerId, field), addedArguments);
 
             response.EnsureSuccessStatusCode();
 
@@ -226,7 +226,7 @@ namespace OpenDotaDotNet.Endpoints
         {
             var addedArguments = CreateArgumentListForPlayerEndpointRequest(parameters);
 
-            var response = await _request.GetRequestResponseMessageAsync(string.Format(PlayerWardmap, playerId), addedArguments);
+            var response = await this.requester.GetRequestResponseMessageAsync(string.Format(PlayerWardmap, playerId), addedArguments);
 
             response.EnsureSuccessStatusCode();
 
@@ -245,7 +245,7 @@ namespace OpenDotaDotNet.Endpoints
         {
             var addedArguments = CreateArgumentListForPlayerEndpointRequest(parameters);
 
-            var response = await _request.GetRequestResponseMessageAsync(string.Format(PlayerWordcloud, playerId), addedArguments);
+            var response = await this.requester.GetRequestResponseMessageAsync(string.Format(PlayerWordcloud, playerId), addedArguments);
 
             response.EnsureSuccessStatusCode();
 
@@ -261,7 +261,7 @@ namespace OpenDotaDotNet.Endpoints
         /// <returns></returns>
         public async Task<List<PlayerRating>> GetPlayerRatingsAsync(long playerId)
         {
-            var response = await _request.GetRequestResponseMessageAsync(string.Format(PlayerRatings, playerId));
+            var response = await this.requester.GetRequestResponseMessageAsync(string.Format(PlayerRatings, playerId));
 
             response.EnsureSuccessStatusCode();
 
@@ -277,7 +277,7 @@ namespace OpenDotaDotNet.Endpoints
         /// <returns></returns>
         public async Task<List<PlayerHeroRanking>> GetPlayerHeroRankingsAsync(long playerId)
         {
-            var response = await _request.GetRequestResponseMessageAsync(string.Format(PlayerHeroRankings, playerId));
+            var response = await this.requester.GetRequestResponseMessageAsync(string.Format(PlayerHeroRankings, playerId));
 
             response.EnsureSuccessStatusCode();
 
@@ -293,7 +293,7 @@ namespace OpenDotaDotNet.Endpoints
         /// <returns></returns>
         public async Task<bool> RefreshPlayerMatchHistoryAsync(long playerId)
         {
-            var response = await _request.PostRequest(string.Format(RefreshPlayerMatchHistory, playerId));
+            var response = await this.requester.PostRequest(string.Format(RefreshPlayerMatchHistory, playerId));
 
             response.EnsureSuccessStatusCode();
 

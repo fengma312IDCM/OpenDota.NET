@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using OpenDotaDotNet.Interfaces;
 using OpenDotaDotNet.Models.Metadata;
-using OpenDotaDotNet.Requests;
+
 using System.Threading.Tasks;
 
 namespace OpenDotaDotNet.Endpoints
@@ -10,11 +10,11 @@ namespace OpenDotaDotNet.Endpoints
     {
         private const string Metadata = "metadata";
 
-        private readonly Request _request;
+        private readonly Requester requester;
 
-        public MetadataEndpoint(Request request)
+        public MetadataEndpoint(Requester requester)
         {
-            _request = request;
+            this.requester = requester;
         }
 
         /// <summary>
@@ -23,7 +23,7 @@ namespace OpenDotaDotNet.Endpoints
         /// <returns></returns>
         public async Task<Metadata> GetMetadataAsync()
         {
-            var response = await _request.GetRequestResponseMessageAsync(Metadata);
+            var response = await this.requester.GetRequestResponseMessageAsync(Metadata);
 
             response.EnsureSuccessStatusCode();
 

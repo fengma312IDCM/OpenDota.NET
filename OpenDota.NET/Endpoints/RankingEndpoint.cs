@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using OpenDotaDotNet.Interfaces;
 using OpenDotaDotNet.Models.Rankings;
-using OpenDotaDotNet.Requests;
+
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -11,11 +11,11 @@ namespace OpenDotaDotNet.Endpoints
     {
         private const string Rankings = "rankings";
 
-        private readonly Request _request;
+        private readonly Requester requester;
 
-        public RankingEndpoint(Request request)
+        public RankingEndpoint(Requester requester)
         {
-            _request = request;
+            this.requester = requester;
         }
 
         /// <summary>
@@ -27,7 +27,7 @@ namespace OpenDotaDotNet.Endpoints
         {
             var addedArguments = CreateArgumentListForHeroRankingsRequest(heroId);
 
-            var response = await _request.GetRequestResponseMessageAsync(Rankings, addedArguments);
+            var response = await this.requester.GetRequestResponseMessageAsync(Rankings, addedArguments);
 
             response.EnsureSuccessStatusCode();
 

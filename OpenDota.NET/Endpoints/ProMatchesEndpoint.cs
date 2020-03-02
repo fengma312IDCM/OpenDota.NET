@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using OpenDotaDotNet.Interfaces;
 using OpenDotaDotNet.Models.ProMatches;
-using OpenDotaDotNet.Requests;
+
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -11,11 +11,11 @@ namespace OpenDotaDotNet.Endpoints
     {
         private const string ProMatches = "proMatches";
 
-        private readonly Request _request;
+        private readonly Requester requester;
 
-        public ProMatchesEndpoint(Request request)
+        public ProMatchesEndpoint(Requester requester)
         {
-            _request = request;
+            this.requester = requester;
         }
 
         /// <summary>
@@ -27,7 +27,7 @@ namespace OpenDotaDotNet.Endpoints
         {
             var addedArguments = CreateArgumentListForProMatchesRequest(lessThanMatchId);
 
-            var response = await _request.GetRequestResponseMessageAsync(ProMatches, addedArguments);
+            var response = await this.requester.GetRequestResponseMessageAsync(ProMatches, addedArguments);
 
             response.EnsureSuccessStatusCode();
 

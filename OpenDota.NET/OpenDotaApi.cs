@@ -1,72 +1,96 @@
-﻿using OpenDotaDotNet.Endpoints;
-using OpenDotaDotNet.Interfaces;
-using OpenDotaDotNet.Requests;
-using System.Net;
-
-namespace OpenDotaDotNet
+﻿namespace OpenDotaDotNet
 {
+    using System.Net;
+
+    using OpenDotaDotNet.Endpoints;
+    using OpenDotaDotNet.Interfaces;
+
+    /// <summary>
+    /// The OpenDota API provides Dota 2 related data including advanced match data extracted from match replays.
+    /// You can find data that can be used to convert hero and ability IDs and other information provided by the
+    /// API from the [dotaconstants](https://github.com/odota/dotaconstants) repository.
+    /// </summary>
     public class OpenDotaApi : IOpenDotaApi
     {
-        private static OpenDotaApi _instance;
+        private static OpenDotaApi instance;
 
-        private readonly Request _request;
-
-        public IMatchEndpoint Matches { get; }
-        public IPlayerEndpoint Player { get; }
-        public IProPlayerEndpoint ProPlayers { get; }
-        public IProMatchEndpoint ProMatches { get; }
-        public IPublicMatchEndpoint PublicMatches { get; }
-        public IMetadataEndpoint Metadata { get; }
-        public IMmrDistributionEndpoint MmrDistribution { get; }
-        public ISearchEndpoint Search { get; }
-        public IRankingEndpoint Ranking { get; }
-        public IBenchmarkEndpoint Benchmarks { get; }
-        public IStatusEndpoint Status { get; }
-        public IHealthEndpoint Health { get; }
-        public IRequestEndpoint Request { get; }
-        public IFindMatchEndpoint FindMatch { get; }
-        public IHeroEndpoint Hero { get; }
-        public IHeroStatsEndpoint HeroStats { get; }
-        public ILeagueEndpoint League { get; }
-        public ITeamEndpoint Team { get; }
-        public IReplayEndpoint Replay { get; }
-        public IRecordEndpoint Record { get; }
-        public ILiveEndpoint Live { get; }
-        public IScenariosEndpoint Scenarios { get; }
-        public ISchemaEndpoint Schema { get; }
-
-        public static OpenDotaApi GetInstance(string apiKey = null, WebProxy proxy = null)
+        private OpenDotaApi(string apiKey, IWebProxy proxy)
         {
-            return _instance ?? (_instance = new OpenDotaApi(apiKey, proxy));
+            var request = new Requester(apiKey, proxy);
+            this.Matches = new MatchEndpoint(request);
+            this.Player = new PlayerEndpoint(request);
+            this.ProPlayers = new ProPlayerEndpoint(request);
+            this.ProMatches = new ProMatchesEndpoint(request);
+            this.PublicMatches = new PublicMatchEndpoint(request);
+            this.Metadata = new MetadataEndpoint(request);
+            this.MmrDistribution = new MmrDistributionEndpoint(request);
+            this.Search = new SearchEndpoint(request);
+            this.Ranking = new RankingEndpoint(request);
+            this.Benchmarks = new BenchmarksEndpoint(request);
+            this.Status = new StatusEndpoint(request);
+            this.Health = new HealthEndpoint(request);
+            this.Request = new RequestEndpoint(request);
+            this.FindMatch = new FindMatchEndpoint(request);
+            this.Hero = new HeroEndpoint(request);
+            this.HeroStats = new HeroStatsEndpoint(request);
+            this.League = new LeagueEndpoint(request);
+            this.Team = new TeamEndpoint(request);
+            this.Replay = new ReplayEndpoint(request);
+            this.Record = new RecordEndpoint(request);
+            this.Live = new LiveEndpoint(request);
+            this.Scenarios = new ScenariosEndpoint(request);
+            this.Schema = new SchemaEndpoint(request);
         }
 
-        private OpenDotaApi(string apiKey, WebProxy proxy)
-        {
-            _request = new Request(apiKey, proxy);
+        public IMatchEndpoint Matches { get; }
 
-            Matches = new MatchEndpoint(_request);
-            Player = new PlayerEndpoint(_request);
-            ProPlayers = new ProPlayerEndpoint(_request);
-            ProMatches = new ProMatchesEndpoint(_request);
-            PublicMatches = new PublicMatchEndpoint(_request);
-            Metadata = new MetadataEndpoint(_request);
-            MmrDistribution = new MmrDistributionEndpoint(_request);
-            Search = new SearchEndpoint(_request);
-            Ranking = new RankingEndpoint(_request);
-            Benchmarks = new BenchmarksEndpoint(_request);
-            Status = new StatusEndpoint(_request);
-            Health = new HealthEndpoint(_request);
-            Request = new RequestEndpoint(_request);
-            FindMatch = new FindMatchEndpoint(_request);
-            Hero = new HeroEndpoint(_request);
-            HeroStats = new HeroStatsEndpoint(_request);
-            League = new LeagueEndpoint(_request);
-            Team = new TeamEndpoint(_request);
-            Replay = new ReplayEndpoint(_request);
-            Record = new RecordEndpoint(_request);
-            Live = new LiveEndpoint(_request);
-            Scenarios = new ScenariosEndpoint(_request);
-            Schema = new SchemaEndpoint(_request);
+        public IPlayerEndpoint Player { get; }
+
+        public IProPlayerEndpoint ProPlayers { get; }
+
+        public IProMatchEndpoint ProMatches { get; }
+
+        public IPublicMatchEndpoint PublicMatches { get; }
+
+        public IMetadataEndpoint Metadata { get; }
+
+        public IMmrDistributionEndpoint MmrDistribution { get; }
+
+        public ISearchEndpoint Search { get; }
+
+        public IRankingEndpoint Ranking { get; }
+
+        public IBenchmarkEndpoint Benchmarks { get; }
+
+        public IStatusEndpoint Status { get; }
+
+        public IHealthEndpoint Health { get; }
+
+        public IRequestEndpoint Request { get; }
+
+        public IFindMatchEndpoint FindMatch { get; }
+
+        public IHeroEndpoint Hero { get; }
+
+        public IHeroStatsEndpoint HeroStats { get; }
+
+        public ILeagueEndpoint League { get; }
+
+        public ITeamEndpoint Team { get; }
+
+        public IReplayEndpoint Replay { get; }
+
+        public IRecordEndpoint Record { get; }
+
+        public ILiveEndpoint Live { get; }
+
+        public IScenariosEndpoint Scenarios { get; }
+
+        public ISchemaEndpoint Schema { get; }
+
+        public static OpenDotaApi GetInstance(string apiKey = null, IWebProxy proxy = null)
+        {
+            return instance ?? (instance = new OpenDotaApi(apiKey, proxy));
         }
     }
 }

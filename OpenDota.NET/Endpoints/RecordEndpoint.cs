@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using OpenDotaDotNet.Interfaces;
 using OpenDotaDotNet.Models.Records;
-using OpenDotaDotNet.Requests;
+
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -11,11 +11,11 @@ namespace OpenDotaDotNet.Endpoints
     {
         private const string Records = "records/{0}";
 
-        private readonly Request _request;
+        private readonly Requester requester;
 
-        public RecordEndpoint(Request request)
+        public RecordEndpoint(Requester requester)
         {
-            _request = request;
+            this.requester = requester;
         }
 
         /// <summary>
@@ -25,7 +25,7 @@ namespace OpenDotaDotNet.Endpoints
         /// <returns></returns>
         public async Task<List<Record>> GetRecordsByFieldAsync(RecordField field)
         {
-            var response = await _request.GetRequestResponseMessageAsync(string.Format(Records, field.Value));
+            var response = await this.requester.GetRequestResponseMessageAsync(string.Format(Records, field.Value));
 
             response.EnsureSuccessStatusCode();
 

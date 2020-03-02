@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using OpenDotaDotNet.Interfaces;
 using OpenDotaDotNet.Models.Live;
-using OpenDotaDotNet.Requests;
+
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -11,11 +11,11 @@ namespace OpenDotaDotNet.Endpoints
     {
         private const string TopLiveGames = "live";
 
-        private readonly Request _request;
+        private readonly Requester requester;
 
-        public LiveEndpoint(Request request)
+        public LiveEndpoint(Requester requester)
         {
-            _request = request;
+            this.requester = requester;
         }
 
         /// <summary>
@@ -24,7 +24,7 @@ namespace OpenDotaDotNet.Endpoints
         /// <returns></returns>
         public async Task<List<LiveGame>> GetTopLiveGamesAsync()
         {
-            var response = await _request.GetRequestResponseMessageAsync(TopLiveGames);
+            var response = await this.requester.GetRequestResponseMessageAsync(TopLiveGames);
 
             response.EnsureSuccessStatusCode();
 

@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using OpenDotaDotNet.Interfaces;
 using OpenDotaDotNet.Models.Schema;
-using OpenDotaDotNet.Requests;
+
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -11,11 +11,11 @@ namespace OpenDotaDotNet.Endpoints
     {
         private const string GetDatabaseSchema = "schema";
 
-        private readonly Request _request;
+        private readonly Requester requester;
 
-        public SchemaEndpoint(Request request)
+        public SchemaEndpoint(Requester requester)
         {
-            _request = request;
+            this.requester = requester;
         }
 
         /// <summary>
@@ -24,7 +24,7 @@ namespace OpenDotaDotNet.Endpoints
         /// <returns></returns>
         public async Task<List<DatabaseSchema>> GetDatabaseSchemaAsync()
         {
-            var response = await _request.GetRequestResponseMessageAsync(GetDatabaseSchema);
+            var response = await this.requester.GetRequestResponseMessageAsync(GetDatabaseSchema);
 
             response.EnsureSuccessStatusCode();
 

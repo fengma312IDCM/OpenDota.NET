@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using OpenDotaDotNet.Interfaces;
 using OpenDotaDotNet.Models.FindMatches;
-using OpenDotaDotNet.Requests;
+
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -11,11 +11,11 @@ namespace OpenDotaDotNet.Endpoints
     {
         private const string FindMatchesByHeroPlayed = "findMatches";
 
-        private readonly Request _request;
+        private readonly Requester requester;
 
-        public FindMatchEndpoint(Request request)
+        public FindMatchEndpoint(Requester requester)
         {
-            _request = request;
+            this.requester = requester;
         }
 
         /// <summary>
@@ -28,7 +28,7 @@ namespace OpenDotaDotNet.Endpoints
         {
             var addedArguments = CreateArgumentListForFindMatchesRequest(teamA, teamB);
 
-            var response = await _request.GetRequestResponseMessageAsync(FindMatchesByHeroPlayed, addedArguments);
+            var response = await this.requester.GetRequestResponseMessageAsync(FindMatchesByHeroPlayed, addedArguments);
 
             response.EnsureSuccessStatusCode();
 

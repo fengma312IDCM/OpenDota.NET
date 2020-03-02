@@ -1,34 +1,34 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Threading.Tasks;
-
-namespace OpenDotaDotNet.Requests
+﻿namespace OpenDotaDotNet
 {
-    public class Request : IDisposable
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Net;
+    using System.Net.Http;
+    using System.Threading.Tasks;
+
+    public class Requester : IDisposable
     {
         private readonly HttpClient _httpClient;
         private readonly HttpClientHandler _httpClientHandler;
 
         public string ApiKey { get; set; }
 
-        public Request(string apiKey = null, IWebProxy proxy = null)
+        public Requester(string apiKey = null, IWebProxy proxy = null)
         {
-            ApiKey = apiKey;
+            this.ApiKey = apiKey;
 
-            _httpClientHandler = new HttpClientHandler
-            {
-                UseProxy = true,
-                Proxy = proxy
-            };
+            this._httpClientHandler = new HttpClientHandler
+                                          {
+                                              UseProxy = true,
+                                              Proxy = proxy
+                                          };
 
-            _httpClient = new HttpClient(_httpClientHandler)
-            {
-                Timeout = TimeSpan.FromSeconds(30), 
-                BaseAddress = new Uri("https://api.opendota.com/api/")
-            };
+            this._httpClient = new HttpClient(this._httpClientHandler)
+                                   {
+                                       Timeout = TimeSpan.FromSeconds(30), 
+                                       BaseAddress = new Uri("https://api.opendota.com/api/")
+                                   };
         }
 
         public async Task<HttpResponseMessage> GetRequestResponseMessageAsync(string url, List<string> queryParameters = null)
@@ -39,19 +39,19 @@ namespace OpenDotaDotNet.Requests
 
                 if (queryParameters == null)
                 {
-                    if (ApiKey != null)
+                    if (this.ApiKey != null)
                     {
                         queryParameters = new List<string>();
 
-                        fullUrl = $@"{url}?{BuildArgumentsString(queryParameters)}";
+                        fullUrl = $@"{url}?{this.BuildArgumentsString(queryParameters)}";
                     }
                 }
                 else
                 {
-                    fullUrl = $@"{url}?{BuildArgumentsString(queryParameters)}";
+                    fullUrl = $@"{url}?{this.BuildArgumentsString(queryParameters)}";
                 }
 
-                var message = await _httpClient.GetAsync(fullUrl);
+                var message = await this._httpClient.GetAsync(fullUrl);
 
                 return message;
             }
@@ -70,16 +70,16 @@ namespace OpenDotaDotNet.Requests
         {
             content = new StringContent("");
 
-            var response = await _httpClient.PostAsync(url, content);
+            var response = await this._httpClient.PostAsync(url, content);
 
             return response;
         }
 
         private string BuildArgumentsString(List<string> arguments)
         {
-            if (ApiKey != null)
+            if (this.ApiKey != null)
             {
-                arguments.Add($@"api_key={ApiKey}");
+                arguments.Add($@"api_key={this.ApiKey}");
             }
 
             return arguments.Where(arg => !string.IsNullOrEmpty(arg))
@@ -88,8 +88,8 @@ namespace OpenDotaDotNet.Requests
 
         public void Dispose()
         {
-            _httpClient.Dispose();
-            _httpClientHandler.Dispose();
+            this._httpClient.Dispose();
+            this._httpClientHandler.Dispose();
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using OpenDotaDotNet.Interfaces;
 using OpenDotaDotNet.Models.PublicMatches;
-using OpenDotaDotNet.Requests;
+
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -11,11 +11,11 @@ namespace OpenDotaDotNet.Endpoints
     {
         private const string PublicMatches = "publicMatches";
 
-        private readonly Request _request;
+        private readonly Requester requester;
 
-        public PublicMatchEndpoint(Request request)
+        public PublicMatchEndpoint(Requester requester)
         {
-            _request = request;
+            this.requester = requester;
         }
 
         /// <summary>
@@ -29,7 +29,7 @@ namespace OpenDotaDotNet.Endpoints
         {
             var addedArguments = CreateArgumentListForPublicMatchesRequest(mmrAscending, mmrDescending, lessThanMatchId);
 
-            var response = await _request.GetRequestResponseMessageAsync(PublicMatches, addedArguments);
+            var response = await this.requester.GetRequestResponseMessageAsync(PublicMatches, addedArguments);
 
             response.EnsureSuccessStatusCode();
 
