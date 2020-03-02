@@ -9,27 +9,21 @@
 
     public class Requester : IDisposable
     {
-        private readonly HttpClient _httpClient;
-        private readonly HttpClientHandler _httpClientHandler;
-
-        public string ApiKey { get; set; }
+        private readonly HttpClient httpClient;
+        private readonly HttpClientHandler httpClientHandler;
 
         public Requester(string apiKey = null, IWebProxy proxy = null)
         {
             this.ApiKey = apiKey;
-
-            this._httpClientHandler = new HttpClientHandler
-                                          {
-                                              UseProxy = true,
-                                              Proxy = proxy
-                                          };
-
-            this._httpClient = new HttpClient(this._httpClientHandler)
-                                   {
-                                       Timeout = TimeSpan.FromSeconds(30), 
-                                       BaseAddress = new Uri("https://api.opendota.com/api/")
-                                   };
+            this.httpClientHandler = new HttpClientHandler { UseProxy = true, Proxy = proxy, };
+            this.httpClient = new HttpClient(this.httpClientHandler)
+                                  {
+                                      Timeout = TimeSpan.FromSeconds(30),
+                                      BaseAddress = new Uri("https://api.opendota.com/api/"),
+                                  };
         }
+
+        public string ApiKey { get; set; }
 
         public async Task<HttpResponseMessage> GetRequestResponseMessageAsync(string url, List<string> queryParameters = null)
         {
@@ -51,7 +45,7 @@
                     fullUrl = $@"{url}?{this.BuildArgumentsString(queryParameters)}";
                 }
 
-                var message = await this._httpClient.GetAsync(fullUrl);
+                var message = await this.httpClient.GetAsync(fullUrl);
 
                 return message;
             }
@@ -62,17 +56,28 @@
                 Console.WriteLine(innerExceptionMsg);
 
                 return null;
-                // re?
             }
         }
 
         public async Task<HttpResponseMessage> PostRequest(string url, HttpContent content = null)
         {
-            content = new StringContent("");
-
-            var response = await this._httpClient.PostAsync(url, content);
-
+            var response = await this.httpClient.PostAsync(url, content);
             return response;
+        }
+
+        public void Dispose()
+        {
+            this.Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                this.httpClient?.Dispose();
+                this.httpClientHandler?.Dispose();
+            }
         }
 
         private string BuildArgumentsString(List<string> arguments)
@@ -84,12 +89,6 @@
 
             return arguments.Where(arg => !string.IsNullOrEmpty(arg))
                             .Aggregate(string.Empty, (current, arg) => current + "&" + arg);
-        }
-
-        public void Dispose()
-        {
-            this._httpClient.Dispose();
-            this._httpClientHandler.Dispose();
         }
     }
 }
