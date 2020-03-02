@@ -1,9 +1,11 @@
-﻿using Newtonsoft.Json;
-using OpenDotaDotNet.Enums;
-using System.Collections.Generic;
-
-namespace OpenDotaDotNet.Models.HeroStats
+﻿namespace OpenDotaDotNet.Models.HeroStats
 {
+    using System.Collections.Generic;
+
+    using Newtonsoft.Json;
+
+    using OpenDotaDotNet.Models.Heroes;
+
     public class HeroStats
     {
         [JsonProperty("id")]

@@ -1,5 +1,5 @@
 ﻿using Newtonsoft.Json;
-using OpenDotaDotNet.Enums;
+
 using System.Collections.Generic;
 
 namespace OpenDotaDotNet.Models.Heroes

@@ -1,19 +1,20 @@
-﻿using OpenDotaDotNet.Models.Request;
-using System.Threading.Tasks;
-
-namespace OpenDotaDotNet.Interfaces
+﻿namespace OpenDotaDotNet.Interfaces
 {
+    using System.Threading.Tasks;
+
+    using OpenDotaDotNet.Models.Request;
+
     public interface IRequestEndpoint
     {
         /// <summary>
-        /// Get parse request state
+        /// Get parse request state.
         /// </summary>
         /// <param name="jobId"></param>
         /// <returns></returns>
         Task<ParseRequestState> GetParseRequestStateAsync(long jobId);
 
         /// <summary>
-        /// Submit a new parse request
+        /// Submit a new parse request.
         /// </summary>
         /// <param name="matchId"></param>
         /// <returns></returns>
