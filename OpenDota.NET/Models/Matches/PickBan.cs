@@ -1,7 +1,7 @@
-﻿using Newtonsoft.Json;
-
-namespace OpenDotaDotNet.Models.Matches
+﻿namespace OpenDotaDotNet.Models.Matches
 {
+    using Newtonsoft.Json;
+
     public class PickBan
     {
         // Whether it was picked or banned. False means the hero was banned, true means the hero was picked.

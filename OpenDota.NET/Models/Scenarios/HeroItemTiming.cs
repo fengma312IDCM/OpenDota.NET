@@ -1,7 +1,7 @@
-﻿using Newtonsoft.Json;
-
-namespace OpenDotaDotNet.Models.Scenarios
+﻿namespace OpenDotaDotNet.Models.Scenarios
 {
+    using Newtonsoft.Json;
+
     public class HeroItemTiming
     {
         [JsonProperty("hero_id")]

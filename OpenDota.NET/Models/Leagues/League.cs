@@ -1,7 +1,7 @@
-﻿using Newtonsoft.Json;
-
-namespace OpenDotaDotNet.Models.Leagues
+﻿namespace OpenDotaDotNet.Models.Leagues
 {
+    using Newtonsoft.Json;
+
     public class League
     {
         [JsonProperty("leagueid")]

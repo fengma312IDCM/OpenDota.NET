@@ -1,4 +1,4 @@
-namespace OpenDota.NET.Tests
+﻿namespace OpenDota.NET.Tests
 {
     using System;
     using System.Linq;

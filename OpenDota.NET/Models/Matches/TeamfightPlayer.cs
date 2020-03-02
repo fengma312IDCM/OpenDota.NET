@@ -1,8 +1,9 @@
-﻿using Newtonsoft.Json;
-using System.Collections.Generic;
-
-namespace OpenDotaDotNet.Models.Matches
+﻿namespace OpenDotaDotNet.Models.Matches
 {
+    using System.Collections.Generic;
+
+    using Newtonsoft.Json;
+
     public class TeamfightPlayer
     {
         // Position where the hero died? Only has value if deaths is greater than 0

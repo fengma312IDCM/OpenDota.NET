@@ -1,7 +1,7 @@
-﻿using Newtonsoft.Json;
-
-namespace OpenDotaDotNet.Models.PublicMatches
+﻿namespace OpenDotaDotNet.Models.PublicMatches
 {
+    using Newtonsoft.Json;
+
     public class PublicMatch
     {
         [JsonProperty("match_id")]

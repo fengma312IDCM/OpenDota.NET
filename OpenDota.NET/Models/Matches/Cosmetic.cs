@@ -1,8 +1,9 @@
-﻿using Newtonsoft.Json;
-using System;
-
-namespace OpenDotaDotNet.Models.Matches
+﻿namespace OpenDotaDotNet.Models.Matches
 {
+    using System;
+
+    using Newtonsoft.Json;
+
     public class Cosmetic
     {
         [JsonProperty("creation_date")]

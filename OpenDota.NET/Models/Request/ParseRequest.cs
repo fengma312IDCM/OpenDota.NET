@@ -1,16 +1,10 @@
-﻿using Newtonsoft.Json;
-
-namespace OpenDotaDotNet.Models.Request
+﻿namespace OpenDotaDotNet.Models.Request
 {
+    using Newtonsoft.Json;
+
     public class ParseRequest
     {
         [JsonProperty("job")]
         public Job Job { get; set; }
-    }
-
-    public partial class Job
-    {
-        [JsonProperty("jobId")]
-        public long JobId { get; set; }
     }
 }

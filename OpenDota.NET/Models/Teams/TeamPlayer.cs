@@ -1,7 +1,7 @@
-﻿using Newtonsoft.Json;
-
-namespace OpenDotaDotNet.Models.Teams
+﻿namespace OpenDotaDotNet.Models.Teams
 {
+    using Newtonsoft.Json;
+
     public class TeamPlayer
     {
         [JsonProperty("account_id")]

@@ -1,7 +1,7 @@
-﻿using Newtonsoft.Json;
-
-namespace OpenDotaDotNet.Models.Benchmarks
+﻿namespace OpenDotaDotNet.Models.Benchmarks
 {
+    using Newtonsoft.Json;
+
     public class HeroBenchmarkValue
     {
         [JsonProperty("percentile")]

@@ -1,11 +1,11 @@
-﻿using Newtonsoft.Json;
-
-namespace OpenDotaDotNet.Models.Distributions
+﻿namespace OpenDotaDotNet.Models.Distributions
 {
+    using Newtonsoft.Json;
+
     public class CountryMmrRow
     {
         [JsonProperty("loccountrycode")]
-        public string Loccountrycode { get; set; }
+        public string LocCountryCode { get; set; }
 
         [JsonProperty("count")]
         public long Count { get; set; }

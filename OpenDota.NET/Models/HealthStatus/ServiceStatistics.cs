@@ -1,8 +1,9 @@
-﻿using Newtonsoft.Json;
-using System.Collections.Generic;
-
-namespace OpenDotaDotNet.Models.HealthStatus
+﻿namespace OpenDotaDotNet.Models.HealthStatus
 {
+    using System.Collections.Generic;
+
+    using Newtonsoft.Json;
+
     public class ServiceStatistics
     {
         [JsonProperty("user_players")]
@@ -79,26 +80,5 @@ namespace OpenDotaDotNet.Models.HealthStatus
 
         [JsonProperty("health")]
         public ServiceHealth Health { get; set; }
-    }
-
-    public partial class ApiPath
-    {
-        [JsonProperty("hostname")]
-        public string Hostname { get; set; }
-
-        [JsonProperty("count")]
-        public string Count { get; set; }
-    }
-
-    public partial class Last
-    {
-        [JsonProperty("match_id")]
-        public long MatchId { get; set; }
-
-        [JsonProperty("duration")]
-        public int Duration { get; set; }
-
-        [JsonProperty("start_time")]
-        public long StartTime { get; set; }
     }
 }

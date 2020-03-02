@@ -1,7 +1,7 @@
-﻿using Newtonsoft.Json;
-
-namespace OpenDotaDotNet.Models.Matches
+﻿namespace OpenDotaDotNet.Models.Matches
 {
+    using Newtonsoft.Json;
+
     public class Chat
     {
         // Time in seconds at which the message was said

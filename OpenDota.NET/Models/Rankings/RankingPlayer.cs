@@ -1,8 +1,9 @@
-﻿using Newtonsoft.Json;
-using System;
-
-namespace OpenDotaDotNet.Models.Rankings
+﻿namespace OpenDotaDotNet.Models.Rankings
 {
+    using System;
+
+    using Newtonsoft.Json;
+
     public class RankingPlayer
     {
         [JsonProperty("account_id")]

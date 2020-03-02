@@ -1,7 +1,7 @@
-﻿using Newtonsoft.Json;
-
-namespace OpenDotaDotNet.Models.Matches
+﻿namespace OpenDotaDotNet.Models.Matches
 {
+    using Newtonsoft.Json;
+
     public class MaxHeroHit
     {
         // max_hero_hit

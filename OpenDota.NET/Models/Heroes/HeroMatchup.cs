@@ -1,23 +1,23 @@
-﻿using Newtonsoft.Json;
-
-namespace OpenDotaDotNet.Models.Heroes
+﻿namespace OpenDotaDotNet.Models.Heroes
 {
+    using Newtonsoft.Json;
+
     public class HeroMatchup
     {
         /// <summary>
-        /// Numeric identifier for the hero object
+        /// Gets or sets numeric identifier for the hero object.
         /// </summary>
         [JsonProperty("hero_id")]
         public long HeroId { get; set; }
 
         /// <summary>
-        /// Number of games played
+        /// Gets or sets number of games played.
         /// </summary>
         [JsonProperty("games_played")]
         public long GamesPlayed { get; set; }
 
         /// <summary>
-        /// Number of games won
+        /// Gets or sets number of games won.
         /// </summary>
         [JsonProperty("wins")]
         public long Wins { get; set; }

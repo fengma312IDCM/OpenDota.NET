@@ -1,9 +1,10 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-
-namespace OpenDotaDotNet.Models.Matches
+﻿namespace OpenDotaDotNet.Models.Matches
 {
+    using System;
+    using System.Collections.Generic;
+
+    using Newtonsoft.Json;
+
     public class Match
     {
         // The ID number of the match assigned by Valve
@@ -189,7 +190,7 @@ namespace OpenDotaDotNet.Models.Matches
         [JsonProperty("win")]
         public int Win { get; set; }
 
-        // The url 
+        // The url
         [JsonProperty("replay_url")]
         public Uri ReplayUrl { get; set; }
     }

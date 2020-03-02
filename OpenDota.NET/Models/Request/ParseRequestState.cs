@@ -1,9 +1,9 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-
-namespace OpenDotaDotNet.Models.Request
+﻿namespace OpenDotaDotNet.Models.Request
 {
+    using System;
+
+    using Newtonsoft.Json;
+
     public class ParseRequestState
     {
         [JsonProperty("id")]
@@ -29,38 +29,5 @@ namespace OpenDotaDotNet.Models.Request
 
         [JsonProperty("jobId")]
         public long JobId { get; set; }
-    }
-
-    public partial class Data
-    {
-        [JsonProperty("match_id")]
-        public long MatchId { get; set; }
-
-        [JsonProperty("radiant_win")]
-        public bool RadiantWin { get; set; }
-
-        [JsonProperty("start_time")]
-        public long StartTime { get; set; }
-
-        [JsonProperty("duration")]
-        public int Duration { get; set; }
-
-        [JsonProperty("pgroup")]
-        public Dictionary<string, Pgroup> Pgroup { get; set; }
-
-        [JsonProperty("ability_upgrades")]
-        public List<object> AbilityUpgrades { get; set; }
-    }
-
-    public partial class Pgroup
-    {
-        [JsonProperty("account_id")]
-        public long? AccountId { get; set; }
-
-        [JsonProperty("hero_id")]
-        public int HeroId { get; set; }
-
-        [JsonProperty("player_slot")]
-        public int PlayerSlot { get; set; }
     }
 }

@@ -1,8 +1,9 @@
-﻿using Newtonsoft.Json;
-using System;
-
-namespace OpenDotaDotNet.Models.Players
+﻿namespace OpenDotaDotNet.Models.Players
 {
+    using System;
+
+    using Newtonsoft.Json;
+
     public class PlayerPro
     {
         [JsonProperty("account_id")]

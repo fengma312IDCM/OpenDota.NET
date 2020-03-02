@@ -1,7 +1,7 @@
-﻿using Newtonsoft.Json;
-
-namespace OpenDotaDotNet.Models.Matches
+﻿namespace OpenDotaDotNet.Models.Matches
 {
+    using Newtonsoft.Json;
+
     public class PermanentBuff
     {
         // List of constants can be found here: https://github.com/odota/dotaconstants/blob/master/json/permanent_buffs.json

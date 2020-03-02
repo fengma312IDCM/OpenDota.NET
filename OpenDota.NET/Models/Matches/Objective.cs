@@ -1,7 +1,7 @@
-﻿using Newtonsoft.Json;
-
-namespace OpenDotaDotNet.Models.Matches
+﻿namespace OpenDotaDotNet.Models.Matches
 {
+    using Newtonsoft.Json;
+
     public class Objective
     {
         // Time (in seconds) when the objective happened
@@ -30,14 +30,5 @@ namespace OpenDotaDotNet.Models.Matches
         // Which team got the objective
         [JsonProperty("team", NullValueHandling = NullValueHandling.Ignore)]
         public long? Team { get; set; }
-    }
-
-    public partial struct Key
-    {
-        public long? Integer;
-        public string String;
-
-        public static implicit operator Key(long Integer) => new Key { Integer = Integer };
-        public static implicit operator Key(string String) => new Key { String = String };
     }
 }

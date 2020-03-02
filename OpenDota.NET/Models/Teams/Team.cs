@@ -1,8 +1,9 @@
-﻿using Newtonsoft.Json;
-using System;
-
-namespace OpenDotaDotNet.Models.Teams
+﻿namespace OpenDotaDotNet.Models.Teams
 {
+    using System;
+
+    using Newtonsoft.Json;
+
     public class Team
     {
         [JsonProperty("team_id")]

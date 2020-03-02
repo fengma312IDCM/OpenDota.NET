@@ -1,7 +1,7 @@
-﻿using Newtonsoft.Json;
-
-namespace OpenDotaDotNet.Models.Players
+﻿namespace OpenDotaDotNet.Models.Players
 {
+    using Newtonsoft.Json;
+
     public class PlayerHeroRanking
     {
         [JsonProperty("hero_id")]

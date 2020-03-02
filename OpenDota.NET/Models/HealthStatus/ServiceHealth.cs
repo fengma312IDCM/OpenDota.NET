@@ -25,16 +25,4 @@
         [JsonProperty("gcDelay")]
         public ServiceUsage GcDelay { get; set; }
     }
-
-    public partial class ServiceUsage
-    {
-        [JsonProperty("metric")]
-        public double Metric { get; set; }
-
-        [JsonProperty("threshold")]
-        public long Threshold { get; set; }
-
-        [JsonProperty("timestamp")]
-        public long Timestamp { get; set; }
-    }
 }

@@ -1,9 +1,10 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-
-namespace OpenDotaDotNet.Models.Matches
+﻿namespace OpenDotaDotNet.Models.Matches
 {
+    using System;
+    using System.Collections.Generic;
+
+    using Newtonsoft.Json;
+
     public class MatchPlayer
     {
         // Match ID

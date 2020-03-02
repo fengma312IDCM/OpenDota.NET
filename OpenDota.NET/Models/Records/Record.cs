@@ -1,7 +1,7 @@
-﻿using Newtonsoft.Json;
-
-namespace OpenDotaDotNet.Models.Records
+﻿namespace OpenDotaDotNet.Models.Records
 {
+    using Newtonsoft.Json;
+
     public class Record
     {
         [JsonProperty("match_id")]
@@ -11,7 +11,7 @@ namespace OpenDotaDotNet.Models.Records
         public string StartTime { get; set; }
 
         /// <summary>
-        /// The ID value of the hero played
+        /// Gets or sets the ID value of the hero played.
         /// </summary>
         [JsonProperty("hero_id")]
         public int HeroId { get; set; }

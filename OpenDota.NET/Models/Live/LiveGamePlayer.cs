@@ -1,7 +1,7 @@
-﻿using Newtonsoft.Json;
-
-namespace OpenDotaDotNet.Models.Live
+﻿namespace OpenDotaDotNet.Models.Live
 {
+    using Newtonsoft.Json;
+
     public class LiveGamePlayer
     {
         [JsonProperty("account_id")]

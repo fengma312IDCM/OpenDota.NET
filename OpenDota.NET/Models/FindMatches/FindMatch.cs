@@ -1,8 +1,9 @@
-﻿using Newtonsoft.Json;
-using System.Collections.Generic;
-
-namespace OpenDotaDotNet.Models.FindMatches
+﻿namespace OpenDotaDotNet.Models.FindMatches
 {
+    using System.Collections.Generic;
+
+    using Newtonsoft.Json;
+
     public class FindMatch
     {
         [JsonProperty("match_id")]

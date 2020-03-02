@@ -1,7 +1,7 @@
-﻿using Newtonsoft.Json;
-
-namespace OpenDotaDotNet.Models.Replays
+﻿namespace OpenDotaDotNet.Models.Replays
 {
+    using Newtonsoft.Json;
+
     public class Replay
     {
         [JsonProperty("match_id")]

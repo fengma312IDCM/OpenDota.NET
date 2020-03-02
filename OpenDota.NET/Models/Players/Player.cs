@@ -1,8 +1,7 @@
-﻿using Newtonsoft.Json;
-using System;
-
-namespace OpenDotaDotNet.Models.Players
+﻿namespace OpenDotaDotNet.Models.Players
 {
+    using Newtonsoft.Json;
+
     public class Player
     {
         [JsonProperty("tracked_until")]
@@ -25,53 +24,5 @@ namespace OpenDotaDotNet.Models.Players
 
         [JsonProperty("profile")]
         public Profile Profile { get; set; }
-    }
-
-    public class MmrEstimate
-    {
-        [JsonProperty("estimate")]
-        public int? Estimate { get; set; }
-    }
-
-    public class Profile
-    {
-        [JsonProperty("account_id")]
-        public long AccountId { get; set; }
-
-        [JsonProperty("personaname")]
-        public string Personaname { get; set; }
-
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("plus")]
-        public bool? Plus { get; set; }
-
-        [JsonProperty("cheese")]
-        public long Cheese { get; set; }
-
-        [JsonProperty("steamid")]
-        public string Steamid { get; set; }
-
-        [JsonProperty("avatar")]
-        public Uri Avatar { get; set; }
-
-        [JsonProperty("avatarmedium")]
-        public Uri Avatarmedium { get; set; }
-
-        [JsonProperty("avatarfull")]
-        public Uri Avatarfull { get; set; }
-
-        [JsonProperty("profileurl")]
-        public Uri Profileurl { get; set; }
-
-        [JsonProperty("last_login")]
-        public DateTimeOffset? LastLogin { get; set; }
-
-        [JsonProperty("loccountrycode")]
-        public string Loccountrycode { get; set; }
-
-        [JsonProperty("is_contributor")]
-        public bool IsContributor { get; set; }
     }
 }

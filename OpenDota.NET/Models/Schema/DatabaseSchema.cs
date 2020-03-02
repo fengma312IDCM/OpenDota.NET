@@ -1,7 +1,7 @@
-﻿using Newtonsoft.Json;
-
-namespace OpenDotaDotNet.Models.Schema
+﻿namespace OpenDotaDotNet.Models.Schema
 {
+    using Newtonsoft.Json;
+
     public class DatabaseSchema
     {
         [JsonProperty("table_name")]

@@ -1,8 +1,9 @@
-﻿using Newtonsoft.Json;
-using System.Collections.Generic;
-
-namespace OpenDotaDotNet.Models.Benchmarks
+﻿namespace OpenDotaDotNet.Models.Benchmarks
 {
+    using System.Collections.Generic;
+
+    using Newtonsoft.Json;
+
     public class HeroBenchmarkResult
     {
         [JsonProperty("gold_per_min")]

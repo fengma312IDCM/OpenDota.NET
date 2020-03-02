@@ -1,11 +1,11 @@
-﻿using Newtonsoft.Json;
-
-namespace OpenDotaDotNet.Models.Players
+﻿namespace OpenDotaDotNet.Models.Players
 {
+    using Newtonsoft.Json;
+
     public class PlayerHistogram
     {
         /// <summary>
-        /// The X factor of the histogram
+        /// Gets or sets the X factor of the histogram.
         /// </summary>
         [JsonProperty("x")]
         public long? X { get; set; }

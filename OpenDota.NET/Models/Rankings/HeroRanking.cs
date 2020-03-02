@@ -1,8 +1,9 @@
-﻿using Newtonsoft.Json;
-using System.Collections.Generic;
-
-namespace OpenDotaDotNet.Models.Rankings
+﻿namespace OpenDotaDotNet.Models.Rankings
 {
+    using System.Collections.Generic;
+
+    using Newtonsoft.Json;
+
     public class HeroRanking
     {
         [JsonProperty("hero_id")]

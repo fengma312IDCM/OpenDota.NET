@@ -1,8 +1,9 @@
-﻿using Newtonsoft.Json;
-using System.Collections.Generic;
-
-namespace OpenDotaDotNet.Models.Matches
+﻿namespace OpenDotaDotNet.Models.Matches
 {
+    using System.Collections.Generic;
+
+    using Newtonsoft.Json;
+
     public class MatchPlayerBenchmarks
     {
         [JsonProperty("gold_per_min")]

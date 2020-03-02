@@ -1,7 +1,7 @@
-﻿using Newtonsoft.Json;
-
-namespace OpenDotaDotNet.Models.Metadata
+﻿namespace OpenDotaDotNet.Models.Metadata
 {
+    using Newtonsoft.Json;
+
     public class Metadata
     {
         [JsonProperty("banner")]
@@ -9,14 +9,5 @@ namespace OpenDotaDotNet.Models.Metadata
 
         [JsonProperty("cheese")]
         public Cheese Cheese { get; set; }
-    }
-
-    public partial class Cheese
-    {
-        [JsonProperty("cheese")]
-        public int CheeseAmount { get; set; }
-
-        [JsonProperty("goal")]
-        public int Goal { get; set; }
     }
 }

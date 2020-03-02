@@ -1,16 +1,16 @@
-﻿namespace OpenDotaDotNet.Models.Players
+﻿namespace OpenDotaDotNet.Models.Request
 {
     using Newtonsoft.Json;
 
-    public class PlayerMatchHero
+    public class Pgroup
     {
         [JsonProperty("account_id")]
         public long? AccountId { get; set; }
 
         [JsonProperty("hero_id")]
-        public long HeroId { get; set; }
+        public int HeroId { get; set; }
 
         [JsonProperty("player_slot")]
-        public long PlayerSlot { get; set; }
+        public int PlayerSlot { get; set; }
     }
 }

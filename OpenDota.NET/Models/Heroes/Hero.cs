@@ -1,9 +1,9 @@
-﻿using Newtonsoft.Json;
-
-using System.Collections.Generic;
-
-namespace OpenDotaDotNet.Models.Heroes
+﻿namespace OpenDotaDotNet.Models.Heroes
 {
+    using System.Collections.Generic;
+
+    using Newtonsoft.Json;
+
     public class Hero
     {
         /// <summary>

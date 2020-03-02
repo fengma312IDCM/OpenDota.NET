@@ -1,7 +1,7 @@
-﻿using Newtonsoft.Json;
-
-namespace OpenDotaDotNet.Models.Distributions
+﻿namespace OpenDotaDotNet.Models.Distributions
 {
+    using Newtonsoft.Json;
+
     public class MmrRow
     {
         [JsonProperty("bin")]
