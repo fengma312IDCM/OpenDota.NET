@@ -6,8 +6,37 @@
     <AssemblyName>OpenDota.NET</AssemblyName>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <CodeAnalysisRuleSet>..\Rules.ruleset</CodeAnalysisRuleSet>
+    <Copyright>rist0, NikolayIT</Copyright>
+    <Authors>rist0, NikolayIT</Authors>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/NikolayIT/OpenDota.NET</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/NikolayIT/OpenDota.NET</RepositoryUrl>
+    <PackageReleaseNotes>First release</PackageReleaseNotes>
+    <PackageTags>dota, api, opendota</PackageTags>
+    <RepositoryType>GitHub</RepositoryType>
+    <Description>NuGet package of https://github.com/rist0/OpenDota.NET</Description>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageIcon>icon-144x144.png</PackageIcon>
+    <PackageIconUrl />
+  </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+    <AdditionalFiles Include="..\stylecop.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.164" PrivateAssets="all">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\icon-144x144.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
