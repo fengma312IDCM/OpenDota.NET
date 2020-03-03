@@ -1,16 +1,16 @@
 ﻿namespace OpenDotaDotNet.Models.Schema
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class DatabaseSchema
     {
-        [JsonProperty("table_name")]
+        [JsonPropertyName("table_name")]
         public string TableName { get; set; }
 
-        [JsonProperty("column_name")]
+        [JsonPropertyName("column_name")]
         public string ColumnName { get; set; }
 
-        [JsonProperty("data_type")]
+        [JsonPropertyName("data_type")]
         public string DataType { get; set; }
     }
 }

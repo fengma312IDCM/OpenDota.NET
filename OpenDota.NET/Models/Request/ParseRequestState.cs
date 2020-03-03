@@ -1,33 +1,32 @@
 ﻿namespace OpenDotaDotNet.Models.Request
 {
     using System;
-
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class ParseRequestState
     {
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public long Id { get; set; }
 
-        [JsonProperty("type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
 
-        [JsonProperty("timestamp")]
+        [JsonPropertyName("timestamp")]
         public DateTimeOffset Timestamp { get; set; }
 
-        [JsonProperty("attempts")]
+        [JsonPropertyName("attempts")]
         public int Attempts { get; set; }
 
-        [JsonProperty("data")]
+        [JsonPropertyName("data")]
         public Data Data { get; set; }
 
-        [JsonProperty("next_attempt_time")]
+        [JsonPropertyName("next_attempt_time")]
         public DateTimeOffset NextAttemptTime { get; set; }
 
-        [JsonProperty("priority")]
+        [JsonPropertyName("priority")]
         public int Priority { get; set; }
 
-        [JsonProperty("jobId")]
+        [JsonPropertyName("jobId")]
         public long JobId { get; set; }
     }
 }

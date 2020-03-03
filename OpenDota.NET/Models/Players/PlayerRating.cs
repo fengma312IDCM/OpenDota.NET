@@ -1,24 +1,23 @@
 ﻿namespace OpenDotaDotNet.Models.Players
 {
     using System;
-
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class PlayerRating
     {
-        [JsonProperty("account_id")]
+        [JsonPropertyName("account_id")]
         public long AccountId { get; set; }
 
-        [JsonProperty("match_id")]
+        [JsonPropertyName("match_id")]
         public long? MatchId { get; set; }
 
-        [JsonProperty("solo_competitive_rank")]
+        [JsonPropertyName("solo_competitive_rank")]
         public int? SoloCompetitiveRank { get; set; }
 
-        [JsonProperty("competitive_rank")]
+        [JsonPropertyName("competitive_rank")]
         public int? CompetitiveRank { get; set; }
 
-        [JsonProperty("time")]
+        [JsonPropertyName("time")]
         public DateTimeOffset Time { get; set; }
     }
 }

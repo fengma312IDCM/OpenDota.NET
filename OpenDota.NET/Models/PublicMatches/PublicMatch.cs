@@ -1,49 +1,49 @@
 ﻿namespace OpenDotaDotNet.Models.PublicMatches
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class PublicMatch
     {
-        [JsonProperty("match_id")]
+        [JsonPropertyName("match_id")]
         public long MatchId { get; set; }
 
-        [JsonProperty("match_seq_num")]
+        [JsonPropertyName("match_seq_num")]
         public long MatchSeqNum { get; set; }
 
-        [JsonProperty("radiant_win")]
+        [JsonPropertyName("radiant_win")]
         public bool RadiantWin { get; set; }
 
-        [JsonProperty("start_time")]
+        [JsonPropertyName("start_time")]
         public long StartTime { get; set; }
 
-        [JsonProperty("duration")]
+        [JsonPropertyName("duration")]
         public int Duration { get; set; }
 
-        [JsonProperty("avg_mmr")]
+        [JsonPropertyName("avg_mmr")]
         public int? AvgMmr { get; set; }
 
-        [JsonProperty("num_mmr")]
+        [JsonPropertyName("num_mmr")]
         public int? NumMmr { get; set; }
 
-        [JsonProperty("lobby_type")]
+        [JsonPropertyName("lobby_type")]
         public int LobbyType { get; set; }
 
-        [JsonProperty("game_mode")]
+        [JsonPropertyName("game_mode")]
         public int GameMode { get; set; }
 
-        [JsonProperty("avg_rank_tier")]
+        [JsonPropertyName("avg_rank_tier")]
         public int AvgRankTier { get; set; }
 
-        [JsonProperty("num_rank_tier")]
+        [JsonPropertyName("num_rank_tier")]
         public int NumRankTier { get; set; }
 
-        [JsonProperty("cluster")]
+        [JsonPropertyName("cluster")]
         public int Cluster { get; set; }
 
-        [JsonProperty("radiant_team")]
+        [JsonPropertyName("radiant_team")]
         public string RadiantTeam { get; set; }
 
-        [JsonProperty("dire_team")]
+        [JsonPropertyName("dire_team")]
         public string DireTeam { get; set; }
     }
 }

@@ -17,7 +17,7 @@
 
         public static RecordField GoldPerMin => new RecordField("gold_per_min");
 
-        public static RecordField XPPerMin => new RecordField("xp_per_min");
+        public static RecordField XpPerMin => new RecordField("xp_per_min");
 
         public static RecordField LastHits => new RecordField("last_hits");
 

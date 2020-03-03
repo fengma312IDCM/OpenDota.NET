@@ -1,48 +1,47 @@
 ﻿namespace OpenDotaDotNet.Models.Players
 {
     using System;
-
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class Profile
     {
-        [JsonProperty("account_id")]
+        [JsonPropertyName("account_id")]
         public long AccountId { get; set; }
 
-        [JsonProperty("personaname")]
+        [JsonPropertyName("personaname")]
         public string Personaname { get; set; }
 
-        [JsonProperty("name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
 
-        [JsonProperty("plus")]
+        [JsonPropertyName("plus")]
         public bool? Plus { get; set; }
 
-        [JsonProperty("cheese")]
+        [JsonPropertyName("cheese")]
         public long Cheese { get; set; }
 
-        [JsonProperty("steamid")]
+        [JsonPropertyName("steamid")]
         public string Steamid { get; set; }
 
-        [JsonProperty("avatar")]
+        [JsonPropertyName("avatar")]
         public Uri Avatar { get; set; }
 
-        [JsonProperty("avatarmedium")]
+        [JsonPropertyName("avatarmedium")]
         public Uri Avatarmedium { get; set; }
 
-        [JsonProperty("avatarfull")]
+        [JsonPropertyName("avatarfull")]
         public Uri Avatarfull { get; set; }
 
-        [JsonProperty("profileurl")]
+        [JsonPropertyName("profileurl")]
         public Uri Profileurl { get; set; }
 
-        [JsonProperty("last_login")]
+        [JsonPropertyName("last_login")]
         public DateTimeOffset? LastLogin { get; set; }
 
-        [JsonProperty("loccountrycode")]
+        [JsonPropertyName("loccountrycode")]
         public string Loccountrycode { get; set; }
 
-        [JsonProperty("is_contributor")]
+        [JsonPropertyName("is_contributor")]
         public bool IsContributor { get; set; }
     }
 }

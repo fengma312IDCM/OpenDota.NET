@@ -1,13 +1,13 @@
 ﻿namespace OpenDotaDotNet.Models.Benchmarks
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class HeroBenchmark
     {
-        [JsonProperty("hero_id")]
+        [JsonPropertyName("hero_id")]
         public long HeroId { get; set; }
 
-        [JsonProperty("result")]
+        [JsonPropertyName("result")]
         public HeroBenchmarkResult Result { get; set; }
     }
 }

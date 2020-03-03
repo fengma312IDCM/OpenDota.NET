@@ -7,10 +7,10 @@
     public interface IBenchmarkEndpoint
     {
         /// <summary>
-        /// Benchmarks of average stat values for a hero.
+        /// Gets benchmarks of average stat values for a hero.
         /// </summary>
         /// <param name="heroId"></param>
-        /// <returns></returns>
+        /// <returns>Benchmarks of average stat values for a hero.</returns>
         Task<HeroBenchmark> GetHeroBenchmarkAsync(int heroId);
     }
 }

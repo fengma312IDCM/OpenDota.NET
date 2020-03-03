@@ -1,29 +1,28 @@
 ﻿namespace OpenDotaDotNet.Models.Matches
 {
     using System.Collections.Generic;
-
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class Teamfight
     {
         // The time (in seconds) when the teamfight started
-        [JsonProperty("start")]
+        [JsonPropertyName("start")]
         public int Start { get; set; }
 
         // The time (in seconds) when the teamfight ended
-        [JsonProperty("end")]
+        [JsonPropertyName("end")]
         public int End { get; set; }
 
         // The time (in seconds) when the last death occured in the teamfight
-        [JsonProperty("last_death")]
+        [JsonPropertyName("last_death")]
         public long LastDeath { get; set; }
 
         // The amount of total deaths during the teamfight
-        [JsonProperty("deaths")]
+        [JsonPropertyName("deaths")]
         public long Deaths { get; set; }
 
         // Players involved in the teamfight
-        [JsonProperty("players")]
+        [JsonPropertyName("players")]
         public List<TeamfightPlayer> Players { get; set; }
     }
 }

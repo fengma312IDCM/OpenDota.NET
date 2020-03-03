@@ -8,26 +8,26 @@
     public interface IScenariosEndpoint
     {
         /// <summary>
-        /// Win rates for certain item timings on a hero for items that cost at least 1400 gold.
+        /// Gets win rates for certain item timings on a hero for items that cost at least 1400 gold.
         /// </summary>
         /// <param name="item">Filter by item name e.g. "spirit_vessel".</param>
         /// <param name="heroId">Hero ID.</param>
-        /// <returns></returns>
+        /// <returns>Win rates.</returns>
         Task<List<HeroItemTiming>> GetWinRateForCertainItemTimingsOnHeroesAsync(string item = null, int? heroId = null);
 
         /// <summary>
-        /// Win rates for heroes in certain lane roles.
+        /// Gets win rates for heroes in certain lane roles.
         /// </summary>
         /// <param name="laneRole">Filter by lane role 1-4 (Safe, Mid, Off, Jungle).</param>
         /// <param name="heroId">Hero ID.</param>
-        /// <returns></returns>
+        /// <returns>Win rates.</returns>
         Task<List<HeroLaneRoleWinrate>> GetWinRateForHeroesInCertainLaneRolesAsync(int? laneRole = null, int? heroId = null);
 
         /// <summary>
-        /// Miscellaneous team scenarios.
+        /// Gets miscellaneous team scenarios.
         /// </summary>
-        /// <param name="scenario">pos_chat_1min,neg_chat_1min,courier_kill,first_blood.</param>
-        /// <returns></returns>
+        /// <param name="scenario">Example: pos_chat_1min,neg_chat_1min,courier_kill,first_blood.</param>
+        /// <returns>Miscellaneous team scenarios.</returns>
         Task<List<MiscellaneousTeamScenario>> GetMiscellaneousTeamScenariosAsync(string scenario = null);
     }
 }

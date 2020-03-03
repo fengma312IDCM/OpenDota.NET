@@ -12,7 +12,7 @@
         /// </summary>
         /// <param name="teamA"></param>
         /// <param name="teamB"></param>
-        /// <returns></returns>
+        /// <returns>Matches by heroes played.</returns>
         Task<List<FindMatch>> FindMatchesByHeroesPlayedAsync(List<int> teamA = null, List<int> teamB = null);
     }
 }

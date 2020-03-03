@@ -1,105 +1,104 @@
 ﻿namespace OpenDotaDotNet.Models.Players
 {
     using System;
-
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class PlayerPro
     {
-        [JsonProperty("account_id")]
+        [JsonPropertyName("account_id")]
         public long AccountId { get; set; }
 
-        [JsonProperty("name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
 
-        [JsonProperty("country_code")]
+        [JsonPropertyName("country_code")]
         public string CountryCode { get; set; }
 
-        [JsonProperty("fantasy_role")]
+        [JsonPropertyName("fantasy_role")]
         public long FantasyRole { get; set; }
 
-        [JsonProperty("team_id")]
+        [JsonPropertyName("team_id")]
         public long TeamId { get; set; }
 
-        [JsonProperty("team_name")]
+        [JsonPropertyName("team_name")]
         public string TeamName { get; set; }
 
-        [JsonProperty("team_tag")]
+        [JsonPropertyName("team_tag")]
         public string TeamTag { get; set; }
 
-        [JsonProperty("is_locked")]
+        [JsonPropertyName("is_locked")]
         public bool IsLocked { get; set; }
 
-        [JsonProperty("is_pro")]
+        [JsonPropertyName("is_pro")]
         public bool IsPro { get; set; }
 
-        [JsonProperty("locked_until")]
+        [JsonPropertyName("locked_until")]
         public object LockedUntil { get; set; }
 
-        [JsonProperty("steamid")]
+        [JsonPropertyName("steamid")]
         public string Steamid { get; set; }
 
-        [JsonProperty("avatar")]
+        [JsonPropertyName("avatar")]
         public Uri Avatar { get; set; }
 
-        [JsonProperty("avatarmedium")]
+        [JsonPropertyName("avatarmedium")]
         public Uri Avatarmedium { get; set; }
 
-        [JsonProperty("avatarfull")]
+        [JsonPropertyName("avatarfull")]
         public Uri Avatarfull { get; set; }
 
-        [JsonProperty("profileurl")]
+        [JsonPropertyName("profileurl")]
         public Uri Profileurl { get; set; }
 
-        [JsonProperty("personaname")]
+        [JsonPropertyName("personaname")]
         public string Personaname { get; set; }
 
-        [JsonProperty("last_login")]
+        [JsonPropertyName("last_login")]
         public DateTimeOffset? LastLogin { get; set; }
 
-        [JsonProperty("full_history_time")]
+        [JsonPropertyName("full_history_time")]
         public DateTimeOffset? FullHistoryTime { get; set; }
 
-        [JsonProperty("cheese")]
+        [JsonPropertyName("cheese")]
         public long Cheese { get; set; }
 
-        [JsonProperty("fh_unavailable")]
+        [JsonPropertyName("fh_unavailable")]
         public bool? FhUnavailable { get; set; }
 
-        [JsonProperty("loccountrycode")]
+        [JsonPropertyName("loccountrycode")]
         public string Loccountrycode { get; set; }
 
-        [JsonProperty("last_match_time")]
+        [JsonPropertyName("last_match_time")]
         public DateTimeOffset LastMatchTime { get; set; }
 
-        [JsonProperty("plus")]
+        [JsonPropertyName("plus")]
         public bool? Plus { get; set; }
 
-        [JsonProperty("last_played")]
+        [JsonPropertyName("last_played")]
         public long LastPlayed { get; set; }
 
-        [JsonProperty("win")]
+        [JsonPropertyName("win")]
         public long Win { get; set; }
 
-        [JsonProperty("games")]
+        [JsonPropertyName("games")]
         public long Games { get; set; }
 
-        [JsonProperty("with_win")]
+        [JsonPropertyName("with_win")]
         public long WithWin { get; set; }
 
-        [JsonProperty("with_games")]
+        [JsonPropertyName("with_games")]
         public long WithGames { get; set; }
 
-        [JsonProperty("against_win")]
+        [JsonPropertyName("against_win")]
         public long AgainstWin { get; set; }
 
-        [JsonProperty("against_games")]
+        [JsonPropertyName("against_games")]
         public long AgainstGames { get; set; }
 
-        [JsonProperty("with_gpm_sum")]
+        [JsonPropertyName("with_gpm_sum")]
         public long? WithGpmSum { get; set; }
 
-        [JsonProperty("with_xpm_sum")]
+        [JsonPropertyName("with_xpm_sum")]
         public long? WithXpmSum { get; set; }
     }
 }

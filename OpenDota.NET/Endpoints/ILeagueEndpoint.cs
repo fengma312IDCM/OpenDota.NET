@@ -10,7 +10,7 @@
         /// <summary>
         /// Get league data.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>League data.</returns>
         Task<List<League>> GetLeaguesAsync();
     }
 }

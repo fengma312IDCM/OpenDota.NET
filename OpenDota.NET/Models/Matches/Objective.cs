@@ -1,34 +1,34 @@
 ﻿namespace OpenDotaDotNet.Models.Matches
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class Objective
     {
         // Time (in seconds) when the objective happened
-        [JsonProperty("time")]
+        [JsonPropertyName("time")]
         public long Time { get; set; }
 
         // Type of objective (courier kill, tower kill, first blood, etc)
-        [JsonProperty("type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
 
-        [JsonProperty("slot", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonPropertyName("slot")]
         public long? Slot { get; set; }
 
         // Returns integers and strings [need a full list]
-        [JsonProperty("key")]
+        [JsonPropertyName("key")]
         public Key? Key { get; set; }
 
         // Slot of player who got the objective
-        [JsonProperty("player_slot", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonPropertyName("player_slot")]
         public long? PlayerSlot { get; set; }
 
         // Which unit got the objective
-        [JsonProperty("unit", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonPropertyName("unit")]
         public string Unit { get; set; }
 
         // Which team got the objective
-        [JsonProperty("team", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonPropertyName("team")]
         public long? Team { get; set; }
     }
 }

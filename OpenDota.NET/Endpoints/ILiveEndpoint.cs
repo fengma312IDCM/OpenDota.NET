@@ -10,7 +10,7 @@
         /// <summary>
         /// Get top currently ongoing live games.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Top currently ongoing live games.</returns>
         Task<List<LiveGame>> GetTopLiveGamesAsync();
     }
 }

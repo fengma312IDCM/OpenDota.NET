@@ -3,28 +3,10 @@
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
-    using Newtonsoft.Json;
-
     using OpenDotaDotNet.Models.Players;
 
     public class PlayerEndpoint : IPlayerEndpoint
     {
-        private const string PlayerByIdUrl = "players/{0}";
-        private const string PlayerWinLossByIdUrl = "players/{0}/wl";
-        private const string PlayerRecentMatches = "players/{0}/recentMatches";
-        private const string PlayerMatches = "players/{0}/matches";
-        private const string PlayerHeroes = "players/{0}/heroes";
-        private const string PlayerPeers = "players/{0}/peers";
-        private const string PlayerPros = "players/{0}/pros";
-        private const string PlayerTotals = "players/{0}/totals";
-        private const string PlayerCounts = "players/{0}/counts";
-        private const string PlayerHistograms = "players/{0}/histograms/{1}";
-        private const string PlayerWardMap = "players/{0}/wardmap";
-        private const string PlayerWordCloud = "players/{0}/wordcloud";
-        private const string PlayerRatings = "players/{0}/ratings";
-        private const string PlayerHeroRankings = "players/{0}/rankings";
-        private const string RefreshPlayerMatchHistory = "players/{0}/refresh";
-
         private readonly Requester requester;
 
         public PlayerEndpoint(Requester requester)
@@ -32,268 +14,92 @@
             this.requester = requester;
         }
 
-        /// <summary>
-        /// Gets player data.
-        /// </summary>
-        /// <param name="playerId">Steam32 account ID.</param>
-        /// <returns>Player data.</returns>
-        public async Task<Player> GetPlayerByIdAsync(long playerId)
-        {
-            var response = await this.requester.GetRequestResponseMessageAsync(string.Format(PlayerByIdUrl, playerId));
+        /// <inheritdoc />
+        public async Task<Player> GetPlayerByIdAsync(long playerId) =>
+            await this.requester.GetResponseAsync<Player>($"players/{playerId}");
 
-            response.EnsureSuccessStatusCode();
+        /// <inheritdoc />
+        public async Task<PlayerWinLoss> GetPlayerWinLossByIdAsync(
+            long playerId,
+            PlayerEndpointParameters parameters = null) =>
+            await this.requester.GetResponseAsync<PlayerWinLoss>(
+                $"players/{playerId}/wl",
+                this.CreateArgumentListForPlayerEndpointRequest(parameters));
 
-            var playerInfo = JsonConvert.DeserializeObject<Player>(await response.Content.ReadAsStringAsync());
+        /// <inheritdoc />
+        public async Task<List<PlayerRecentMatch>> GetPlayerRecentMatchesAsync(long playerId) =>
+            await this.requester.GetResponseAsync<List<PlayerRecentMatch>>($"players/{playerId}/recentMatches");
 
-            return playerInfo;
-        }
+        /// <inheritdoc />
+        public async Task<List<PlayerMatch>> GetPlayerMatchesAsync(
+            long playerId,
+            PlayerEndpointParameters parameters = null) =>
+            await this.requester.GetResponseAsync<List<PlayerMatch>>(
+                $"players/{playerId}/matches",
+                this.CreateArgumentListForPlayerEndpointRequest(parameters));
 
-        /// <summary>
-        /// Gets win/Loss count.
-        /// </summary>
-        /// <param name="playerId">Steam32 account ID.</param>
-        /// <param name="parameters">Query parameters.</param>
-        /// <returns>Win/Loss count.</returns>
-        public async Task<PlayerWinLoss> GetPlayerWinLossByIdAsync(long playerId, PlayerEndpointParameters parameters = null)
-        {
-            var addedArguments = this.CreateArgumentListForPlayerEndpointRequest(parameters);
+        /// <inheritdoc />
+        public async Task<List<PlayerHero>>
+            GetPlayerHeroesAsync(long playerId, PlayerEndpointParameters parameters = null) =>
+            await this.requester.GetResponseAsync<List<PlayerHero>>(
+                $"players/{playerId}/heroes",
+                this.CreateArgumentListForPlayerEndpointRequest(parameters));
 
-            var response = await this.requester.GetRequestResponseMessageAsync(string.Format(PlayerWinLossByIdUrl, playerId), addedArguments);
+        /// <inheritdoc />
+        public async Task<List<PlayerPeer>> GetPlayerPeersAsync(long playerId, PlayerEndpointParameters parameters) =>
+            await this.requester.GetResponseAsync<List<PlayerPeer>>(
+                $"players/{playerId}/peers",
+                this.CreateArgumentListForPlayerEndpointRequest(parameters));
 
-            response.EnsureSuccessStatusCode();
+        /// <inheritdoc />
+        public async Task<List<PlayerPro>> GetPlayerProsAsync(long playerId, PlayerEndpointParameters parameters) =>
+            await this.requester.GetResponseAsync<List<PlayerPro>>(
+                $"players/{playerId}/pros",
+                this.CreateArgumentListForPlayerEndpointRequest(parameters));
 
-            var playerWinLoss = JsonConvert.DeserializeObject<PlayerWinLoss>(await response.Content.ReadAsStringAsync());
+        /// <inheritdoc />
+        public async Task<List<PlayerTotal>> GetPlayerTotalsAsync(long playerId, PlayerEndpointParameters parameters) =>
+            await this.requester.GetResponseAsync<List<PlayerTotal>>(
+                $"players/{playerId}/totals",
+                this.CreateArgumentListForPlayerEndpointRequest(parameters));
 
-            return playerWinLoss;
-        }
+        /// <inheritdoc />
+        public async Task<PlayerCount> GetPlayerCountsAsync(long playerId, PlayerEndpointParameters parameters) =>
+            await this.requester.GetResponseAsync<PlayerCount>(
+                $"players/{playerId}/counts",
+                this.CreateArgumentListForPlayerEndpointRequest(parameters));
 
-        /// <summary>
-        /// Gets recent matches played.
-        /// </summary>
-        /// <param name="playerId">Steam32 account ID.</param>
-        /// <returns>Recent matches played.</returns>
-        public async Task<List<PlayerRecentMatch>> GetPlayerRecentMatchesAsync(long playerId)
-        {
-            var response = await this.requester.GetRequestResponseMessageAsync(string.Format(PlayerRecentMatches, playerId));
+        /// <inheritdoc />
+        public async Task<List<PlayerHistogram>> GetPlayerHistogramsAsync(long playerId, string field, PlayerEndpointParameters parameters) =>
+            await this.requester.GetResponseAsync<List<PlayerHistogram>>(
+                $"players/{playerId}/histograms/{field}",
+                this.CreateArgumentListForPlayerEndpointRequest(parameters));
 
-            response.EnsureSuccessStatusCode();
+        /// <inheritdoc />
+        public async Task<PlayerWardmap> GetPlayerWardMapAsync(long playerId, PlayerEndpointParameters parameters) =>
+            await this.requester.GetResponseAsync<PlayerWardmap>(
+                $"players/{playerId}/wardmap",
+                this.CreateArgumentListForPlayerEndpointRequest(parameters));
 
-            var playerRecentMatches = JsonConvert.DeserializeObject<List<PlayerRecentMatch>>(await response.Content.ReadAsStringAsync());
+        /// <inheritdoc />
+        public async Task<PlayerWordcloud> GetPlayerWordCloudAsync(long playerId, PlayerEndpointParameters parameters) =>
+            await this.requester.GetResponseAsync<PlayerWordcloud>(
+                $"players/{playerId}/wordcloud",
+                this.CreateArgumentListForPlayerEndpointRequest(parameters));
 
-            return playerRecentMatches;
-        }
+        /// <inheritdoc />
+        public async Task<List<PlayerRating>> GetPlayerRatingsAsync(long playerId) =>
+            await this.requester.GetResponseAsync<List<PlayerRating>>($"players/{playerId}/ratings");
 
-        /// <summary>
-        /// Gets matches played.
-        /// </summary>
-        /// <param name="playerId">Steam32 account ID.</param>
-        /// <param name="parameters">Query parameters.</param>
-        /// <returns>Matches played.</returns>
-        public async Task<List<PlayerMatch>> GetPlayerMatchesAsync(long playerId, PlayerEndpointParameters parameters = null)
-        {
-            var addedArguments = this.CreateArgumentListForPlayerEndpointRequest(parameters);
-            var response = await this.requester.GetRequestResponseMessageAsync(string.Format(PlayerMatches, playerId), addedArguments);
-            response.EnsureSuccessStatusCode();
-            var playerMatches = JsonConvert.DeserializeObject<List<PlayerMatch>>(await response.Content.ReadAsStringAsync());
-            return playerMatches;
-        }
+        /// <inheritdoc />
+        public async Task<List<PlayerHeroRanking>> GetPlayerHeroRankingsAsync(long playerId) =>
+            await this.requester.GetResponseAsync<List<PlayerHeroRanking>>($"players/{playerId}/rankings");
 
-        /// <summary>
-        /// Gets heroes played.
-        /// </summary>
-        /// <param name="playerId">Steam32 account ID.</param>
-        /// <param name="parameters">Query Parameters.</param>
-        /// <returns>Heroes played.</returns>
-        public async Task<List<PlayerHero>> GetPlayerHeroesAsync(long playerId, PlayerEndpointParameters parameters = null)
-        {
-            var addedArguments = this.CreateArgumentListForPlayerEndpointRequest(parameters);
-
-            var response = await this.requester.GetRequestResponseMessageAsync(string.Format(PlayerHeroes, playerId), addedArguments);
-
-            response.EnsureSuccessStatusCode();
-
-            var playerHeroes = JsonConvert.DeserializeObject<List<PlayerHero>>(await response.Content.ReadAsStringAsync());
-
-            return playerHeroes;
-        }
-
-        /// <summary>
-        /// Gets players played with.
-        /// </summary>
-        /// <param name="playerId">Steam32 account ID.</param>
-        /// <param name="parameters">Query Parameters.</param>
-        /// <returns>Players played with.</returns>
-        public async Task<List<PlayerPeer>> GetPlayerPeersAsync(long playerId, PlayerEndpointParameters parameters)
-        {
-            var addedArguments = this.CreateArgumentListForPlayerEndpointRequest(parameters);
-
-            var response = await this.requester.GetRequestResponseMessageAsync(string.Format(PlayerPeers, playerId), addedArguments);
-
-            response.EnsureSuccessStatusCode();
-
-            var playerPeers = JsonConvert.DeserializeObject<List<PlayerPeer>>(await response.Content.ReadAsStringAsync());
-
-            return playerPeers;
-        }
-
-        /// <summary>
-        /// Gets pro players played with.
-        /// </summary>
-        /// <param name="playerId">Steam32 account ID.</param>
-        /// <param name="parameters">Query Parameters.</param>
-        /// <returns>Pro players played with.</returns>
-        public async Task<List<PlayerPro>> GetPlayerProsAsync(long playerId, PlayerEndpointParameters parameters)
-        {
-            var addedArguments = this.CreateArgumentListForPlayerEndpointRequest(parameters);
-
-            var response = await this.requester.GetRequestResponseMessageAsync(string.Format(PlayerPros, playerId), addedArguments);
-
-            response.EnsureSuccessStatusCode();
-
-            var playerPros = JsonConvert.DeserializeObject<List<PlayerPro>>(await response.Content.ReadAsStringAsync());
-
-            return playerPros;
-        }
-
-        /// <summary>
-        /// Gets totals in stats.
-        /// </summary>
-        /// <param name="playerId">Steam32 account ID.</param>
-        /// <param name="parameters">Query Parameters.</param>
-        /// <returns>Totals in stats.</returns>
-        public async Task<List<PlayerTotal>> GetPlayerTotalsAsync(long playerId, PlayerEndpointParameters parameters)
-        {
-            var addedArguments = this.CreateArgumentListForPlayerEndpointRequest(parameters);
-
-            var response = await this.requester.GetRequestResponseMessageAsync(string.Format(PlayerTotals, playerId), addedArguments);
-
-            response.EnsureSuccessStatusCode();
-
-            var playerTotals = JsonConvert.DeserializeObject<List<PlayerTotal>>(await response.Content.ReadAsStringAsync());
-
-            return playerTotals;
-        }
-
-        /// <summary>
-        /// Gets counts in categories.
-        /// </summary>
-        /// <param name="playerId">Steam32 account ID.</param>
-        /// <param name="parameters">Query Parameters.</param>
-        /// <returns>Counts in categories.</returns>
-        public async Task<PlayerCount> GetPlayerCountsAsync(long playerId, PlayerEndpointParameters parameters)
-        {
-            var addedArguments = this.CreateArgumentListForPlayerEndpointRequest(parameters);
-
-            var response = await this.requester.GetRequestResponseMessageAsync(string.Format(PlayerCounts, playerId), addedArguments);
-
-            response.EnsureSuccessStatusCode();
-
-            var playerCounts = JsonConvert.DeserializeObject<PlayerCount>(await response.Content.ReadAsStringAsync());
-
-            return playerCounts;
-        }
-
-        /// <summary>
-        /// Gets distribution of matches in a single stat.
-        /// </summary>
-        /// <param name="playerId">Steam32 account ID.</param>
-        /// <param name="field">Field to aggregate on.</param>
-        /// <param name="parameters">Query Parameters.</param>
-        /// <returns>Distribution of matches in a single stat.</returns>
-        public async Task<List<PlayerHistogram>> GetPlayerHistogramsAsync(long playerId, string field, PlayerEndpointParameters parameters)
-        {
-            var addedArguments = this.CreateArgumentListForPlayerEndpointRequest(parameters);
-
-            var response = await this.requester.GetRequestResponseMessageAsync(string.Format(PlayerHistograms, playerId, field), addedArguments);
-
-            response.EnsureSuccessStatusCode();
-
-            var playerHistograms = JsonConvert.DeserializeObject<List<PlayerHistogram>>(await response.Content.ReadAsStringAsync());
-
-            return playerHistograms;
-        }
-
-        /// <summary>
-        /// Gets wards placed in matches played.
-        /// </summary>
-        /// <param name="playerId">Steam32 account ID.</param>
-        /// <param name="parameters">Query Parameters.</param>
-        /// <returns>Wards placed in matches played.</returns>
-        public async Task<PlayerWardmap> GetPlayerWardMapAsync(long playerId, PlayerEndpointParameters parameters)
-        {
-            var addedArguments = this.CreateArgumentListForPlayerEndpointRequest(parameters);
-
-            var response = await this.requester.GetRequestResponseMessageAsync(string.Format(PlayerWardMap, playerId), addedArguments);
-
-            response.EnsureSuccessStatusCode();
-
-            var playerWardMap = JsonConvert.DeserializeObject<PlayerWardmap>(await response.Content.ReadAsStringAsync());
-
-            return playerWardMap;
-        }
-
-        /// <summary>
-        /// Gets words said/read in matches played.
-        /// </summary>
-        /// <param name="playerId">Steam32 account ID.</param>
-        /// <param name="parameters">Query Parameters.</param>
-        /// <returns>Words said/read in matches played.</returns>
-        public async Task<PlayerWordcloud> GetPlayerWordCloudAsync(long playerId, PlayerEndpointParameters parameters)
-        {
-            var addedArguments = this.CreateArgumentListForPlayerEndpointRequest(parameters);
-
-            var response = await this.requester.GetRequestResponseMessageAsync(string.Format(PlayerWordCloud, playerId), addedArguments);
-
-            response.EnsureSuccessStatusCode();
-
-            var playerWordCloud = JsonConvert.DeserializeObject<PlayerWordcloud>(await response.Content.ReadAsStringAsync());
-
-            return playerWordCloud;
-        }
-
-        /// <summary>
-        /// Gets player rating history.
-        /// </summary>
-        /// <param name="playerId">Steam32 account ID.</param>
-        /// <returns>Player rating history.</returns>
-        public async Task<List<PlayerRating>> GetPlayerRatingsAsync(long playerId)
-        {
-            var response = await this.requester.GetRequestResponseMessageAsync(string.Format(PlayerRatings, playerId));
-
-            response.EnsureSuccessStatusCode();
-
-            var playerRatings = JsonConvert.DeserializeObject<List<PlayerRating>>(await response.Content.ReadAsStringAsync());
-
-            return playerRatings;
-        }
-
-        /// <summary>
-        /// Gets player hero rankings.
-        /// </summary>
-        /// <param name="playerId">Steam32 account ID.</param>
-        /// <returns>Player hero rankings.</returns>
-        public async Task<List<PlayerHeroRanking>> GetPlayerHeroRankingsAsync(long playerId)
-        {
-            var response = await this.requester.GetRequestResponseMessageAsync(string.Format(PlayerHeroRankings, playerId));
-
-            response.EnsureSuccessStatusCode();
-
-            var playerHeroRankings = JsonConvert.DeserializeObject<List<PlayerHeroRanking>>(await response.Content.ReadAsStringAsync());
-
-            return playerHeroRankings;
-        }
-
-        /// <summary>
-        /// Gets refresh player match history.
-        /// </summary>
-        /// <param name="playerId"></param>
-        /// <returns>Refresh player match history.</returns>
+        /// <inheritdoc />
         public async Task<bool> RefreshPlayerMatchHistoryAsync(long playerId)
         {
-            var response = await this.requester.PostRequest(string.Format(RefreshPlayerMatchHistory, playerId));
-
+            var response = await this.requester.PostRequest($"players/{playerId}/refresh");
             response.EnsureSuccessStatusCode();
-
             return true;
         }
 

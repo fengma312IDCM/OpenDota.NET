@@ -1,22 +1,22 @@
 ﻿namespace OpenDotaDotNet.Models.Replays
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class Replay
     {
-        [JsonProperty("match_id")]
+        [JsonPropertyName("match_id")]
         public long MatchId { get; set; }
 
-        [JsonProperty("cluster")]
+        [JsonPropertyName("cluster")]
         public long Cluster { get; set; }
 
-        [JsonProperty("replay_salt")]
+        [JsonPropertyName("replay_salt")]
         public long ReplaySalt { get; set; }
 
-        [JsonProperty("series_id", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonPropertyName("series_id")]
         public long? SeriesId { get; set; }
 
-        [JsonProperty("series_type", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonPropertyName("series_type")]
         public long? SeriesType { get; set; }
     }
 }

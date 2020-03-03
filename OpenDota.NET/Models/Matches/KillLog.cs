@@ -1,15 +1,15 @@
 ﻿namespace OpenDotaDotNet.Models.Matches
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class KillLog
     {
         // The unit who got killed
-        [JsonProperty("key")]
+        [JsonPropertyName("key")]
         public string Key { get; set; }
 
         // Time in seconds when the kill happened
-        [JsonProperty("time")]
+        [JsonPropertyName("time")]
         public long Time { get; set; }
     }
 }

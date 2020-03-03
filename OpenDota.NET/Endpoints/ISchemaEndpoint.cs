@@ -10,7 +10,7 @@
         /// <summary>
         /// Get database schema.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Database schema.</returns>
         Task<List<DatabaseSchema>> GetDatabaseSchemaAsync();
     }
 }

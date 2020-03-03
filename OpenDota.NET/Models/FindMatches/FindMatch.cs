@@ -1,24 +1,23 @@
 ﻿namespace OpenDotaDotNet.Models.FindMatches
 {
     using System.Collections.Generic;
-
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class FindMatch
     {
-        [JsonProperty("match_id")]
+        [JsonPropertyName("match_id")]
         public long MatchId { get; set; }
 
-        [JsonProperty("teama")]
+        [JsonPropertyName("teama")]
         public List<int> TeamA { get; set; }
 
-        [JsonProperty("teamb")]
+        [JsonPropertyName("teamb")]
         public List<int> TeamB { get; set; }
 
-        [JsonProperty("teamawin")]
+        [JsonPropertyName("teamawin")]
         public bool TeamAWin { get; set; }
 
-        [JsonProperty("start_time")]
+        [JsonPropertyName("start_time")]
         public long? StartTime { get; set; }
     }
 }

@@ -1,40 +1,40 @@
 ﻿namespace OpenDotaDotNet.Models.Matches
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class WardLog
     {
-        [JsonProperty("attackername", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonPropertyName("attackername")]
         public string Attackername { get; set; }
 
-        [JsonProperty("ehandle")]
+        [JsonPropertyName("ehandle")]
         public long Ehandle { get; set; }
 
-        [JsonProperty("entityleft")]
+        [JsonPropertyName("entityleft")]
         public bool Entityleft { get; set; }
 
-        [JsonProperty("key")]
+        [JsonPropertyName("key")]
         public string Key { get; set; }
 
-        [JsonProperty("player_slot")]
+        [JsonPropertyName("player_slot")]
         public int PlayerSlot { get; set; }
 
-        [JsonProperty("slot")]
+        [JsonPropertyName("slot")]
         public int Slot { get; set; }
 
-        [JsonProperty("time")]
+        [JsonPropertyName("time")]
         public int Time { get; set; }
 
-        [JsonProperty("type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
 
-        [JsonProperty("x")]
+        [JsonPropertyName("x")]
         public long X { get; set; }
 
-        [JsonProperty("y")]
+        [JsonPropertyName("y")]
         public long Y { get; set; }
 
-        [JsonProperty("z")]
+        [JsonPropertyName("z")]
         public long Z { get; set; }
     }
 }

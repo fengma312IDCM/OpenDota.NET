@@ -1,16 +1,16 @@
 ﻿namespace OpenDotaDotNet.Models.Distributions
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class MmrDistribution
     {
-        [JsonProperty("ranks")]
+        [JsonPropertyName("ranks")]
         public Mmr Ranks { get; set; }
 
-        [JsonProperty("mmr")]
+        [JsonPropertyName("mmr")]
         public Mmr Mmr { get; set; }
 
-        [JsonProperty("country_mmr")]
+        [JsonPropertyName("country_mmr")]
         public CountryMmr CountryMmr { get; set; }
     }
 }

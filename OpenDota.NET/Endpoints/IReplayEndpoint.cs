@@ -11,7 +11,7 @@
         /// Get data to construct a replay URL with.
         /// </summary>
         /// <param name="matchIds">Match IDs (array).</param>
-        /// <returns></returns>
+        /// <returns>Data to construct a replay URL with.</returns>
         Task<List<Replay>> GetReplayDataAsync(List<long> matchIds);
     }
 }

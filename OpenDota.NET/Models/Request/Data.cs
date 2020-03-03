@@ -1,27 +1,26 @@
 ﻿namespace OpenDotaDotNet.Models.Request
 {
     using System.Collections.Generic;
-
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class Data
     {
-        [JsonProperty("match_id")]
+        [JsonPropertyName("match_id")]
         public long MatchId { get; set; }
 
-        [JsonProperty("radiant_win")]
+        [JsonPropertyName("radiant_win")]
         public bool RadiantWin { get; set; }
 
-        [JsonProperty("start_time")]
+        [JsonPropertyName("start_time")]
         public long StartTime { get; set; }
 
-        [JsonProperty("duration")]
+        [JsonPropertyName("duration")]
         public int Duration { get; set; }
 
-        [JsonProperty("pgroup")]
+        [JsonPropertyName("pgroup")]
         public Dictionary<string, Pgroup> Pgroup { get; set; }
 
-        [JsonProperty("ability_upgrades")]
+        [JsonPropertyName("ability_upgrades")]
         public List<object> AbilityUpgrades { get; set; }
     }
 }

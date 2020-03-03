@@ -1,22 +1,22 @@
 ﻿namespace OpenDotaDotNet.Models.Matches
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class BuybackLog
     {
         // Time in seconds the buyback occurred
-        [JsonProperty("time")]
+        [JsonPropertyName("time")]
         public int Time { get; set; }
 
-        [JsonProperty("slot")]
+        [JsonPropertyName("slot")]
         public long Slot { get; set; }
 
         // Type of action (buyback_log)
-        [JsonProperty("type")]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
 
         // Which slot the player is in. 0-127 are Radiant, 128-255 are Dire
-        [JsonProperty("player_slot")]
+        [JsonPropertyName("player_slot")]
         public long PlayerSlot { get; set; }
     }
 }

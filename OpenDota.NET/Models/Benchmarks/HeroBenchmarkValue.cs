@@ -1,13 +1,13 @@
 ﻿namespace OpenDotaDotNet.Models.Benchmarks
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class HeroBenchmarkValue
     {
-        [JsonProperty("percentile")]
+        [JsonPropertyName("percentile")]
         public double Percentile { get; set; }
 
-        [JsonProperty("value")]
+        [JsonPropertyName("value")]
         public double? Value { get; set; }
     }
 }

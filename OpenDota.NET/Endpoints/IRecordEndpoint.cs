@@ -11,7 +11,7 @@
         /// Get top performances in a stat.
         /// </summary>
         /// <param name="field">Field name to query.</param>
-        /// <returns></returns>
+        /// <returns>Top performances in a stat.</returns>
         Task<List<Record>> GetRecordsByFieldAsync(RecordField field);
     }
 }

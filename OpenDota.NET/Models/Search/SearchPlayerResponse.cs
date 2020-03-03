@@ -1,27 +1,26 @@
 ﻿namespace OpenDotaDotNet.Models.Search
 {
     using System;
-
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class SearchPlayerResponse
     {
-        [JsonProperty("account_id")]
+        [JsonPropertyName("account_id")]
         public long AccountId { get; set; }
 
-        [JsonProperty("personaname")]
+        [JsonPropertyName("personaname")]
         public string PersonaName { get; set; }
 
-        [JsonProperty("avatarfull")]
+        [JsonPropertyName("avatarfull")]
         public Uri AvatarFull { get; set; }
 
         /// <summary>
         /// Gets or sets last_match_time. May not be present or null.
         /// </summary>
-        [JsonProperty("last_match_time", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonPropertyName("last_match_time")]
         public DateTimeOffset? LastMatchTime { get; set; }
 
-        [JsonProperty("similarity")]
+        [JsonPropertyName("similarity")]
         public double Similarity { get; set; }
     }
 }

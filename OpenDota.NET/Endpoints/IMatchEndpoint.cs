@@ -10,7 +10,7 @@
         /// Get match data by ID.
         /// </summary>
         /// <param name="matchId">Id of the match.</param>
-        /// <returns></returns>
+        /// <returns>Match data.</returns>
         Task<Match> GetMatchByIdAsync(long matchId);
     }
 }

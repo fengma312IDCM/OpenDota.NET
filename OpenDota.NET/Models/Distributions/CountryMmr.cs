@@ -1,33 +1,32 @@
 ﻿namespace OpenDotaDotNet.Models.Distributions
 {
     using System.Collections.Generic;
-
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class CountryMmr
     {
-        [JsonProperty("command")]
+        [JsonPropertyName("command")]
         public string Command { get; set; }
 
-        [JsonProperty("rowCount")]
+        [JsonPropertyName("rowCount")]
         public long RowCount { get; set; }
 
-        //// [JsonProperty("oid")]
+        //// [JsonPropertyName("oid")]
         //// public object Oid { get; set; }
 
-        [JsonProperty("rows")]
+        [JsonPropertyName("rows")]
         public List<CountryMmrRow> Rows { get; set; }
 
-        [JsonProperty("fields")]
+        [JsonPropertyName("fields")]
         public List<Field> Fields { get; set; }
 
-        //// [JsonProperty("_parsers")]
+        //// [JsonPropertyName("_parsers")]
         //// public List<object> Parsers { get; set; }
 
-        //// [JsonProperty("RowCtor")]
+        //// [JsonPropertyName("RowCtor")]
         //// public object RowCtor { get; set; }
 
-        [JsonProperty("rowAsArray")]
+        [JsonPropertyName("rowAsArray")]
         public bool RowAsArray { get; set; }
     }
 }

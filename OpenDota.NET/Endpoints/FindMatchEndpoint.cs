@@ -3,14 +3,10 @@
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
-    using Newtonsoft.Json;
-
     using OpenDotaDotNet.Models.FindMatches;
 
     public class FindMatchEndpoint : IFindMatchEndpoint
     {
-        private const string FindMatchesByHeroPlayed = "findMatches";
-
         private readonly Requester requester;
 
         public FindMatchEndpoint(Requester requester)
@@ -24,20 +20,15 @@
         /// <param name="teamA"></param>
         /// <param name="teamB"></param>
         /// <returns>Matched found.</returns>
-        public async Task<List<FindMatch>> FindMatchesByHeroesPlayedAsync(List<int> teamA = null, List<int> teamB = null)
-        {
-            var addedArguments = this.CreateArgumentListForFindMatchesRequest(teamA, teamB);
+        public async Task<List<FindMatch>>
+            FindMatchesByHeroesPlayedAsync(List<int> teamA = null, List<int> teamB = null) =>
+            await this.requester.GetResponseAsync<List<FindMatch>>(
+                "findMatches",
+                this.CreateArgumentListForFindMatchesRequest(teamA, teamB));
 
-            var response = await this.requester.GetRequestResponseMessageAsync(FindMatchesByHeroPlayed, addedArguments);
-
-            response.EnsureSuccessStatusCode();
-
-            var findMatches = JsonConvert.DeserializeObject<List<FindMatch>>(await response.Content.ReadAsStringAsync());
-
-            return findMatches;
-        }
-
-        private List<string> CreateArgumentListForFindMatchesRequest(List<int> teamA = null, List<int> teamB = null)
+        private List<string> CreateArgumentListForFindMatchesRequest(
+            IReadOnlyCollection<int> teamA = null,
+            IReadOnlyCollection<int> teamB = null)
         {
             var addedArguments = new List<string>();
 

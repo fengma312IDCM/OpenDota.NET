@@ -1,28 +1,28 @@
 ﻿namespace OpenDotaDotNet.Models.HealthStatus
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class ServiceHealth
     {
-        [JsonProperty("parseDelay")]
+        [JsonPropertyName("parseDelay")]
         public ServiceUsage ParseDelay { get; set; }
 
-        [JsonProperty("cassandraUsage")]
+        [JsonPropertyName("cassandraUsage")]
         public ServiceUsage CassandraUsage { get; set; }
 
-        [JsonProperty("redisUsage")]
+        [JsonPropertyName("redisUsage")]
         public ServiceUsage RedisUsage { get; set; }
 
-        [JsonProperty("seqNumDelay")]
+        [JsonPropertyName("seqNumDelay")]
         public ServiceUsage SeqNumDelay { get; set; }
 
-        [JsonProperty("postgresUsage")]
+        [JsonPropertyName("postgresUsage")]
         public ServiceUsage PostgresUsage { get; set; }
 
-        [JsonProperty("steamApi")]
+        [JsonPropertyName("steamApi")]
         public ServiceUsage SteamApi { get; set; }
 
-        [JsonProperty("gcDelay")]
+        [JsonPropertyName("gcDelay")]
         public ServiceUsage GcDelay { get; set; }
     }
 }

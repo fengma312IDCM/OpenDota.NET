@@ -1,10 +1,10 @@
 ﻿namespace OpenDotaDotNet.Models.Distributions
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class Sum
     {
-        [JsonProperty("count")]
+        [JsonPropertyName("count")]
         public long Count { get; set; }
     }
 }

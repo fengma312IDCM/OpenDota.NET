@@ -10,7 +10,7 @@
         /// <summary>
         /// Get stats about hero performance in recent matches.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Stats about hero performance in recent matches.</returns>
         Task<List<HeroStats>> GetHeroStatsAsync();
     }
 }

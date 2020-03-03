@@ -11,7 +11,7 @@
         /// Get list of pro matches.
         /// </summary>
         /// <param name="lessThanMatchId">Get matches with a match ID lower than this value.</param>
-        /// <returns></returns>
+        /// <returns>List of pro matches.</returns>
         Task<List<ProMatch>> GetProMatchesAsync(long? lessThanMatchId = null);
     }
 }

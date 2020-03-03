@@ -1,19 +1,19 @@
 ﻿namespace OpenDotaDotNet.Models.Players
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class PlayerHistogram
     {
         /// <summary>
         /// Gets or sets the X factor of the histogram.
         /// </summary>
-        [JsonProperty("x")]
+        [JsonPropertyName("x")]
         public long? X { get; set; }
 
-        [JsonProperty("games")]
+        [JsonPropertyName("games")]
         public int Games { get; set; }
 
-        [JsonProperty("win")]
+        [JsonPropertyName("win")]
         public int Win { get; set; }
     }
 }

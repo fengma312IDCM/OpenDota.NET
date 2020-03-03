@@ -10,7 +10,7 @@
         /// <summary>
         /// Get list of pro players.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>List of pro players.</returns>
         Task<List<ProPlayer>> GetProPlayersAsync();
     }
 }

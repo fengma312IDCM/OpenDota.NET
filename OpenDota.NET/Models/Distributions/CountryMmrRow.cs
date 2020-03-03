@@ -1,19 +1,19 @@
 ﻿namespace OpenDotaDotNet.Models.Distributions
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class CountryMmrRow
     {
-        [JsonProperty("loccountrycode")]
+        [JsonPropertyName("loccountrycode")]
         public string LocCountryCode { get; set; }
 
-        [JsonProperty("count")]
+        [JsonPropertyName("count")]
         public long Count { get; set; }
 
-        [JsonProperty("avg")]
+        [JsonPropertyName("avg")]
         public long Avg { get; set; }
 
-        [JsonProperty("common")]
+        [JsonPropertyName("common")]
         public string Common { get; set; }
     }
 }

@@ -1,28 +1,28 @@
 ﻿namespace OpenDotaDotNet.Models.Distributions
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class Field
     {
-        [JsonProperty("name")]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
 
-        [JsonProperty("tableID")]
+        [JsonPropertyName("tableID")]
         public long TableId { get; set; }
 
-        [JsonProperty("columnID")]
+        [JsonPropertyName("columnID")]
         public long ColumnId { get; set; }
 
-        [JsonProperty("dataTypeID")]
+        [JsonPropertyName("dataTypeID")]
         public long DataTypeId { get; set; }
 
-        [JsonProperty("dataTypeSize")]
+        [JsonPropertyName("dataTypeSize")]
         public long DataTypeSize { get; set; }
 
-        [JsonProperty("dataTypeModifier")]
+        [JsonPropertyName("dataTypeModifier")]
         public long DataTypeModifier { get; set; }
 
-        [JsonProperty("format")]
+        [JsonPropertyName("format")]
         public string Format { get; set; }
     }
 }

@@ -1,13 +1,13 @@
 ﻿namespace OpenDotaDotNet.Models.Metadata
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class Cheese
     {
-        [JsonProperty("cheese")]
+        [JsonPropertyName("cheese")]
         public int CheeseAmount { get; set; }
 
-        [JsonProperty("goal")]
+        [JsonPropertyName("goal")]
         public int Goal { get; set; }
     }
 }

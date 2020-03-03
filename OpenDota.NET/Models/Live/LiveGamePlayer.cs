@@ -1,40 +1,40 @@
 ﻿namespace OpenDotaDotNet.Models.Live
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class LiveGamePlayer
     {
-        [JsonProperty("account_id")]
+        [JsonPropertyName("account_id")]
         public long AccountId { get; set; }
 
-        [JsonProperty("hero_id")]
+        [JsonPropertyName("hero_id")]
         public int HeroId { get; set; }
 
-        [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
 
-        [JsonProperty("country_code", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonPropertyName("country_code")]
         public string CountryCode { get; set; }
 
-        [JsonProperty("fantasy_role", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonPropertyName("fantasy_role")]
         public long? FantasyRole { get; set; }
 
-        [JsonProperty("team_id", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonPropertyName("team_id")]
         public long? TeamId { get; set; }
 
-        [JsonProperty("team_name")]
+        [JsonPropertyName("team_name")]
         public string TeamName { get; set; }
 
-        [JsonProperty("team_tag")]
+        [JsonPropertyName("team_tag")]
         public string TeamTag { get; set; }
 
-        [JsonProperty("is_locked", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonPropertyName("is_locked")]
         public bool? IsLocked { get; set; }
 
-        [JsonProperty("is_pro", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonPropertyName("is_pro")]
         public bool? IsPro { get; set; }
 
-        [JsonProperty("locked_until")]
+        [JsonPropertyName("locked_until")]
         public object LockedUntil { get; set; }
     }
 }

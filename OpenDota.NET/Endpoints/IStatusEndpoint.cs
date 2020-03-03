@@ -9,7 +9,7 @@
         /// <summary>
         /// Get current service statistics.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Current service statistics.</returns>
         Task<ServiceStatistics> GetServiceStatisticsAsync();
     }
 }

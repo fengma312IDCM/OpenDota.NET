@@ -1,10 +1,10 @@
 ﻿namespace OpenDotaDotNet.Models.Request
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class Job
     {
-        [JsonProperty("jobId")]
+        [JsonPropertyName("jobId")]
         public long JobId { get; set; }
     }
 }

@@ -3,18 +3,10 @@
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
-    using Newtonsoft.Json;
-
     using OpenDotaDotNet.Models.Heroes;
 
     public class HeroEndpoint : IHeroEndpoint
     {
-        private const string Heroes = "heroes";
-        private const string HeroMatches = "heroes/{0}/matches";
-        private const string HeroMatchups = "heroes/{0}/matchups";
-        private const string HeroDurations = "heroes/{0}/durations";
-        private const string HeroPlayers = "heroes/{0}/players";
-
         private readonly Requester requester;
 
         public HeroEndpoint(Requester requester)
@@ -26,79 +18,39 @@
         /// Get hero data.
         /// </summary>
         /// <returns>Hero data.</returns>
-        public async Task<List<Hero>> GetHeroesAsync()
-        {
-            var response = await this.requester.GetRequestResponseMessageAsync(Heroes);
-
-            response.EnsureSuccessStatusCode();
-
-            var heroes = JsonConvert.DeserializeObject<List<Hero>>(await response.Content.ReadAsStringAsync());
-
-            return heroes;
-        }
+        public async Task<List<Hero>> GetHeroesAsync() =>
+            await this.requester.GetResponseAsync<List<Hero>>("heroes");
 
         /// <summary>
         /// Get recent matches with a hero.
         /// </summary>
         /// <param name="heroId"></param>
         /// <returns>Recent matches with a hero.</returns>
-        public async Task<List<HeroMatch>> GetHeroMatchesAsync(int heroId)
-        {
-            var response = await this.requester.GetRequestResponseMessageAsync(string.Format(HeroMatches, heroId));
-
-            response.EnsureSuccessStatusCode();
-
-            var heroMatches = JsonConvert.DeserializeObject<List<HeroMatch>>(await response.Content.ReadAsStringAsync());
-
-            return heroMatches;
-        }
+        public async Task<List<HeroMatch>> GetHeroMatchesAsync(int heroId) =>
+            await this.requester.GetResponseAsync<List<HeroMatch>>($"heroes/{heroId}/matches");
 
         /// <summary>
         /// Get results against other heroes for a hero.
         /// </summary>
         /// <param name="heroId"></param>
         /// <returns>Results against other heroes for a hero.</returns>
-        public async Task<List<HeroMatchup>> GetHeroMatchupsAsync(int heroId)
-        {
-            var response = await this.requester.GetRequestResponseMessageAsync(string.Format(HeroMatchups, heroId));
-
-            response.EnsureSuccessStatusCode();
-
-            var heroMatchups = JsonConvert.DeserializeObject<List<HeroMatchup>>(await response.Content.ReadAsStringAsync());
-
-            return heroMatchups;
-        }
+        public async Task<List<HeroMatchup>> GetHeroMatchupsAsync(int heroId) =>
+            await this.requester.GetResponseAsync<List<HeroMatchup>>($"heroes/{heroId}/matchups");
 
         /// <summary>
         /// Get hero performance over a range of match durations.
         /// </summary>
         /// <param name="heroId"></param>
         /// <returns>Hero performance over a range of match durations.</returns>
-        public async Task<List<HeroDuration>> GetHeroDurationsAsync(int heroId)
-        {
-            var response = await this.requester.GetRequestResponseMessageAsync(string.Format(HeroDurations, heroId));
-
-            response.EnsureSuccessStatusCode();
-
-            var heroDurations = JsonConvert.DeserializeObject<List<HeroDuration>>(await response.Content.ReadAsStringAsync());
-
-            return heroDurations;
-        }
+        public async Task<List<HeroDuration>> GetHeroDurationsAsync(int heroId) =>
+            await this.requester.GetResponseAsync<List<HeroDuration>>($"heroes/{heroId}/durations");
 
         /// <summary>
         /// Get players who have played this hero.
         /// </summary>
         /// <param name="heroId"></param>
         /// <returns>Players who have played this hero.</returns>
-        public async Task<List<HeroPlayer>> GetHeroPlayersAsync(int heroId)
-        {
-            var response = await this.requester.GetRequestResponseMessageAsync(string.Format(HeroPlayers, heroId));
-
-            response.EnsureSuccessStatusCode();
-
-            var heroPlayers = JsonConvert.DeserializeObject<List<HeroPlayer>>(await response.Content.ReadAsStringAsync());
-
-            return heroPlayers;
-        }
+        public async Task<List<HeroPlayer>> GetHeroPlayersAsync(int heroId) =>
+            await this.requester.GetResponseAsync<List<HeroPlayer>>($"heroes/{heroId}/players");
     }
 }

@@ -5,6 +5,7 @@
     using System.Linq;
     using System.Net;
     using System.Net.Http;
+    using System.Text.Json;
     using System.Threading.Tasks;
 
     public class Requester : IDisposable
@@ -25,7 +26,38 @@
 
         public string ApiKey { get; set; }
 
-        public async Task<HttpResponseMessage> GetRequestResponseMessageAsync(string url, List<string> queryParameters = null)
+        public async Task<T> GetResponseAsync<T>(string url, List<string> queryParameters = null)
+        {
+            var response = await this.GetRequestResponseMessageAsync(url, queryParameters);
+            response.EnsureSuccessStatusCode();
+            var data = JsonSerializer.Deserialize<T>(
+                await response.Content.ReadAsStringAsync(),
+                new JsonSerializerOptions { IgnoreNullValues = true });
+            return data;
+        }
+
+        public async Task<HttpResponseMessage> PostRequest(string url, HttpContent content = null)
+        {
+            var response = await this.httpClient.PostAsync(url, content);
+            return response;
+        }
+
+        public void Dispose()
+        {
+            this.Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                this.httpClient?.Dispose();
+                this.httpClientHandler?.Dispose();
+            }
+        }
+
+        private async Task<HttpResponseMessage> GetRequestResponseMessageAsync(string url, List<string> queryParameters = null)
         {
             try
             {
@@ -56,27 +88,6 @@
                 Console.WriteLine(innerExceptionMsg);
 
                 return null;
-            }
-        }
-
-        public async Task<HttpResponseMessage> PostRequest(string url, HttpContent content = null)
-        {
-            var response = await this.httpClient.PostAsync(url, content);
-            return response;
-        }
-
-        public void Dispose()
-        {
-            this.Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-
-        protected virtual void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                this.httpClient?.Dispose();
-                this.httpClientHandler?.Dispose();
             }
         }
 

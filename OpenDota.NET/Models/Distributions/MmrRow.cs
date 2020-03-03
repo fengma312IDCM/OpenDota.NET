@@ -1,19 +1,19 @@
 ﻿namespace OpenDotaDotNet.Models.Distributions
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class MmrRow
     {
-        [JsonProperty("bin")]
+        [JsonPropertyName("bin")]
         public int Bin { get; set; }
 
-        [JsonProperty("bin_name")]
+        [JsonPropertyName("bin_name")]
         public int BinName { get; set; }
 
-        [JsonProperty("count")]
+        [JsonPropertyName("count")]
         public int Count { get; set; }
 
-        [JsonProperty("cumulative_sum")]
+        [JsonPropertyName("cumulative_sum")]
         public long CumulativeSum { get; set; }
     }
 }

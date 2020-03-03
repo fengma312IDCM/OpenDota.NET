@@ -1,13 +1,13 @@
 ﻿namespace OpenDotaDotNet.Models.Players
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class PlayerCountStats
     {
-        [JsonProperty("games")]
+        [JsonPropertyName("games")]
         public long Games { get; set; }
 
-        [JsonProperty("win")]
+        [JsonPropertyName("win")]
         public long Win { get; set; }
     }
 }

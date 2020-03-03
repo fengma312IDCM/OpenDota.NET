@@ -3,14 +3,10 @@
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
-    using Newtonsoft.Json;
-
     using OpenDotaDotNet.Models.Replays;
 
     public class ReplayEndpoint : IReplayEndpoint
     {
-        private const string ReplayData = "replays";
-
         private readonly Requester requester;
 
         public ReplayEndpoint(Requester requester)
@@ -23,18 +19,10 @@
         /// </summary>
         /// <param name="matchIds">Match IDs (array).</param>
         /// <returns>Data to construct a replay URL with.</returns>
-        public async Task<List<Replay>> GetReplayDataAsync(List<long> matchIds)
-        {
-            var addedArguments = this.CreateArgumentListForReplaysRequest(matchIds);
-
-            var response = await this.requester.GetRequestResponseMessageAsync(ReplayData, addedArguments);
-
-            response.EnsureSuccessStatusCode();
-
-            var heroBenchmarks = JsonConvert.DeserializeObject<List<Replay>>(await response.Content.ReadAsStringAsync());
-
-            return heroBenchmarks;
-        }
+        public async Task<List<Replay>> GetReplayDataAsync(List<long> matchIds) =>
+            await this.requester.GetResponseAsync<List<Replay>>(
+                "replays",
+                this.CreateArgumentListForReplaysRequest(matchIds));
 
         private List<string> CreateArgumentListForReplaysRequest(IReadOnlyCollection<long> matchIds = null)
         {

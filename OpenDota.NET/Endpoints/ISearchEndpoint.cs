@@ -11,7 +11,7 @@
         /// Search players by personaname.
         /// </summary>
         /// <param name="query"></param>
-        /// <returns></returns>
+        /// <returns>Players by personaname.</returns>
         Task<List<SearchPlayerResponse>> GetPlayersByNameAsync(string query);
     }
 }

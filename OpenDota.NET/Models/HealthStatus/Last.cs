@@ -1,16 +1,16 @@
 ﻿namespace OpenDotaDotNet.Models.HealthStatus
 {
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     public class Last
     {
-        [JsonProperty("match_id")]
+        [JsonPropertyName("match_id")]
         public long MatchId { get; set; }
 
-        [JsonProperty("duration")]
+        [JsonPropertyName("duration")]
         public int Duration { get; set; }
 
-        [JsonProperty("start_time")]
+        [JsonPropertyName("start_time")]
         public long StartTime { get; set; }
     }
 }
