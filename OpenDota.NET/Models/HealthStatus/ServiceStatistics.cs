@@ -30,10 +30,10 @@
         public int RequestsLastDay { get; set; }
 
         [JsonPropertyName("fullhistory_last_day")]
-        public int FullhistoryLastDay { get; set; }
+        public int FullHistoryLastDay { get; set; }
 
         [JsonPropertyName("webhooks_last_day")]
-        public int WebhooksLastDay { get; set; }
+        public int WebHooksLastDay { get; set; }
 
         [JsonPropertyName("feed_last_day")]
         public int FeedLastDay { get; set; }
@@ -65,18 +65,33 @@
         [JsonPropertyName("retriever")]
         public List<ApiPath> Retriever { get; set; }
 
+        /// <summary>
+        /// Gets or sets all available API paths.
+        /// </summary>
         [JsonPropertyName("api_paths")]
         public List<ApiPath> ApiPaths { get; set; }
 
+        /// <summary>
+        /// Gets or sets the last added matches.
+        /// </summary>
         [JsonPropertyName("last_added")]
-        public List<Last> LastAdded { get; set; }
+        public List<Last> LastAddedMatches { get; set; }
 
+        /// <summary>
+        /// Gets or sets the last parsed matches.
+        /// </summary>
         [JsonPropertyName("last_parsed")]
         public List<Last> LastParsed { get; set; }
 
+        /// <summary>
+        /// Gets or sets the load times.
+        /// </summary>
         [JsonPropertyName("load_times")]
         public Dictionary<string, long> LoadTimes { get; set; }
 
+        /// <summary>
+        /// Gets or sets the health.
+        /// </summary>
         [JsonPropertyName("health")]
         public ServiceHealth Health { get; set; }
     }
