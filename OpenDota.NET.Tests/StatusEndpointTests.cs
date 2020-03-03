@@ -62,6 +62,13 @@
             Assert.True(result.Health.RedisUsage.Threshold > 0);
             Assert.True(result.Health.SeqNumDelay.Threshold > 0);
             Assert.True(result.Health.SteamApi.Threshold > 0);
+            Assert.True(result.Health.CassandraUsage.Metric >= 0);
+            Assert.True(result.Health.GcDelay.Metric >= 0);
+            Assert.True(result.Health.ParseDelay.Metric >= 0);
+            Assert.True(result.Health.PostgresUsage.Metric >= 0);
+            Assert.True(result.Health.RedisUsage.Metric >= 0);
+            Assert.True(result.Health.SeqNumDelay.Metric <= 0);
+            Assert.True(result.Health.SteamApi.Metric >= 0);
         }
     }
 }

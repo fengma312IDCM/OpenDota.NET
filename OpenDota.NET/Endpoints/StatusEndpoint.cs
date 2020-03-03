@@ -13,10 +13,7 @@
             this.requester = requester;
         }
 
-        /// <summary>
-        /// Get current service statistics.
-        /// </summary>
-        /// <returns>Current service statistics.</returns>
+        /// <inheritdoc />
         public async Task<ServiceStatistics> GetServiceStatisticsAsync() =>
             await this.requester.GetResponseAsync<ServiceStatistics>("status");
     }

@@ -9,7 +9,7 @@
         /// <summary>
         /// Get service health data.
         /// </summary>
-        /// <returns>Service health data</returns>
+        /// <returns>Service health data.</returns>
         Task<ServiceHealth> GetServiceHealthDataAsync();
     }
 }

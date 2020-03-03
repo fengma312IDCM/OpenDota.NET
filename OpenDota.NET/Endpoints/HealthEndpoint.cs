@@ -13,10 +13,7 @@
             this.requester = requester;
         }
 
-        /// <summary>
-        /// Get service health data.
-        /// </summary>
-        /// <returns>Service health data.</returns>
+        /// <inheritdoc />
         public async Task<ServiceHealth> GetServiceHealthDataAsync() =>
             await this.requester.GetResponseAsync<ServiceHealth>("health");
     }
