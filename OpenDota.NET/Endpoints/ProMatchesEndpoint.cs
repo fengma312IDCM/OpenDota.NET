@@ -14,11 +14,7 @@
             this.requester = requester;
         }
 
-        /// <summary>
-        /// Get list of pro matches.
-        /// </summary>
-        /// <param name="lessThanMatchId"></param>
-        /// <returns>List of pro matches.</returns>
+        /// <inheritdoc />
         public async Task<List<ProMatch>> GetProMatchesAsync(long? lessThanMatchId = null) =>
             await this.requester.GetResponseAsync<List<ProMatch>>(
                 "proMatches",

@@ -14,10 +14,7 @@
             this.requester = requester;
         }
 
-        /// <summary>
-        /// Get list of pro players.
-        /// </summary>
-        /// <returns>List of pro players.</returns>
+        /// <inheritdoc />
         public async Task<List<ProPlayer>> GetProPlayersAsync() =>
             await this.requester.GetResponseAsync<List<ProPlayer>>("proPlayers");
     }

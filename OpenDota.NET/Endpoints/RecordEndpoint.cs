@@ -14,11 +14,7 @@
             this.requester = requester;
         }
 
-        /// <summary>
-        /// Get top performances in a stat.
-        /// </summary>
-        /// <param name="field">Field name to query.</param>
-        /// <returns>Top performances in a stat.</returns>
+        /// <inheritdoc />
         public async Task<List<Record>> GetRecordsByFieldAsync(RecordField field) =>
             await this.requester.GetResponseAsync<List<Record>>($"records/{field.Value}");
     }

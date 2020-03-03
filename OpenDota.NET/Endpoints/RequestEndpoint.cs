@@ -14,19 +14,11 @@
             this.requester = requester;
         }
 
-        /// <summary>
-        /// Get parse requester state.
-        /// </summary>
-        /// <param name="jobId"></param>
-        /// <returns>Parse requester state.</returns>
+        /// <inheritdoc />
         public async Task<ParseRequestState> GetParseRequestStateAsync(long jobId) =>
             await this.requester.GetResponseAsync<ParseRequestState>($"request/{jobId}");
 
-        /// <summary>
-        /// Submit a new parse requester.
-        /// </summary>
-        /// <param name="matchId"></param>
-        /// <returns>Parse request object.</returns>
+        /// <inheritdoc />
         public async Task<ParseRequest> SubmitNewParseRequestAsync(long matchId)
         {
             var response = await this.requester.PostRequest($"request/{matchId}");
