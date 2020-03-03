@@ -14,21 +14,13 @@
             this.requester = requester;
         }
 
+        /// <inheritdoc />
         public async Task<HeroBenchmark> GetHeroBenchmarkAsync(int heroId) =>
             await this.requester.GetResponseAsync<HeroBenchmark>(
                 "benchmarks",
-                this.CreateArgumentListForBenchmarksRequest(heroId));
-
-        private List<string> CreateArgumentListForBenchmarksRequest(int? heroId = null)
-        {
-            var addedArguments = new List<string>();
-
-            if (heroId != null)
-            {
-                addedArguments.Add($@"hero_id={heroId}");
-            }
-
-            return addedArguments;
-        }
+                new List<string>
+                    {
+                        $"hero_id={heroId}",
+                    });
     }
 }
