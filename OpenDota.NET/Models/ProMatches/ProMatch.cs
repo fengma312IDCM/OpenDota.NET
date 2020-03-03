@@ -87,5 +87,10 @@
         /// </summary>
         [JsonPropertyName("radiant_win")]
         public bool RadiantWin { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether the team/player/hero was on Radiant.
+        /// </summary>
+        public bool Radiant { get; set; }
     }
 }

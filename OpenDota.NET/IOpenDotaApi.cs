@@ -49,5 +49,7 @@
         IScenariosEndpoint Scenarios { get; }
 
         ISchemaEndpoint Schema { get; }
+
+        IFeedEndpoint Feed { get; }
     }
 }

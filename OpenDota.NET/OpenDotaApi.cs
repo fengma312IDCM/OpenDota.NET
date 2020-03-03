@@ -39,6 +39,7 @@
             this.Live = new LiveEndpoint(request);
             this.Scenarios = new ScenariosEndpoint(request);
             this.Schema = new SchemaEndpoint(request);
+            this.Feed = new FeedEndpoint(request);
         }
 
         public IMatchEndpoint Matches { get; }
@@ -86,6 +87,8 @@
         public IScenariosEndpoint Scenarios { get; }
 
         public ISchemaEndpoint Schema { get; }
+
+        public IFeedEndpoint Feed { get; }
 
         public static OpenDotaApi GetInstance(string apiKey = null, IWebProxy proxy = null)
         {
