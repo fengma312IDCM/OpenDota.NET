@@ -7,13 +7,13 @@
     using Xunit;
     using Xunit.Abstractions;
 
-    public class BenchmarksEndpointsTests
+    public class BenchmarksEndpointTests
     {
         private readonly ITestOutputHelper testOutputHelper;
 
         private readonly OpenDotaApi openDotaApi;
 
-        public BenchmarksEndpointsTests(ITestOutputHelper testOutputHelper)
+        public BenchmarksEndpointTests(ITestOutputHelper testOutputHelper)
         {
             this.testOutputHelper = testOutputHelper;
             this.openDotaApi = OpenDotaApi.GetInstance();

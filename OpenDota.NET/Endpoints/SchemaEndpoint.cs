@@ -18,7 +18,7 @@
         /// Get database schema.
         /// </summary>
         /// <returns>Database schema.</returns>
-        public async Task<List<DatabaseSchema>> GetDatabaseSchemaAsync() =>
+        public async Task<IList<DatabaseSchema>> GetDatabaseSchemaAsync() =>
             await this.requester.GetResponseAsync<List<DatabaseSchema>>("schema");
     }
 }

@@ -11,6 +11,6 @@
         /// Get database schema.
         /// </summary>
         /// <returns>Database schema.</returns>
-        Task<List<DatabaseSchema>> GetDatabaseSchemaAsync();
+        Task<IList<DatabaseSchema>> GetDatabaseSchemaAsync();
     }
 }
