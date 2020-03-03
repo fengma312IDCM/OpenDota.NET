@@ -8,6 +8,8 @@
     using System.Text.Json;
     using System.Threading.Tasks;
 
+    using OpenDotaDotNet.JsonConverters;
+
     public class Requester : IDisposable
     {
         private readonly HttpClient httpClient;
@@ -30,9 +32,13 @@
         {
             var response = await this.GetRequestResponseMessageAsync(url, queryParameters);
             response.EnsureSuccessStatusCode();
-            var data = JsonSerializer.Deserialize<T>(
-                await response.Content.ReadAsStringAsync(),
-                new JsonSerializerOptions { IgnoreNullValues = true });
+            var options = new JsonSerializerOptions { IgnoreNullValues = true, };
+            options.Converters.Add(new LongToStringConverter());
+            options.Converters.Add(new IntToStringConverter());
+            options.Converters.Add(new StringToIntConverter());
+            options.Converters.Add(new IntToBoolConverter());
+            var textResponse = await response.Content.ReadAsStringAsync();
+            var data = JsonSerializer.Deserialize<T>(textResponse, options);
             return data;
         }
 

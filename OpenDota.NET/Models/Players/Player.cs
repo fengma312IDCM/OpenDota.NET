@@ -8,10 +8,10 @@
         public string TrackedUntil { get; set; }
 
         [JsonPropertyName("solo_competitive_rank")]
-        public string SoloCompetitiveRank { get; set; }
+        public int? SoloCompetitiveRank { get; set; }
 
         [JsonPropertyName("competitive_rank")]
-        public string CompetitiveRank { get; set; }
+        public int? CompetitiveRank { get; set; }
 
         [JsonPropertyName("rank_tier")]
         public int? RankTier { get; set; }

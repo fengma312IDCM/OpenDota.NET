@@ -17,7 +17,7 @@
 
         // Returns integers and strings [need a full list]
         [JsonPropertyName("key")]
-        public Key? Key { get; set; }
+        public string Key { get; set; }
 
         // Slot of player who got the objective
         [JsonPropertyName("player_slot")]
