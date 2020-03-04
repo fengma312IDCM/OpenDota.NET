@@ -31,7 +31,7 @@
             this.Health = new HealthEndpoint(request);
             this.Request = new RequestEndpoint(request);
             this.FindMatch = new FindMatchEndpoint(request);
-            this.Hero = new HeroEndpoint(request);
+            this.Heroes = new HeroesEndpoint(request);
             this.HeroStats = new HeroStatsEndpoint(request);
             this.League = new LeagueEndpoint(request);
             this.Teams = new TeamsEndpoint(request);
@@ -71,7 +71,7 @@
 
         public IFindMatchEndpoint FindMatch { get; }
 
-        public IHeroEndpoint Hero { get; }
+        public IHeroesEndpoint Heroes { get; }
 
         public IHeroStatsEndpoint HeroStats { get; }
 

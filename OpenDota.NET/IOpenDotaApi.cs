@@ -32,7 +32,7 @@
 
         IFindMatchEndpoint FindMatch { get; }
 
-        IHeroEndpoint Hero { get; }
+        IHeroesEndpoint Heroes { get; }
 
         IHeroStatsEndpoint HeroStats { get; }
 

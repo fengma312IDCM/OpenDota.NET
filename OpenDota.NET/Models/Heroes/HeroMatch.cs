@@ -32,7 +32,7 @@
         /// Gets or sets identifier for the league the match took place in.
         /// </summary>
         [JsonPropertyName("leagueid")]
-        public long Leagueid { get; set; }
+        public long LeagueId { get; set; }
 
         /// <summary>
         /// Gets or sets name of league the match took place in.

@@ -5,7 +5,7 @@
 
     using OpenDotaDotNet.Models.Heroes;
 
-    public interface IHeroEndpoint
+    public interface IHeroesEndpoint
     {
         /// <summary>
         /// Get hero data.
