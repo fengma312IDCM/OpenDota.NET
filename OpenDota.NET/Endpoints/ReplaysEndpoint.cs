@@ -5,11 +5,11 @@
 
     using OpenDotaDotNet.Models.Replays;
 
-    public class ReplayEndpoint : IReplayEndpoint
+    public class ReplaysEndpoint : IReplaysEndpoint
     {
         private readonly Requester requester;
 
-        public ReplayEndpoint(Requester requester)
+        public ReplaysEndpoint(Requester requester)
         {
             this.requester = requester;
         }

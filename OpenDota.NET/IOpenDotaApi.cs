@@ -40,7 +40,7 @@
 
         ITeamsEndpoint Teams { get; }
 
-        IReplayEndpoint Replay { get; }
+        IReplaysEndpoint Replays { get; }
 
         IRecordEndpoint Record { get; }
 

@@ -88,7 +88,6 @@
             Assert.True(result.All(x => x.GamesPlayed > 0));
             Assert.True(result.All(x => x.Wins > 0));
             Assert.True(result.All(x => x.AccountId > 0));
-
         }
 
         [Fact]

@@ -5,7 +5,7 @@
 
     using OpenDotaDotNet.Models.Replays;
 
-    public interface IReplayEndpoint
+    public interface IReplaysEndpoint
     {
         /// <summary>
         /// Get data to construct a replay URL with.
