@@ -21,7 +21,7 @@
             this.Players = new PlayersEndpoint(request);
             this.ProPlayers = new ProPlayerEndpoint(request);
             this.ProMatches = new ProMatchesEndpoint(request);
-            this.PublicMatches = new PublicMatchEndpoint(request);
+            this.PublicMatches = new PublicMatchesEndpoint(request);
             this.Metadata = new MetadataEndpoint(request);
             this.Distributions = new DistributionsEndpoint(request);
             this.Search = new SearchEndpoint(request);
@@ -51,7 +51,7 @@
 
         public IProMatchEndpoint ProMatches { get; }
 
-        public IPublicMatchEndpoint PublicMatches { get; }
+        public IPublicMatchesEndpoint PublicMatches { get; }
 
         public IMetadataEndpoint Metadata { get; }
 

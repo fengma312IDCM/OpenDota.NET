@@ -22,7 +22,7 @@
         }
 
         [Fact]
-        public async Task TestGetDatabaseSchema()
+        public async Task TestGetReplayData()
         {
             var result = await this.openDotaApi.Replays.GetReplayDataAsync(new List<long> { 4986133311, 4986260666 });
             this.testOutputHelper.WriteLine(result.ToJsonString());

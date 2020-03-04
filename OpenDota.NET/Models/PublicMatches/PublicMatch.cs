@@ -40,9 +40,11 @@
         [JsonPropertyName("cluster")]
         public int Cluster { get; set; }
 
+        // TODO: Convert to int array
         [JsonPropertyName("radiant_team")]
         public string RadiantTeam { get; set; }
 
+        // TODO: Convert to int array
         [JsonPropertyName("dire_team")]
         public string DireTeam { get; set; }
     }

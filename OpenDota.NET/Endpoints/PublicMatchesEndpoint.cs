@@ -5,22 +5,16 @@
 
     using OpenDotaDotNet.Models.PublicMatches;
 
-    public class PublicMatchEndpoint : IPublicMatchEndpoint
+    public class PublicMatchesEndpoint : IPublicMatchesEndpoint
     {
         private readonly Requester requester;
 
-        public PublicMatchEndpoint(Requester requester)
+        public PublicMatchesEndpoint(Requester requester)
         {
             this.requester = requester;
         }
 
-        /// <summary>
-        /// Get list of randomly sampled public matches.
-        /// </summary>
-        /// <param name="mmrAscending">Order by MMR ascending.</param>
-        /// <param name="mmrDescending">Order by MMR descending.</param>
-        /// <param name="lessThanMatchId">Get matches with a match ID lower than this value.</param>
-        /// <returns>List of randomly sampled public matches.</returns>
+        /// <inheritdoc />
         public async Task<List<PublicMatch>> GetPublicMatchesAsync(
             int? mmrAscending = null,
             int? mmrDescending = null,

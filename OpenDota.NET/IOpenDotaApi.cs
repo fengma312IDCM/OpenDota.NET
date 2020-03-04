@@ -12,7 +12,7 @@
 
         IProMatchEndpoint ProMatches { get; }
 
-        IPublicMatchEndpoint PublicMatches { get; }
+        IPublicMatchesEndpoint PublicMatches { get; }
 
         IMetadataEndpoint Metadata { get; }
 
