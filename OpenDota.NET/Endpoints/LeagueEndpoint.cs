@@ -14,10 +14,7 @@
             this.requester = requester;
         }
 
-        /// <summary>
-        /// Get league data.
-        /// </summary>
-        /// <returns>League data.</returns>
+        /// <inheritdoc />
         public async Task<List<League>> GetLeaguesAsync() =>
             await this.requester.GetResponseAsync<List<League>>("leagues");
     }

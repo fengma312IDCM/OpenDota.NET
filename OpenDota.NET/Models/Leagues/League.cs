@@ -13,6 +13,9 @@
         [JsonPropertyName("banner")]
         public string Banner { get; set; }
 
+        /// <summary>
+        /// Gets or sets the tier for the tournament.
+        /// </summary>
         [JsonPropertyName("tier")]
         public LeagueTier? Tier { get; set; }
 

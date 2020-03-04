@@ -6,6 +6,7 @@
     using System.Net;
     using System.Net.Http;
     using System.Text.Json;
+    using System.Text.Json.Serialization;
     using System.Threading.Tasks;
 
     using OpenDotaDotNet.JsonConverters;
@@ -32,7 +33,8 @@
         {
             var response = await this.GetRequestResponseMessageAsync(url, queryParameters);
             response.EnsureSuccessStatusCode();
-            var options = new JsonSerializerOptions { IgnoreNullValues = true, };
+            var options = new JsonSerializerOptions { IgnoreNullValues = true, PropertyNameCaseInsensitive = true };
+            options.Converters.Add(new JsonStringEnumConverter());
             options.Converters.Add(new LongToStringConverter());
             options.Converters.Add(new IntToStringConverter());
             options.Converters.Add(new StringToIntConverter());
