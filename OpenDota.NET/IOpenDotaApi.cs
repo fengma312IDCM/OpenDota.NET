@@ -2,9 +2,15 @@
 {
     using OpenDotaDotNet.Endpoints;
 
+    /// <summary>
+    /// The OpenDota API provides Dota 2 related data including advanced match data extracted from match replays.
+    /// Full documentation is available on https://docs.opendota.com/
+    /// You can find data that can be used to convert hero and ability IDs and other information provided by the
+    /// API from the [dotaconstants](https://github.com/odota/dotaconstants) repository.
+    /// </summary>
     public interface IOpenDotaApi
     {
-        IMatchEndpoint Matches { get; }
+        IMatchesEndpoint Matches { get; }
 
         IPlayersEndpoint Players { get; }
 

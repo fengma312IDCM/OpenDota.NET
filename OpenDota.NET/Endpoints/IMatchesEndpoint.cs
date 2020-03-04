@@ -4,7 +4,7 @@
 
     using OpenDotaDotNet.Models.Matches;
 
-    public interface IMatchEndpoint
+    public interface IMatchesEndpoint
     {
         /// <summary>
         /// Get match data by ID.
