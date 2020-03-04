@@ -5,7 +5,7 @@
 
     using OpenDotaDotNet.Models.Teams;
 
-    public interface ITeamEndpoint
+    public interface ITeamsEndpoint
     {
         /// <summary>
         /// Get team data.

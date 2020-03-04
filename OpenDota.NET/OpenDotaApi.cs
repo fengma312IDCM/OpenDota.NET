@@ -33,7 +33,7 @@
             this.Hero = new HeroEndpoint(request);
             this.HeroStats = new HeroStatsEndpoint(request);
             this.League = new LeagueEndpoint(request);
-            this.Team = new TeamEndpoint(request);
+            this.Teams = new TeamsEndpoint(request);
             this.Replay = new ReplayEndpoint(request);
             this.Record = new RecordEndpoint(request);
             this.Live = new LiveEndpoint(request);
@@ -76,7 +76,7 @@
 
         public ILeagueEndpoint League { get; }
 
-        public ITeamEndpoint Team { get; }
+        public ITeamsEndpoint Teams { get; }
 
         public IReplayEndpoint Replay { get; }
 

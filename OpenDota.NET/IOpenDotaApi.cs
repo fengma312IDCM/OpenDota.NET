@@ -38,7 +38,7 @@
 
         ILeagueEndpoint League { get; }
 
-        ITeamEndpoint Team { get; }
+        ITeamsEndpoint Teams { get; }
 
         IReplayEndpoint Replay { get; }
 
