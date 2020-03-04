@@ -26,7 +26,7 @@
         public async Task TestPlayerGetPlayerById()
         {
             var openDota = OpenDotaApi.GetInstance();
-            var playerInfo = await openDota.Player.GetPlayerByIdAsync(PlayerId);
+            var playerInfo = await openDota.Players.GetPlayerByIdAsync(PlayerId);
 
             this.testOutputHelper.WriteLine($@"Basic details of player with id {PlayerId}.");
             this.testOutputHelper.WriteLine($@"Steam name: {playerInfo.Profile.Personaname}");
@@ -44,7 +44,7 @@
         {
             var openDota = OpenDotaApi.GetInstance();
             this.testOutputHelper.WriteLine("Win loss ratio");
-            var playerWinLoss = await openDota.Player.GetPlayerWinLossByIdAsync(PlayerId);
+            var playerWinLoss = await openDota.Players.GetPlayerWinLossByIdAsync(PlayerId);
             this.testOutputHelper.WriteLine($@"Total games played: {playerWinLoss.Wins + playerWinLoss.Losses}.");
             this.testOutputHelper.WriteLine($@"Total wins: {playerWinLoss.Wins}.");
             this.testOutputHelper.WriteLine($@"Total losses: {playerWinLoss.Losses}.");
@@ -56,7 +56,7 @@
             var openDota = OpenDotaApi.GetInstance();
             this.testOutputHelper.WriteLine("Player heroes");
             var playerQueryParameters = new PlayerEndpointParameters { Limit = 20 };
-            var playerHeroes = await openDota.Player.GetPlayerHeroesAsync(PlayerId, playerQueryParameters);
+            var playerHeroes = await openDota.Players.GetPlayerHeroesAsync(PlayerId, playerQueryParameters);
 
             var playerMostPlayedHeroLast20 = playerHeroes.FirstOrDefault();
 

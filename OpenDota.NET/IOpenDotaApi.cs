@@ -6,7 +6,7 @@
     {
         IMatchEndpoint Matches { get; }
 
-        IPlayerEndpoint Player { get; }
+        IPlayersEndpoint Players { get; }
 
         IProPlayerEndpoint ProPlayers { get; }
 

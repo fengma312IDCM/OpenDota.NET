@@ -5,11 +5,11 @@
 
     using OpenDotaDotNet.Models.Players;
 
-    public class PlayerEndpoint : IPlayerEndpoint
+    public class PlayersEndpoint : IPlayersEndpoint
     {
         private readonly Requester requester;
 
-        public PlayerEndpoint(Requester requester)
+        public PlayersEndpoint(Requester requester)
         {
             this.requester = requester;
         }

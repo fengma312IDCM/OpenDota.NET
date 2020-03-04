@@ -5,7 +5,7 @@
 
     using OpenDotaDotNet.Models.Players;
 
-    public interface IPlayerEndpoint
+    public interface IPlayersEndpoint
     {
         /// <summary>
         /// Gets player data.

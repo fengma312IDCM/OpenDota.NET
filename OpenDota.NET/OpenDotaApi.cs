@@ -18,7 +18,7 @@
         {
             var request = new Requester(apiKey, proxy);
             this.Matches = new MatchEndpoint(request);
-            this.Player = new PlayerEndpoint(request);
+            this.Players = new PlayersEndpoint(request);
             this.ProPlayers = new ProPlayerEndpoint(request);
             this.ProMatches = new ProMatchesEndpoint(request);
             this.PublicMatches = new PublicMatchEndpoint(request);
@@ -45,7 +45,7 @@
 
         public IMatchEndpoint Matches { get; }
 
-        public IPlayerEndpoint Player { get; }
+        public IPlayersEndpoint Players { get; }
 
         public IProPlayerEndpoint ProPlayers { get; }
 

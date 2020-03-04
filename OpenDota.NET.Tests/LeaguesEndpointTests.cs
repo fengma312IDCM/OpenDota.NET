@@ -22,7 +22,7 @@
         }
 
         [Fact]
-        public async Task TestGetTeams()
+        public async Task TestGetLeagues()
         {
             var result = await this.openDotaApi.League.GetLeaguesAsync();
             this.testOutputHelper.WriteLine(result.ToJsonString());
