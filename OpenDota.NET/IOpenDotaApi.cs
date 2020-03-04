@@ -42,7 +42,7 @@
 
         IReplaysEndpoint Replays { get; }
 
-        IRecordEndpoint Record { get; }
+        IRecordsEndpoint Records { get; }
 
         ILiveEndpoint Live { get; }
 

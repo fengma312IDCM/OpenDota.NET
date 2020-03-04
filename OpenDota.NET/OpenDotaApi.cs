@@ -36,7 +36,7 @@
             this.League = new LeagueEndpoint(request);
             this.Teams = new TeamsEndpoint(request);
             this.Replays = new ReplaysEndpoint(request);
-            this.Record = new RecordEndpoint(request);
+            this.Records = new RecordsEndpoint(request);
             this.Live = new LiveEndpoint(request);
             this.Scenarios = new ScenariosEndpoint(request);
             this.Schema = new SchemaEndpoint(request);
@@ -81,7 +81,7 @@
 
         public IReplaysEndpoint Replays { get; }
 
-        public IRecordEndpoint Record { get; }
+        public IRecordsEndpoint Records { get; }
 
         public ILiveEndpoint Live { get; }
 

@@ -4,7 +4,7 @@
     using System.Text.Json;
     using System.Text.Json.Serialization;
 
-    public class IntToBoolConverter : JsonConverter<bool>
+    public class BoolConverter : JsonConverter<bool>
     {
         public override bool Read(ref Utf8JsonReader reader, Type type, JsonSerializerOptions options)
         {

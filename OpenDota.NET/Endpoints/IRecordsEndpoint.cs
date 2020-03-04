@@ -5,13 +5,13 @@
 
     using OpenDotaDotNet.Models.Records;
 
-    public interface IRecordEndpoint
+    public interface IRecordsEndpoint
     {
         /// <summary>
-        /// Get top performances in a stat.
+        /// Get records in ranked matches. Records reset monthly.
         /// </summary>
         /// <param name="field">Field name to query.</param>
-        /// <returns>Top performances in a stat.</returns>
+        /// <returns>Records in ranked matches.</returns>
         Task<List<Record>> GetRecordsByFieldAsync(RecordField field);
     }
 }

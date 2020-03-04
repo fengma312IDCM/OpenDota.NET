@@ -1,5 +1,6 @@
 ﻿namespace OpenDotaDotNet.Models.Records
 {
+    // TODO: Convert to enumeration
     public class RecordField
     {
         private RecordField(string value)

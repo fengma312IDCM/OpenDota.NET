@@ -35,10 +35,11 @@
             response.EnsureSuccessStatusCode();
             var options = new JsonSerializerOptions { IgnoreNullValues = true, PropertyNameCaseInsensitive = true };
             options.Converters.Add(new JsonStringEnumConverter());
-            options.Converters.Add(new LongToStringConverter());
-            options.Converters.Add(new IntToStringConverter());
-            options.Converters.Add(new StringToIntConverter());
-            options.Converters.Add(new IntToBoolConverter());
+            options.Converters.Add(new LongConverter());
+            options.Converters.Add(new IntConverter());
+            options.Converters.Add(new NullableIntConverter());
+            options.Converters.Add(new StringConverter());
+            options.Converters.Add(new BoolConverter());
             var textResponse = await response.Content.ReadAsStringAsync();
             var data = JsonSerializer.Deserialize<T>(textResponse, options);
             return data;

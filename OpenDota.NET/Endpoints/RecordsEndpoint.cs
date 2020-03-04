@@ -5,11 +5,11 @@
 
     using OpenDotaDotNet.Models.Records;
 
-    public class RecordEndpoint : IRecordEndpoint
+    public class RecordsEndpoint : IRecordsEndpoint
     {
         private readonly Requester requester;
 
-        public RecordEndpoint(Requester requester)
+        public RecordsEndpoint(Requester requester)
         {
             this.requester = requester;
         }

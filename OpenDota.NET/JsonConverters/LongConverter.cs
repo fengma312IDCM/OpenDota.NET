@@ -7,7 +7,7 @@
     using System.Text.Json.Serialization;
 
     // https://github.com/dotnet/runtime/issues/30255#issuecomment-515470681
-    public class LongToStringConverter : JsonConverter<long>
+    public class LongConverter : JsonConverter<long>
     {
         public override long Read(ref Utf8JsonReader reader, Type type, JsonSerializerOptions options)
         {

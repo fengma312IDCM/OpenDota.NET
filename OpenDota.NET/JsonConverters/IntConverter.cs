@@ -6,7 +6,7 @@
     using System.Text.Json;
     using System.Text.Json.Serialization;
 
-    public class IntToStringConverter : JsonConverter<int>
+    public class IntConverter : JsonConverter<int>
     {
         public override int Read(ref Utf8JsonReader reader, Type type, JsonSerializerOptions options)
         {
@@ -21,6 +21,10 @@
                 if (int.TryParse(reader.GetString(), out number))
                 {
                     return number;
+                }
+                else
+                {
+                    return 0;
                 }
             }
 
