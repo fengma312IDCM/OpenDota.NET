@@ -79,6 +79,7 @@
 
         /// <summary>
         /// Gets distribution of matches in a single stat.
+        /// Available field values can be seen on https://www.opendota.com/players/34505203/histograms.
         /// </summary>
         /// <param name="playerId">Steam32 account ID.</param>
         /// <param name="field">Field to aggregate on.</param>

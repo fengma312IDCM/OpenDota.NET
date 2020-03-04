@@ -14,10 +14,7 @@
             this.requester = requester;
         }
 
-        /// <summary>
-        /// Get top currently ongoing live games.
-        /// </summary>
-        /// <returns>Top currently ongoing live games.</returns>
+        /// <inheritdoc />
         public async Task<List<LiveGame>> GetTopLiveGamesAsync() =>
             await this.requester.GetResponseAsync<List<LiveGame>>("live");
     }
