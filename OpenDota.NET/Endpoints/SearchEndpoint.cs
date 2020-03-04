@@ -18,18 +18,9 @@
         public async Task<List<SearchPlayerResponse>> GetPlayersByNameAsync(string query) =>
             await this.requester.GetResponseAsync<List<SearchPlayerResponse>>(
                 "search",
-                this.CreateArgumentListForSearchPlayersRequest(query));
-
-        private List<string> CreateArgumentListForSearchPlayersRequest(string query = null)
-        {
-            var addedArguments = new List<string>();
-
-            if (query != null)
-            {
-                addedArguments.Add($@"q={query}");
-            }
-
-            return addedArguments;
-        }
+                new List<string>
+                    {
+                        $@"q={query}",
+                    });
     }
 }

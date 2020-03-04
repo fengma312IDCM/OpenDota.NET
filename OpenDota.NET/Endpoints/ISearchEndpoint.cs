@@ -10,7 +10,7 @@
         /// <summary>
         /// Search players by personaname.
         /// </summary>
-        /// <param name="query"></param>
+        /// <param name="query">Search string.</param>
         /// <returns>Players by personaname.</returns>
         Task<List<SearchPlayerResponse>> GetPlayersByNameAsync(string query);
     }
