@@ -6,6 +6,7 @@
 
     /// <summary>
     /// The OpenDota API provides Dota 2 related data including advanced match data extracted from match replays.
+    /// Full documentation is available on https://docs.opendota.com/
     /// You can find data that can be used to convert hero and ability IDs and other information provided by the
     /// API from the [dotaconstants](https://github.com/odota/dotaconstants) repository.
     /// </summary>
@@ -22,7 +23,7 @@
             this.ProMatches = new ProMatchesEndpoint(request);
             this.PublicMatches = new PublicMatchEndpoint(request);
             this.Metadata = new MetadataEndpoint(request);
-            this.MmrDistribution = new MmrDistributionEndpoint(request);
+            this.Distributions = new DistributionsEndpoint(request);
             this.Search = new SearchEndpoint(request);
             this.Ranking = new RankingEndpoint(request);
             this.Benchmarks = new BenchmarksEndpoint(request);
@@ -54,7 +55,7 @@
 
         public IMetadataEndpoint Metadata { get; }
 
-        public IMmrDistributionEndpoint MmrDistribution { get; }
+        public IDistributionsEndpoint Distributions { get; }
 
         public ISearchEndpoint Search { get; }
 

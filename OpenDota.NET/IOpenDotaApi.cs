@@ -16,7 +16,7 @@
 
         IMetadataEndpoint Metadata { get; }
 
-        IMmrDistributionEndpoint MmrDistribution { get; }
+        IDistributionsEndpoint Distributions { get; }
 
         ISearchEndpoint Search { get; }
 

@@ -23,6 +23,9 @@
         //// [JsonPropertyName("_parsers")]
         //// public List<object> Parsers { get; set; }
 
+        //// [JsonPropertyName("_types")]
+        //// public object Types { get; set; }
+
         //// [JsonPropertyName("RowCtor")]
         //// public object RowCtor { get; set; }
 

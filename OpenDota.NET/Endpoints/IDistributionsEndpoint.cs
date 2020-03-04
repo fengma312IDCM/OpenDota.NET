@@ -4,12 +4,12 @@
 
     using OpenDotaDotNet.Models.Distributions;
 
-    public interface IMmrDistributionEndpoint
+    public interface IDistributionsEndpoint
     {
         /// <summary>
         /// Gets distributions of MMR data by bracket and country.
         /// </summary>
         /// <returns>Distributions of MMR data by bracket and country.</returns>
-        Task<MmrDistribution> GetMmrDistributionAsync();
+        Task<MmrDistribution> GetDistributionsAsync();
     }
 }
