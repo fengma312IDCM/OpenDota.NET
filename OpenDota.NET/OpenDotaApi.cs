@@ -20,7 +20,7 @@
             this.Metadata = new MetadataEndpoint(request);
             this.Distributions = new DistributionsEndpoint(request);
             this.Search = new SearchEndpoint(request);
-            this.Ranking = new RankingEndpoint(request);
+            this.Rankings = new RankingsEndpoint(request);
             this.Benchmarks = new BenchmarksEndpoint(request);
             this.Status = new StatusEndpoint(request);
             this.Health = new HealthEndpoint(request);
@@ -54,7 +54,7 @@
 
         public ISearchEndpoint Search { get; }
 
-        public IRankingEndpoint Ranking { get; }
+        public IRankingsEndpoint Rankings { get; }
 
         public IBenchmarkEndpoint Benchmarks { get; }
 

@@ -26,7 +26,7 @@
 
         ISearchEndpoint Search { get; }
 
-        IRankingEndpoint Ranking { get; }
+        IRankingsEndpoint Rankings { get; }
 
         IBenchmarkEndpoint Benchmarks { get; }
 

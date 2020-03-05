@@ -4,7 +4,7 @@
 
     using OpenDotaDotNet.Models.Rankings;
 
-    public interface IRankingEndpoint
+    public interface IRankingsEndpoint
     {
         /// <summary>
         /// Gets top players by hero.
