@@ -17,7 +17,7 @@
         public string LocalizedName { get; set; }
 
         [JsonPropertyName("primary_attr")]
-        public HeroPrimaryAttribute PrimaryAttr { get; set; }
+        public HeroPrimaryAttribute PrimaryAttribute { get; set; }
 
         [JsonPropertyName("attack_type")]
         public HeroAttackType AttackType { get; set; }
@@ -26,7 +26,7 @@
         public List<HeroRole> Roles { get; set; }
 
         [JsonPropertyName("img")]
-        public string Img { get; set; }
+        public string Image { get; set; }
 
         [JsonPropertyName("icon")]
         public string Icon { get; set; }
@@ -56,22 +56,22 @@
         public int BaseAttackMax { get; set; }
 
         [JsonPropertyName("base_str")]
-        public int BaseStr { get; set; }
+        public int BaseStrength { get; set; }
 
         [JsonPropertyName("base_agi")]
-        public int BaseAgi { get; set; }
+        public int BaseAgility { get; set; }
 
         [JsonPropertyName("base_int")]
-        public int BaseInt { get; set; }
+        public int BaseIntelligence { get; set; }
 
         [JsonPropertyName("str_gain")]
-        public double StrGain { get; set; }
+        public double StrengthGain { get; set; }
 
         [JsonPropertyName("agi_gain")]
-        public double AgiGain { get; set; }
+        public double AgilityGain { get; set; }
 
         [JsonPropertyName("int_gain")]
-        public double IntGain { get; set; }
+        public double IntelligenceGain { get; set; }
 
         [JsonPropertyName("attack_range")]
         public int AttackRange { get; set; }
@@ -107,57 +107,57 @@
         public int ProPick { get; set; }
 
         [JsonPropertyName("1_pick")]
-        public int The1_Pick { get; set; }
+        public int HeraldPicks { get; set; }
 
         [JsonPropertyName("1_win")]
-        public int The1_Win { get; set; }
+        public int HeraldWins { get; set; }
 
         [JsonPropertyName("2_pick")]
-        public int The2_Pick { get; set; }
+        public int GuardianPicks { get; set; }
 
         [JsonPropertyName("2_win")]
-        public int The2_Win { get; set; }
+        public int GuardianWins { get; set; }
 
         [JsonPropertyName("3_pick")]
-        public int The3_Pick { get; set; }
+        public int CrusaderPicks { get; set; }
 
         [JsonPropertyName("3_win")]
-        public int The3_Win { get; set; }
+        public int CrusaderWins { get; set; }
 
         [JsonPropertyName("4_pick")]
-        public int The4_Pick { get; set; }
+        public int ArchonPicks { get; set; }
 
         [JsonPropertyName("4_win")]
-        public int The4_Win { get; set; }
+        public int ArchonWins { get; set; }
 
         [JsonPropertyName("5_pick")]
-        public int The5_Pick { get; set; }
+        public int LegendPicks { get; set; }
 
         [JsonPropertyName("5_win")]
-        public int The5_Win { get; set; }
+        public int LegendWins { get; set; }
 
         [JsonPropertyName("6_pick")]
-        public int The6_Pick { get; set; }
+        public int AncientPicks { get; set; }
 
         [JsonPropertyName("6_win")]
-        public int The6_Win { get; set; }
+        public int AncientWins { get; set; }
 
         [JsonPropertyName("7_pick")]
-        public int The7_Pick { get; set; }
+        public int DivinePicks { get; set; }
 
         [JsonPropertyName("7_win")]
-        public int The7_Win { get; set; }
+        public int DivineWins { get; set; }
 
         [JsonPropertyName("8_pick")]
-        public int The8_Pick { get; set; }
+        public int ImmortalPicks { get; set; }
 
         [JsonPropertyName("8_win")]
-        public int The8_Win { get; set; }
+        public int ImmortalWins { get; set; }
 
         [JsonPropertyName("null_pick")]
-        public long NullPick { get; set; }
+        public long NullPicks { get; set; }
 
         [JsonPropertyName("null_win")]
-        public long NullWin { get; set; }
+        public long NullWins { get; set; }
     }
 }
