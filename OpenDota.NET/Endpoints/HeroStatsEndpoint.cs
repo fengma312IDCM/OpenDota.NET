@@ -14,10 +14,7 @@
             this.requester = requester;
         }
 
-        /// <summary>
-        /// Get stats about hero performance in recent matches.
-        /// </summary>
-        /// <returns>Stats about hero performance in recent matches.</returns>
+        /// <inheritdoc />
         public async Task<List<HeroStats>> GetHeroStatsAsync() =>
             await this.requester.GetResponseAsync<List<HeroStats>>("heroStats");
     }

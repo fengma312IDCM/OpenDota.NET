@@ -13,10 +13,7 @@
             this.requester = requester;
         }
 
-        /// <summary>
-        /// Gets site metadata.
-        /// </summary>
-        /// <returns>Site metadata.</returns>
+        /// <inheritdoc />
         public async Task<Metadata> GetMetadataAsync() =>
             await this.requester.GetResponseAsync<Metadata>("metadata");
     }
