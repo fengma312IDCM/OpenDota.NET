@@ -7,6 +7,7 @@
     // TODO: Implement PLAYERS BY RANK endpoint
     // TODO: Implement PARSED MATCHES endpoint
     // TODO: Implement EXPLORER endpoint
+    // TODO: Implement CONSTANTS endpoint
 
     /// <inheritdoc />
     public class OpenDotaApi : IOpenDotaApi
