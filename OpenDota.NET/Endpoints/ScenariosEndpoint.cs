@@ -14,33 +14,19 @@
             this.requester = requester;
         }
 
-        /// <summary>
-        /// Gets win rates for certain item timings on a hero for items that cost at least 1400 gold.
-        /// </summary>
-        /// <param name="item">Filter by item name e.g. "spirit_vessel".</param>
-        /// <param name="heroId">Hero ID.</param>
-        /// <returns>Win rates for certain item timings on a hero for items that cost at least 1400 gold.</returns>
+        /// <inheritdoc />
         public async Task<List<HeroItemTiming>> GetWinRateForCertainItemTimingsOnHeroesAsync(string item = null, int? heroId = null) =>
             await this.requester.GetResponseAsync<List<HeroItemTiming>>(
                 "scenarios/itemTimings",
                 this.CreateArgumentListForScenariosRequest(item, heroId));
 
-        /// <summary>
-        /// Gets win rates for heroes in certain lane roles.
-        /// </summary>
-        /// <param name="laneRole">Filter by lane role 1-4 (Safe, Mid, Off, Jungle).</param>
-        /// <param name="heroId">Hero ID.</param>
-        /// <returns>Win rates for heroes in certain lane roles.</returns>
+        /// <inheritdoc />
         public async Task<List<HeroLaneRoleWinrate>> GetWinRateForHeroesInCertainLaneRolesAsync(int? laneRole = null, int? heroId = null) =>
             await this.requester.GetResponseAsync<List<HeroLaneRoleWinrate>>(
                 "scenarios/laneRoles",
                 this.CreateArgumentListForScenariosRequest(null, heroId, laneRole));
 
-        /// <summary>
-        /// Gets miscellaneous team scenarios.
-        /// </summary>
-        /// <param name="scenario">Example value: pos_chat_1min,neg_chat_1min,courier_kill,first_blood.</param>
-        /// <returns>Miscellaneous team scenarios.</returns>
+        /// <inheritdoc />
         public async Task<List<MiscellaneousTeamScenario>> GetMiscellaneousTeamScenariosAsync(string scenario = null) =>
             await this.requester.GetResponseAsync<List<MiscellaneousTeamScenario>>(
                 "scenarios/misc",
@@ -52,22 +38,22 @@
 
             if (item != null)
             {
-                addedArguments.Add($@"item={item}");
+                addedArguments.Add($"item={item}");
             }
 
             if (heroId != null)
             {
-                addedArguments.Add($@"hero_id={heroId}");
+                addedArguments.Add($"hero_id={heroId}");
             }
 
             if (laneRole != null)
             {
-                addedArguments.Add($@"lane_role={laneRole}");
+                addedArguments.Add($"lane_role={laneRole}");
             }
 
             if (scenario != null)
             {
-                addedArguments.Add($@"scenario={scenario}");
+                addedArguments.Add($"scenario={scenario}");
             }
 
             return addedArguments;
