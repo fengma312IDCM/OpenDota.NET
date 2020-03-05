@@ -36,7 +36,7 @@
 
         IRequestEndpoint Request { get; }
 
-        IFindMatchEndpoint FindMatch { get; }
+        IFindMatchesEndpoint FindMatches { get; }
 
         IHeroesEndpoint Heroes { get; }
 

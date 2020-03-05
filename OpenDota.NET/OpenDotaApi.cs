@@ -29,7 +29,7 @@
             this.Status = new StatusEndpoint(request);
             this.Health = new HealthEndpoint(request);
             this.Request = new RequestEndpoint(request);
-            this.FindMatch = new FindMatchEndpoint(request);
+            this.FindMatches = new FindMatchesEndpoint(request);
             this.Heroes = new HeroesEndpoint(request);
             this.HeroStats = new HeroStatsEndpoint(request);
             this.League = new LeagueEndpoint(request);
@@ -68,7 +68,7 @@
 
         public IRequestEndpoint Request { get; }
 
-        public IFindMatchEndpoint FindMatch { get; }
+        public IFindMatchesEndpoint FindMatches { get; }
 
         public IHeroesEndpoint Heroes { get; }
 

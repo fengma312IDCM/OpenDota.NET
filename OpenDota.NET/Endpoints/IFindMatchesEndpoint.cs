@@ -5,7 +5,7 @@
 
     using OpenDotaDotNet.Models.FindMatches;
 
-    public interface IFindMatchEndpoint
+    public interface IFindMatchesEndpoint
     {
         /// <summary>
         /// Finds matches by heroes played (currently includes matches played after April 2019).

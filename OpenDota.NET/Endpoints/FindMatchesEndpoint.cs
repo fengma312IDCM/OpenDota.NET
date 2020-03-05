@@ -5,21 +5,16 @@
 
     using OpenDotaDotNet.Models.FindMatches;
 
-    public class FindMatchEndpoint : IFindMatchEndpoint
+    public class FindMatchesEndpoint : IFindMatchesEndpoint
     {
         private readonly Requester requester;
 
-        public FindMatchEndpoint(Requester requester)
+        public FindMatchesEndpoint(Requester requester)
         {
             this.requester = requester;
         }
 
-        /// <summary>
-        /// Finds matches by heroes played (currently includes matches played after April 2019).
-        /// </summary>
-        /// <param name="teamA"></param>
-        /// <param name="teamB"></param>
-        /// <returns>Matched found.</returns>
+        /// <inheritdoc />
         public async Task<List<FindMatch>>
             FindMatchesByHeroesPlayedAsync(List<int> teamA = null, List<int> teamB = null) =>
             await this.requester.GetResponseAsync<List<FindMatch>>(
@@ -36,7 +31,7 @@
             {
                 foreach (var heroId in teamA)
                 {
-                    addedArguments.Add($@"teamA={heroId}");
+                    addedArguments.Add($"teamA={heroId}");
                 }
             }
 
@@ -44,7 +39,7 @@
             {
                 foreach (var heroId in teamB)
                 {
-                    addedArguments.Add($@"teamB={heroId}");
+                    addedArguments.Add($"teamB={heroId}");
                 }
             }
 
