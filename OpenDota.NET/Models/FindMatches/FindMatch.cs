@@ -18,6 +18,6 @@
         public bool TeamAWin { get; set; }
 
         [JsonPropertyName("start_time")]
-        public long? StartTime { get; set; }
+        public long StartTime { get; set; }
     }
 }
