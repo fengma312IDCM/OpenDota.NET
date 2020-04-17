@@ -12,9 +12,7 @@
     /// <inheritdoc />
     public class OpenDotaApi : IOpenDotaApi
     {
-        private static OpenDotaApi instance;
-
-        private OpenDotaApi(string apiKey, IWebProxy proxy)
+        public OpenDotaApi(string apiKey = null, IWebProxy proxy = null)
         {
             var request = new Requester(apiKey, proxy);
             this.Matches = new MatchesEndpoint(request);
@@ -90,10 +88,5 @@
         public ISchemaEndpoint Schema { get; }
 
         public IFeedEndpoint Feed { get; }
-
-        public static OpenDotaApi GetInstance(string apiKey = null, IWebProxy proxy = null)
-        {
-            return instance ?? (instance = new OpenDotaApi(apiKey, proxy));
-        }
     }
 }

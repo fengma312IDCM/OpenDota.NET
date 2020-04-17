@@ -14,7 +14,7 @@ Some of the data types can be found in the [dotaconstants](https://github.com/od
 
 ```csharp
 var matchId = 4986133311;
-var openDota = OpenDotaApi.GetInstance();
+var openDota = new OpenDotaApi();
 var matchDetails = await openDota.Matches.GetMatchByIdAsync(matchId);
 Console.WriteLine($"{matchDetails.RadiantTeam.Name} vs {matchDetails.DireTeam.Name} - {matchDetails.RadiantScore}:{matchDetails.DireScore}.");
 Console.WriteLine(@$"Duration of game: {TimeSpan.FromSeconds(matchDetails.Duration):mm\:ss}.");

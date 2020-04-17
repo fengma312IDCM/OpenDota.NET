@@ -13,7 +13,7 @@
         public RequestEndpointTests(ITestOutputHelper testOutputHelper)
         {
             this.testOutputHelper = testOutputHelper;
-            this.openDotaApi = OpenDotaApi.GetInstance();
+            this.openDotaApi = new OpenDotaApi();
         }
 
         // Unable to test these endpoints:

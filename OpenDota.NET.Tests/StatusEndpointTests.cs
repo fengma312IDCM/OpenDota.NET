@@ -16,7 +16,7 @@
         public StatusEndpointTests(ITestOutputHelper testOutputHelper)
         {
             this.testOutputHelper = testOutputHelper;
-            this.openDotaApi = OpenDotaApi.GetInstance();
+            this.openDotaApi = new OpenDotaApi();
         }
 
         [Fact]

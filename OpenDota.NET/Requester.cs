@@ -42,7 +42,7 @@
             options.Converters.Add(new StringConverter());
             options.Converters.Add(new BoolConverter());
             var textResponse = await response.Content.ReadAsStringAsync();
-            if (textResponse == string.Empty)
+            if (string.IsNullOrEmpty(textResponse))
             {
                 return null;
             }
