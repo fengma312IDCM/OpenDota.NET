@@ -24,7 +24,7 @@
         [Fact]
         public async Task TestGetReplayData()
         {
-            var result = await this.openDotaApi.Replays.GetReplayDataAsync(new List<long> { 4986133311, 4986260666 });
+            var result = await this.openDotaApi.Replays.GetReplayDataAsync(new List<long> { 5360987052, 5361213941 });
             this.testOutputHelper.WriteLine(result.ToJsonString());
 
             Assert.Equal(2, result.Count);
