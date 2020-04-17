@@ -56,6 +56,13 @@
         }
 
         [Fact]
+        public async Task GetTeamByIdShouldReturnNullForTeamsThatAreNotFound()
+        {
+            var result = await this.openDotaApi.Teams.GetTeamByIdAsync(1);
+            Assert.Null(result);
+        }
+
+        [Fact]
         public async Task TestGetTeamMatchesById()
         {
             var result = await this.openDotaApi.Teams.GetTeamMatchesByIdAsync(2586976); // OG

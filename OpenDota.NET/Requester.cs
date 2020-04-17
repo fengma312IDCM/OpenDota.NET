@@ -30,6 +30,7 @@
         public string ApiKey { get; set; }
 
         public async Task<T> GetResponseAsync<T>(string url, List<string> queryParameters = null)
+            where T : class
         {
             var response = await this.GetRequestResponseMessageAsync(url, queryParameters);
             response.EnsureSuccessStatusCode();
@@ -41,6 +42,11 @@
             options.Converters.Add(new StringConverter());
             options.Converters.Add(new BoolConverter());
             var textResponse = await response.Content.ReadAsStringAsync();
+            if (textResponse == string.Empty)
+            {
+                return null;
+            }
+
             var data = JsonSerializer.Deserialize<T>(textResponse, options);
             return data;
         }
