@@ -8,20 +8,21 @@ Full documentation is available on <https://docs.opendota.com/>
 
 Some of the data types can be found in the [dotaconstants](https://github.com/odota/dotaconstants) repository.
 
+[![NuGet version](https://badge.fury.io/nu/OpenDota.NET.svg)](https://badge.fury.io/nu/OpenDota.NET)
+
 ## Example
 
 ### Code
 
 ```csharp
-var matchId = 4986133311;
 var openDota = new OpenDotaApi();
-var matchDetails = await openDota.Matches.GetMatchByIdAsync(matchId);
+var matchDetails = await openDota.Matches.GetMatchByIdAsync(4986133311);
 Console.WriteLine($"{matchDetails.RadiantTeam.Name} vs {matchDetails.DireTeam.Name} - {matchDetails.RadiantScore}:{matchDetails.DireScore}.");
 Console.WriteLine(@$"Duration of game: {TimeSpan.FromSeconds(matchDetails.Duration):mm\:ss}.");
 Console.WriteLine("Players in the game:");
 foreach (var player in matchDetails.Players)
 {
-    testOutputHelper.WriteLine($"    {player.Name} - {player.Kills}/{player.Deaths}/{player.Assists}"); ;
+    Console.WriteLine($"    {player.Name} - {player.Kills}/{player.Deaths}/{player.Assists}"); ;
 }
 ```
 
