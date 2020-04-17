@@ -13,17 +13,14 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/NikolayIT/OpenDota.NET</PackageProjectUrl>
     <RepositoryUrl>https://github.com/NikolayIT/OpenDota.NET</RepositoryUrl>
-    <PackageReleaseNotes>- A lot of improvements and API changes.
-- Using System.Text.Json instead of Newtonsoft.Json.
-- Almost all functionality covered by unit tests.
-- Code quality improvements.</PackageReleaseNotes>
-    <PackageTags>dota, dota2, api, opendota</PackageTags>
+    <PackageReleaseNotes></PackageReleaseNotes>
+    <PackageTags>dota, dota2, api, opendota, opendota.com, client</PackageTags>
     <RepositoryType>GitHub</RepositoryType>
     <Description>.NET Standard wrapper for the OpenDota API. The OpenDota API provides Dota 2 related data including advanced match data extracted from match replays. Project URL: https://github.com/NikolayIT/OpenDota.NET</Description>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageIcon>icon-144x144.png</PackageIcon>
     <PackageIconUrl />
-    <Version>2.0.0</Version>
+    <Version>2.1.0</Version>
     <Company>Nikolay.IT</Company>
   </PropertyGroup>
   <ItemGroup>
