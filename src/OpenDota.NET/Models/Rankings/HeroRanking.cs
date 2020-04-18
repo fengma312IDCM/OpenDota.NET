@@ -9,6 +9,6 @@
         public long HeroId { get; set; }
 
         [JsonPropertyName("rankings")]
-        public List<RankingPlayer> Rankings { get; set; }
+        public IEnumerable<RankingPlayer> Rankings { get; set; }
     }
 }

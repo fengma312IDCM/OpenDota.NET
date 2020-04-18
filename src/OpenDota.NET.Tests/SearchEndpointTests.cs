@@ -27,7 +27,7 @@
             var result = await this.openDotaApi.Search.GetPlayersByNameAsync("mind_control");
             this.testOutputHelper.WriteLine(result.ToJsonString());
 
-            Assert.Equal(50, result.Count);
+            Assert.Equal(50, result.Count());
             Assert.True(result.All(x => x.AccountId > 0));
             Assert.True(result.All(x => x.Similarity > 0));
             Assert.Contains(result, x => x.LastMatchTime > new DateTime(2000, 1, 1));

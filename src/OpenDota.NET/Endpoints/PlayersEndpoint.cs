@@ -1,6 +1,7 @@
 ﻿namespace OpenDotaDotNet.Endpoints
 {
     using System.Collections.Generic;
+    using System.Linq;
     using System.Threading.Tasks;
 
     using OpenDotaDotNet.Models.Players;
@@ -24,76 +25,76 @@
             PlayerEndpointParameters parameters = null) =>
             await this.requester.GetResponseAsync<PlayerWinLoss>(
                 $"players/{playerId}/wl",
-                this.CreateArgumentListForPlayerEndpointRequest(parameters));
+                this.GetArguments(parameters));
 
         /// <inheritdoc />
-        public async Task<List<PlayerRecentMatch>> GetPlayerRecentMatchesAsync(long playerId) =>
-            await this.requester.GetResponseAsync<List<PlayerRecentMatch>>($"players/{playerId}/recentMatches");
+        public async Task<IEnumerable<PlayerRecentMatch>> GetPlayerRecentMatchesAsync(long playerId) =>
+            await this.requester.GetResponseAsync<IEnumerable<PlayerRecentMatch>>($"players/{playerId}/recentMatches");
 
         /// <inheritdoc />
-        public async Task<List<PlayerMatch>> GetPlayerMatchesAsync(
+        public async Task<IEnumerable<PlayerMatch>> GetPlayerMatchesAsync(
             long playerId,
             PlayerEndpointParameters parameters = null) =>
-            await this.requester.GetResponseAsync<List<PlayerMatch>>(
+            await this.requester.GetResponseAsync<IEnumerable<PlayerMatch>>(
                 $"players/{playerId}/matches",
-                this.CreateArgumentListForPlayerEndpointRequest(parameters));
+                this.GetArguments(parameters));
 
         /// <inheritdoc />
-        public async Task<List<PlayerHero>>
+        public async Task<IEnumerable<PlayerHero>>
             GetPlayerHeroesAsync(long playerId, PlayerEndpointParameters parameters = null) =>
-            await this.requester.GetResponseAsync<List<PlayerHero>>(
+            await this.requester.GetResponseAsync<IEnumerable<PlayerHero>>(
                 $"players/{playerId}/heroes",
-                this.CreateArgumentListForPlayerEndpointRequest(parameters));
+                this.GetArguments(parameters));
 
         /// <inheritdoc />
-        public async Task<List<PlayerPeer>> GetPlayerPeersAsync(long playerId, PlayerEndpointParameters parameters) =>
-            await this.requester.GetResponseAsync<List<PlayerPeer>>(
+        public async Task<IEnumerable<PlayerPeer>> GetPlayerPeersAsync(long playerId, PlayerEndpointParameters parameters) =>
+            await this.requester.GetResponseAsync<IEnumerable<PlayerPeer>>(
                 $"players/{playerId}/peers",
-                this.CreateArgumentListForPlayerEndpointRequest(parameters));
+                this.GetArguments(parameters));
 
         /// <inheritdoc />
-        public async Task<List<PlayerPro>> GetPlayerProsAsync(long playerId, PlayerEndpointParameters parameters) =>
-            await this.requester.GetResponseAsync<List<PlayerPro>>(
+        public async Task<IEnumerable<PlayerPro>> GetPlayerProsAsync(long playerId, PlayerEndpointParameters parameters) =>
+            await this.requester.GetResponseAsync<IEnumerable<PlayerPro>>(
                 $"players/{playerId}/pros",
-                this.CreateArgumentListForPlayerEndpointRequest(parameters));
+                this.GetArguments(parameters));
 
         /// <inheritdoc />
-        public async Task<List<PlayerTotal>> GetPlayerTotalsAsync(long playerId, PlayerEndpointParameters parameters) =>
-            await this.requester.GetResponseAsync<List<PlayerTotal>>(
+        public async Task<IEnumerable<PlayerTotal>> GetPlayerTotalsAsync(long playerId, PlayerEndpointParameters parameters) =>
+            await this.requester.GetResponseAsync<IEnumerable<PlayerTotal>>(
                 $"players/{playerId}/totals",
-                this.CreateArgumentListForPlayerEndpointRequest(parameters));
+                this.GetArguments(parameters));
 
         /// <inheritdoc />
         public async Task<PlayerCount> GetPlayerCountsAsync(long playerId, PlayerEndpointParameters parameters) =>
             await this.requester.GetResponseAsync<PlayerCount>(
                 $"players/{playerId}/counts",
-                this.CreateArgumentListForPlayerEndpointRequest(parameters));
+                this.GetArguments(parameters));
 
         /// <inheritdoc />
-        public async Task<List<PlayerHistogram>> GetPlayerHistogramsAsync(long playerId, string field, PlayerEndpointParameters parameters) =>
-            await this.requester.GetResponseAsync<List<PlayerHistogram>>(
+        public async Task<IEnumerable<PlayerHistogram>> GetPlayerHistogramsAsync(long playerId, string field, PlayerEndpointParameters parameters) =>
+            await this.requester.GetResponseAsync<IEnumerable<PlayerHistogram>>(
                 $"players/{playerId}/histograms/{field}",
-                this.CreateArgumentListForPlayerEndpointRequest(parameters));
+                this.GetArguments(parameters));
 
         /// <inheritdoc />
         public async Task<PlayerWardmap> GetPlayerWardMapAsync(long playerId, PlayerEndpointParameters parameters) =>
             await this.requester.GetResponseAsync<PlayerWardmap>(
                 $"players/{playerId}/wardmap",
-                this.CreateArgumentListForPlayerEndpointRequest(parameters));
+                this.GetArguments(parameters));
 
         /// <inheritdoc />
         public async Task<PlayerWordcloud> GetPlayerWordCloudAsync(long playerId, PlayerEndpointParameters parameters) =>
             await this.requester.GetResponseAsync<PlayerWordcloud>(
                 $"players/{playerId}/wordcloud",
-                this.CreateArgumentListForPlayerEndpointRequest(parameters));
+                this.GetArguments(parameters));
 
         /// <inheritdoc />
-        public async Task<List<PlayerRating>> GetPlayerRatingsAsync(long playerId) =>
-            await this.requester.GetResponseAsync<List<PlayerRating>>($"players/{playerId}/ratings");
+        public async Task<IEnumerable<PlayerRating>> GetPlayerRatingsAsync(long playerId) =>
+            await this.requester.GetResponseAsync<IEnumerable<PlayerRating>>($"players/{playerId}/ratings");
 
         /// <inheritdoc />
-        public async Task<List<PlayerHeroRanking>> GetPlayerHeroRankingsAsync(long playerId) =>
-            await this.requester.GetResponseAsync<List<PlayerHeroRanking>>($"players/{playerId}/rankings");
+        public async Task<IEnumerable<PlayerHeroRanking>> GetPlayerHeroRankingsAsync(long playerId) =>
+            await this.requester.GetResponseAsync<IEnumerable<PlayerHeroRanking>>($"players/{playerId}/rankings");
 
         /// <inheritdoc />
         public async Task<bool> RefreshPlayerMatchHistoryAsync(long playerId)
@@ -103,7 +104,7 @@
             return true;
         }
 
-        private List<string> CreateArgumentListForPlayerEndpointRequest(PlayerEndpointParameters parameters)
+        private IEnumerable<string> GetArguments(PlayerEndpointParameters parameters)
         {
             var addedArguments = new List<string>();
 
@@ -169,34 +170,26 @@
 
             if (parameters.IncludedAccountIds != null)
             {
-                foreach (var includedAccountId in parameters.IncludedAccountIds)
-                {
-                    addedArguments.Add($@"included_account_id={includedAccountId}");
-                }
+                addedArguments.AddRange(
+                    parameters.IncludedAccountIds.Select(
+                        includedAccountId => $@"included_account_id={includedAccountId}"));
             }
 
             if (parameters.ExcludedAccountIds != null)
             {
-                foreach (var excludedAccountId in parameters.ExcludedAccountIds)
-                {
-                    addedArguments.Add($@"excluded_account_id={excludedAccountId}");
-                }
+                addedArguments.AddRange(
+                    parameters.ExcludedAccountIds.Select(
+                        excludedAccountId => $@"excluded_account_id={excludedAccountId}"));
             }
 
             if (parameters.WithHeroIds != null)
             {
-                foreach (var withHeroId in parameters.WithHeroIds)
-                {
-                    addedArguments.Add($@"with_hero_id={withHeroId}");
-                }
+                addedArguments.AddRange(parameters.WithHeroIds.Select(withHeroId => $@"with_hero_id={withHeroId}"));
             }
 
             if (parameters.AgainstHeroIds != null)
             {
-                foreach (var againstHeroId in parameters.AgainstHeroIds)
-                {
-                    addedArguments.Add($@"against_hero_id={againstHeroId}");
-                }
+                addedArguments.AddRange(parameters.AgainstHeroIds.Select(againstHeroId => $@"against_hero_id={againstHeroId}"));
             }
 
             if (parameters.Significant != null)
@@ -216,10 +209,7 @@
 
             if (parameters.Project != null)
             {
-                foreach (var project in parameters.Project)
-                {
-                    addedArguments.Add($@"project={project}");
-                }
+                addedArguments.AddRange(parameters.Project.Select(project => $@"project={project}"));
             }
 
             return addedArguments;

@@ -12,6 +12,6 @@
         /// </summary>
         /// <param name="field">Field name to query.</param>
         /// <returns>Records in ranked matches.</returns>
-        Task<List<Record>> GetRecordsByFieldAsync(RecordField field);
+        Task<IEnumerable<Record>> GetRecordsByFieldAsync(RecordField field);
     }
 }

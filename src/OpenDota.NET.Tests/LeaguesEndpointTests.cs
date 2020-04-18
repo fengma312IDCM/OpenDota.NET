@@ -27,7 +27,7 @@
             var result = await this.openDotaApi.League.GetLeaguesAsync();
             this.testOutputHelper.WriteLine(result.ToJsonString());
 
-            Assert.True(result.Count >= 3322);
+            Assert.True(result.Count() >= 3322);
             Assert.Contains(result, x => x.Tier == LeagueTier.Amateur);
             Assert.Contains(result, x => x.Tier == LeagueTier.Excluded);
             Assert.Contains(result, x => x.Tier == LeagueTier.Premium);

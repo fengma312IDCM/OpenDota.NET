@@ -11,6 +11,6 @@
         /// Get top currently ongoing live games.
         /// </summary>
         /// <returns>Top currently ongoing live games.</returns>
-        Task<List<LiveGame>> GetTopLiveGamesAsync();
+        Task<IEnumerable<LiveGame>> GetTopLiveGamesAsync();
     }
 }

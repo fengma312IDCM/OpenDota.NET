@@ -26,7 +26,7 @@
             var result = await this.openDotaApi.Teams.GetTeamsAsync();
             this.testOutputHelper.WriteLine(result.ToJsonString());
 
-            Assert.Equal(1000, result.Count);
+            Assert.Equal(1000, result.Count());
             Assert.Contains(result, x => !string.IsNullOrEmpty(x.Name));
             Assert.True(result.All(x => x.Name != null));
             Assert.Contains(result, x => !string.IsNullOrEmpty(x.Tag));
@@ -68,7 +68,7 @@
             var result = await this.openDotaApi.Teams.GetTeamMatchesByIdAsync(2586976); // OG
             this.testOutputHelper.WriteLine(result.ToJsonString());
 
-            Assert.True(result.Count > 800);
+            Assert.True(result.Count() > 800);
             Assert.True(result.All(x => x.MatchId > 0));
             Assert.True(result.All(x => x.Duration > 0));
             Assert.True(result.All(x => x.StartTime > 0));
@@ -103,7 +103,7 @@
             var result = await this.openDotaApi.Teams.GetTeamHeroesByIdAsync(1838315); // Secret
             this.testOutputHelper.WriteLine(result.ToJsonString());
 
-            Assert.True(result.Count >= 119);
+            Assert.True(result.Count() >= 119);
             Assert.True(result.All(x => x.HeroId > 0));
             Assert.True(result.All(x => x.GamesPlayed > 0));
             Assert.True(result.All(x => x.Wins > 0));

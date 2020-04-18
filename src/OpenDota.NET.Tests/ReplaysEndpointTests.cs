@@ -25,10 +25,10 @@
         {
             var proMatches = await this.openDotaApi.ProMatches.GetProMatchesAsync();
             var result =
-                await this.openDotaApi.Replays.GetReplayDataAsync(proMatches.Select(x => x.MatchId).Take(2).ToList());
+                await this.openDotaApi.Replays.GetReplayDataAsync(proMatches.Select(x => x.MatchId).Take(2));
             this.testOutputHelper.WriteLine(result.ToJsonString());
 
-            Assert.Equal(2, result.Count);
+            Assert.Equal(2, result.Count());
             Assert.True(result.All(x => x.MatchId > 0));
             Assert.True(result.All(x => x.Cluster > 0));
             Assert.True(result.All(x => x.ReplaySalt > 0));

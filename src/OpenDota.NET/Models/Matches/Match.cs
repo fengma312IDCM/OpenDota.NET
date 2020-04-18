@@ -19,13 +19,13 @@
         public int BarracksStatusRadiant { get; set; }
 
         [JsonPropertyName("chat")]
-        public List<Chat> Chat { get; set; }
+        public IEnumerable<Chat> Chat { get; set; }
 
         [JsonPropertyName("cluster")]
         public int Cluster { get; set; }
 
         [JsonPropertyName("cosmetics")]
-        public Dictionary<string, long> Cosmetics { get; set; }
+        public IDictionary<string, long> Cosmetics { get; set; }
 
         [JsonPropertyName("dire_score")]
         public int DireScore { get; set; }
@@ -36,7 +36,7 @@
 
         // Draft (pick) timings and info
         [JsonPropertyName("draft_timings")]
-        public List<DraftTiming> DraftTimings { get; set; }
+        public IEnumerable<DraftTiming> DraftTimings { get; set; }
 
         // Duration of the game in seconds
         [JsonPropertyName("duration")]
@@ -74,11 +74,11 @@
 
         // Game objectives
         [JsonPropertyName("objectives")]
-        public List<Objective> Objectives { get; set; }
+        public IEnumerable<Objective> Objectives { get; set; }
 
         // Object containing information on the draft. Each pick/ban contains a boolean relating to whether the choice is a pick or a ban, the hero ID, the team the picked or banned it, and the order
         [JsonPropertyName("picks_bans")]
-        public List<PickBan> PicksBans { get; set; }
+        public IEnumerable<PickBan> PicksBans { get; set; }
 
         // Number of positive votes the replay received in the in-game client
         [JsonPropertyName("positive_votes")]
@@ -86,7 +86,7 @@
 
         // Array of the Radiant gold advantage at each minute in the game. A negative number means that Radiant is behind, and thus it is their gold disadvantage.
         [JsonPropertyName("radiant_gold_adv")]
-        public List<int> RadiantGoldAdvantage { get; set; }
+        public IEnumerable<int> RadiantGoldAdvantage { get; set; }
 
         // Final score for Radiant (number of kills on Radiant)
         [JsonPropertyName("radiant_score")]
@@ -102,7 +102,7 @@
 
         // Array of the Radiant experience advantage at each minute in the game. A negative number means that Radiant is behind, and thus it is their experience disadvantage.
         [JsonPropertyName("radiant_xp_adv")]
-        public List<int> RadiantXpAdvantage { get; set; }
+        public IEnumerable<int> RadiantXpAdvantage { get; set; }
 
         // The skill level of the game
         [JsonPropertyName("skill")]
@@ -114,7 +114,7 @@
 
         // Detailed list of teamfights
         [JsonPropertyName("teamfights")]
-        public List<Teamfight> Teamfights { get; set; }
+        public IEnumerable<Teamfight> Teamfights { get; set; }
 
         // Bitmask. An integer that represents a binary of which Dire towers are still standing.
         [JsonPropertyName("tower_status_dire")]
@@ -152,7 +152,7 @@
 
         // Array of information on individual players
         [JsonPropertyName("players")]
-        public List<MatchPlayer> Players { get; set; }
+        public IEnumerable<MatchPlayer> Players { get; set; }
 
         // Information on the patch version the game is played on
         [JsonPropertyName("patch")]
@@ -164,11 +164,11 @@
 
         // Word counts of the all chat messages in the player's games (string-message, int-amount of times used)
         [JsonPropertyName("all_word_counts")]
-        public Dictionary<string, int> AllWordCounts { get; set; }
+        public IDictionary<string, int> AllWordCounts { get; set; }
 
         // Word counts of the player's all chat messages
         [JsonPropertyName("my_word_counts")]
-        public Dictionary<string, int> MyWordCounts { get; set; }
+        public IDictionary<string, int> MyWordCounts { get; set; }
 
         // Maximum gold advantage of the player's team if they lost the match
         [JsonPropertyName("throw")]

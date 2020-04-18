@@ -15,7 +15,7 @@
         }
 
         /// <inheritdoc />
-        public async Task<List<LiveGame>> GetTopLiveGamesAsync() =>
-            await this.requester.GetResponseAsync<List<LiveGame>>("live");
+        public async Task<IEnumerable<LiveGame>> GetTopLiveGamesAsync() =>
+            await this.requester.GetResponseAsync<IEnumerable<LiveGame>>("live");
     }
 }

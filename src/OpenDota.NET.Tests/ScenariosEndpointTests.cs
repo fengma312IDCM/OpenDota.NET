@@ -30,7 +30,7 @@
                 await this.openDotaApi.Scenarios.GetWinRateForCertainItemTimingsOnHeroesAsync(ItemName, HeroId);
             this.testOutputHelper.WriteLine(result.ToJsonString());
 
-            Assert.True(result.Count > 0);
+            Assert.True(result.Count() > 0);
             Assert.True(result.All(x => x.Item == ItemName));
             Assert.True(result.All(x => x.HeroId == HeroId));
             Assert.True(result.All(x => x.Time > 0));
@@ -47,7 +47,7 @@
                 await this.openDotaApi.Scenarios.GetWinRateForHeroesInCertainLaneRolesAsync(3, 40);
             this.testOutputHelper.WriteLine(result.ToJsonString());
 
-            Assert.True(result.Count > 0);
+            Assert.True(result.Count() > 0);
             Assert.True(result.All(x => x.LaneRole == LaneId));
             Assert.True(result.All(x => x.HeroId == HeroId));
             Assert.True(result.All(x => x.Time > 0));
@@ -63,7 +63,7 @@
                 await this.openDotaApi.Scenarios.GetMiscellaneousTeamScenariosAsync(Scenario);
             this.testOutputHelper.WriteLine(result.ToJsonString());
 
-            Assert.True(result.Count > 0);
+            Assert.True(result.Count() > 0);
             Assert.True(result.All(x => x.Scenario == Scenario));
             Assert.True(result.All(x => x.Games > 0));
             Assert.True(result.All(x => x.Wins > 0));

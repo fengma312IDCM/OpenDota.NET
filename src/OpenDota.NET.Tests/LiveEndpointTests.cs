@@ -26,9 +26,9 @@
             var result = await this.openDotaApi.Live.GetTopLiveGamesAsync();
             this.testOutputHelper.WriteLine(result.ToJsonString());
 
-            Assert.Equal(100, result.Count);
+            Assert.Equal(100, result.Count());
             Assert.True(result.All(x => !string.IsNullOrEmpty(x.LobbyId)));
-            Assert.True(result.All(x => x.Players.Count > 0));
+            Assert.True(result.All(x => x.Players.Any()));
         }
     }
 }

@@ -15,8 +15,8 @@
         }
 
         /// <inheritdoc />
-        public async Task<List<SearchPlayerResponse>> GetPlayersByNameAsync(string query) =>
-            await this.requester.GetResponseAsync<List<SearchPlayerResponse>>(
+        public async Task<IEnumerable<SearchPlayerResponse>> GetPlayersByNameAsync(string query) =>
+            await this.requester.GetResponseAsync<IEnumerable<SearchPlayerResponse>>(
                 "search",
                 new List<string>
                     {

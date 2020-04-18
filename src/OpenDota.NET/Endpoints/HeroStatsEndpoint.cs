@@ -15,7 +15,7 @@
         }
 
         /// <inheritdoc />
-        public async Task<List<HeroStats>> GetHeroStatsAsync() =>
-            await this.requester.GetResponseAsync<List<HeroStats>>("heroStats");
+        public async Task<IEnumerable<HeroStats>> GetHeroStatsAsync() =>
+            await this.requester.GetResponseAsync<IEnumerable<HeroStats>>("heroStats");
     }
 }

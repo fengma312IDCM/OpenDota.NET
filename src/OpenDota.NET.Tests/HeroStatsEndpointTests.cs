@@ -27,7 +27,7 @@
             var result = await this.openDotaApi.HeroStats.GetHeroStatsAsync();
             this.testOutputHelper.WriteLine(result.ToJsonString());
 
-            Assert.True(result.Count >= 119);
+            Assert.True(result.Count() >= 119);
             Assert.True(result.All(x => x.Id > 0));
             Assert.True(result.All(x => x.HeroId > 0));
             Assert.True(result.All(x => x.Legs >= 0));
@@ -38,7 +38,7 @@
             Assert.True(result.Count(x => x.PrimaryAttribute == HeroPrimaryAttribute.Agi) >= 37);
             Assert.True(result.Count(x => x.PrimaryAttribute == HeroPrimaryAttribute.Int) >= 43);
             Assert.True(result.Count(x => x.PrimaryAttribute == HeroPrimaryAttribute.Str) >= 39);
-            Assert.True(result.All(x => x.Roles.Count > 0));
+            Assert.True(result.All(x => x.Roles.Any()));
             Assert.True(result.All(x => !string.IsNullOrWhiteSpace(x.Image)));
             Assert.True(result.All(x => !string.IsNullOrWhiteSpace(x.Icon)));
 

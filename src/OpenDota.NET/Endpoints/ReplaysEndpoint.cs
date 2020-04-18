@@ -1,6 +1,7 @@
 ﻿namespace OpenDotaDotNet.Endpoints
 {
     using System.Collections.Generic;
+    using System.Linq;
     using System.Threading.Tasks;
 
     using OpenDotaDotNet.Models.Replays;
@@ -19,24 +20,9 @@
         /// </summary>
         /// <param name="matchIds">Match IDs (array).</param>
         /// <returns>Data to construct a replay URL with.</returns>
-        public async Task<List<Replay>> GetReplayDataAsync(List<long> matchIds) =>
-            await this.requester.GetResponseAsync<List<Replay>>(
+        public async Task<IEnumerable<Replay>> GetReplayDataAsync(IEnumerable<long> matchIds) =>
+            await this.requester.GetResponseAsync<IEnumerable<Replay>>(
                 "replays",
-                this.CreateArgumentListForReplaysRequest(matchIds));
-
-        private List<string> CreateArgumentListForReplaysRequest(IReadOnlyCollection<long> matchIds = null)
-        {
-            var addedArguments = new List<string>();
-
-            if (matchIds != null)
-            {
-                foreach (var matchId in matchIds)
-                {
-                    addedArguments.Add($@"match_id={matchId}");
-                }
-            }
-
-            return addedArguments;
-        }
+                matchIds?.Select(matchId => $@"match_id={matchId}"));
     }
 }

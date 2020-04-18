@@ -14,6 +14,6 @@
         /// <param name="mmrDescending">Order by MMR descending.</param>
         /// <param name="lessThanMatchId">Get matches with a match ID lower than this value.</param>
         /// <returns>List of randomly sampled public matches.</returns>
-        Task<List<PublicMatch>> GetPublicMatchesAsync(int? mmrAscending = null, int? mmrDescending = null, long? lessThanMatchId = null);
+        Task<IEnumerable<PublicMatch>> GetPublicMatchesAsync(int? mmrAscending = null, int? mmrDescending = null, long? lessThanMatchId = null);
     }
 }

@@ -15,23 +15,23 @@
         }
 
         /// <inheritdoc />
-        public async Task<List<Team>> GetTeamsAsync() =>
-            await this.requester.GetResponseAsync<List<Team>>("teams");
+        public async Task<IEnumerable<Team>> GetTeamsAsync() =>
+            await this.requester.GetResponseAsync<IEnumerable<Team>>("teams");
 
         /// <inheritdoc />
         public async Task<Team> GetTeamByIdAsync(int teamId) =>
             await this.requester.GetResponseAsync<Team>($"teams/{teamId}");
 
         /// <inheritdoc />
-        public async Task<List<TeamMatch>> GetTeamMatchesByIdAsync(int teamId) =>
-            await this.requester.GetResponseAsync<List<TeamMatch>>($"teams/{teamId}/matches");
+        public async Task<IEnumerable<TeamMatch>> GetTeamMatchesByIdAsync(int teamId) =>
+            await this.requester.GetResponseAsync<IEnumerable<TeamMatch>>($"teams/{teamId}/matches");
 
         /// <inheritdoc />
-        public async Task<List<TeamPlayer>> GetTeamPlayersByIdAsync(int teamId) =>
-            await this.requester.GetResponseAsync<List<TeamPlayer>>($"teams/{teamId}/players");
+        public async Task<IEnumerable<TeamPlayer>> GetTeamPlayersByIdAsync(int teamId) =>
+            await this.requester.GetResponseAsync<IEnumerable<TeamPlayer>>($"teams/{teamId}/players");
 
         /// <inheritdoc />
-        public async Task<List<TeamHero>> GetTeamHeroesByIdAsync(int teamId) =>
-            await this.requester.GetResponseAsync<List<TeamHero>>($"teams/{teamId}/heroes");
+        public async Task<IEnumerable<TeamHero>> GetTeamHeroesByIdAsync(int teamId) =>
+            await this.requester.GetResponseAsync<IEnumerable<TeamHero>>($"teams/{teamId}/heroes");
     }
 }

@@ -15,13 +15,13 @@
         //// public object Oid { get; set; }
 
         [JsonPropertyName("rows")]
-        public List<CountryMmrRow> Rows { get; set; }
+        public IEnumerable<CountryMmrRow> Rows { get; set; }
 
         [JsonPropertyName("fields")]
-        public List<Field> Fields { get; set; }
+        public IEnumerable<Field> Fields { get; set; }
 
         //// [JsonPropertyName("_parsers")]
-        //// public List<object> Parsers { get; set; }
+        //// public IEnumerable<object> Parsers { get; set; }
 
         //// [JsonPropertyName("_types")]
         //// public object Types { get; set; }

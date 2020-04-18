@@ -1,5 +1,6 @@
 ﻿namespace OpenDota.NET.Tests
 {
+    using System.Linq;
     using System.Threading.Tasks;
 
     using OpenDotaDotNet;
@@ -43,10 +44,10 @@
             Assert.True(result.TrackedPlayers > 0);
             Assert.True(result.UserPlayers > 0);
             Assert.True(result.WebHooksLastDay > 0);
-            Assert.True(result.ApiPaths.Count > 0);
-            Assert.True(result.Retriever.Count > 0);
-            Assert.True(result.LastAddedMatches.Count > 0);
-            Assert.True(result.LastParsed.Count > 0);
+            Assert.True(result.ApiPaths.Any());
+            Assert.True(result.Retriever.Any());
+            Assert.True(result.LastAddedMatches.Any());
+            Assert.True(result.LastParsed.Any());
             Assert.True(result.LoadTimes.Count > 0);
             Assert.True(result.Health.CassandraUsage.Timestamp > 0);
             Assert.True(result.Health.GcDelay.Timestamp > 0);

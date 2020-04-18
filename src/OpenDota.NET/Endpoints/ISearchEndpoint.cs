@@ -12,6 +12,6 @@
         /// </summary>
         /// <param name="query">Search string.</param>
         /// <returns>Players by personaname.</returns>
-        Task<List<SearchPlayerResponse>> GetPlayersByNameAsync(string query);
+        Task<IEnumerable<SearchPlayerResponse>> GetPlayersByNameAsync(string query);
     }
 }

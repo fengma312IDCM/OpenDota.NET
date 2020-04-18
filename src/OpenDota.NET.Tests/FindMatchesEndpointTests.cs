@@ -29,7 +29,7 @@
                              new List<int> { 1, 2 });
             this.testOutputHelper.WriteLine(result.ToJsonString());
 
-            Assert.Equal(10, result.Count);
+            Assert.Equal(10, result.Count());
             Assert.True(
                 result.All(
                     x => (x.TeamA.Contains(27) && x.TeamA.Contains(40))

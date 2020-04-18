@@ -15,24 +15,24 @@
         }
 
         /// <inheritdoc />
-        public async Task<List<HeroItemTiming>> GetWinRateForCertainItemTimingsOnHeroesAsync(string item = null, int? heroId = null) =>
-            await this.requester.GetResponseAsync<List<HeroItemTiming>>(
+        public async Task<IEnumerable<HeroItemTiming>> GetWinRateForCertainItemTimingsOnHeroesAsync(string item = null, int? heroId = null) =>
+            await this.requester.GetResponseAsync<IEnumerable<HeroItemTiming>>(
                 "scenarios/itemTimings",
-                this.CreateArgumentListForScenariosRequest(item, heroId));
+                this.GetArguments(item, heroId));
 
         /// <inheritdoc />
-        public async Task<List<HeroLaneRoleWinrate>> GetWinRateForHeroesInCertainLaneRolesAsync(int? laneRole = null, int? heroId = null) =>
-            await this.requester.GetResponseAsync<List<HeroLaneRoleWinrate>>(
+        public async Task<IEnumerable<HeroLaneRoleWinrate>> GetWinRateForHeroesInCertainLaneRolesAsync(int? laneRole = null, int? heroId = null) =>
+            await this.requester.GetResponseAsync<IEnumerable<HeroLaneRoleWinrate>>(
                 "scenarios/laneRoles",
-                this.CreateArgumentListForScenariosRequest(null, heroId, laneRole));
+                this.GetArguments(null, heroId, laneRole));
 
         /// <inheritdoc />
-        public async Task<List<MiscellaneousTeamScenario>> GetMiscellaneousTeamScenariosAsync(string scenario = null) =>
-            await this.requester.GetResponseAsync<List<MiscellaneousTeamScenario>>(
+        public async Task<IEnumerable<MiscellaneousTeamScenario>> GetMiscellaneousTeamScenariosAsync(string scenario = null) =>
+            await this.requester.GetResponseAsync<IEnumerable<MiscellaneousTeamScenario>>(
                 "scenarios/misc",
-                this.CreateArgumentListForScenariosRequest(null, null, null, scenario));
+                this.GetArguments(null, null, null, scenario));
 
-        private List<string> CreateArgumentListForScenariosRequest(string item = null, int? heroId = null, int? laneRole = null, string scenario = null)
+        private IEnumerable<string> GetArguments(string item = null, int? heroId = null, int? laneRole = null, string scenario = null)
         {
             var addedArguments = new List<string>();
 

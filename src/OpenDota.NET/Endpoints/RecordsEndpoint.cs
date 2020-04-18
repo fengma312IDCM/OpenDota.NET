@@ -15,7 +15,7 @@
         }
 
         /// <inheritdoc />
-        public async Task<List<Record>> GetRecordsByFieldAsync(RecordField field) =>
-            await this.requester.GetResponseAsync<List<Record>>($"records/{field.Value}");
+        public async Task<IEnumerable<Record>> GetRecordsByFieldAsync(RecordField field) =>
+            await this.requester.GetResponseAsync<IEnumerable<Record>>($"records/{field.Value}");
     }
 }

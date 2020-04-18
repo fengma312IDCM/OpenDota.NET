@@ -23,6 +23,6 @@
 
         // Players involved in the teamfight
         [JsonPropertyName("players")]
-        public List<TeamfightPlayer> Players { get; set; }
+        public IEnumerable<TeamfightPlayer> Players { get; set; }
     }
 }

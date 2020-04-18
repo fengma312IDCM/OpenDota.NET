@@ -15,12 +15,12 @@
         }
 
         /// <inheritdoc />
-        public async Task<List<ProMatch>> GetProMatchesAsync(long? lessThanMatchId = null) =>
-            await this.requester.GetResponseAsync<List<ProMatch>>(
+        public async Task<IEnumerable<ProMatch>> GetProMatchesAsync(long? lessThanMatchId = null) =>
+            await this.requester.GetResponseAsync<IEnumerable<ProMatch>>(
                 "proMatches",
-                this.CreateArgumentListForProMatchesRequest(lessThanMatchId));
+                this.GetArguments(lessThanMatchId));
 
-        private List<string> CreateArgumentListForProMatchesRequest(long? lessThanMatchId = null)
+        private IEnumerable<string> GetArguments(long? lessThanMatchId = null)
         {
             var addedArguments = new List<string>();
             if (lessThanMatchId != null)

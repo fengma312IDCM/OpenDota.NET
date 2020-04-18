@@ -5,98 +5,99 @@
     public class PlayerEndpointParameters
     {
         /// <summary>
-        /// Number of matches to limit to.
+        /// Gets or sets the number of matches to limit to.
         /// </summary>
         public int? Limit { get; set; }
 
         /// <summary>
-        /// Number of matches to offset start by.
+        /// Gets or sets the number of matches to offset start by.
         /// </summary>
         public int? Offset { get; set; }
 
         /// <summary>
-        /// Whether the player won.
+        /// Gets or sets whether the player won.
         /// </summary>
         public int? Win { get; set; }
 
         /// <summary>
-        /// Patch ID.
+        /// Gets or sets the patch ID.
         /// </summary>
         public int? Patch { get; set; }
 
         /// <summary>
-        /// Game Mode ID.
+        /// Gets or sets the game Mode ID.
         /// </summary>
         public int? GameMode { get; set; }
 
         /// <summary>
-        /// Lobby type ID.
+        /// Gets or sets the lobby type ID.
         /// </summary>
         public int? LobbyType { get; set; }
 
         /// <summary>
-        /// Region ID.
+        /// Gets or sets the region ID.
         /// </summary>
         public int? Region { get; set; }
 
         /// <summary>
-        /// Days previous.
+        /// Gets or sets the days previous.
         /// </summary>
         public int? Date { get; set; }
 
         /// <summary>
-        /// Lane Role ID.
+        /// Gets or sets the lane Role ID.
         /// </summary>
         public int? LaneRole { get; set; }
 
         /// <summary>
-        /// Hero ID.
+        /// Gets or sets the hero ID.
         /// </summary>
         public int? HeroId { get; set; }
 
         /// <summary>
-        /// Whether the player was radiant.
+        /// Gets or sets whether the player was radiant.
         /// </summary>
         public int? IsRadiant { get; set; }
 
         /// <summary>
-        /// Account IDs in the match (array).
+        /// Gets or sets the account IDs in the match (array).
         /// </summary>
-        public List<int> IncludedAccountIds { get; set; }
+        public IEnumerable<int> IncludedAccountIds { get; set; }
 
         /// <summary>
-        /// Account IDs not in the match (array).
+        /// Gets or sets the account IDs not in the match (array).
         /// </summary>
-        public List<int> ExcludedAccountIds { get; set; }
+        public IEnumerable<int> ExcludedAccountIds { get; set; }
 
         /// <summary>
-        /// Hero IDs on the player's team (array).
+        /// Gets or sets the hero IDs on the player's team (array).
         /// </summary>
-        public List<int> WithHeroIds { get; set; }
+        public IEnumerable<int> WithHeroIds { get; set; }
 
         /// <summary>
-        /// Hero IDs against the player's team (array).
+        /// Gets or sets the hero IDs against the player's team (array).
         /// </summary>
-        public List<int> AgainstHeroIds { get; set; }
+        public IEnumerable<int> AgainstHeroIds { get; set; }
 
         /// <summary>
-        /// Whether the match was significant for aggregation purposes. Defaults to 1 (true), set this to 0 to return data for non-standard modes/matches.
+        /// Gets or sets whether the match was significant for aggregation purposes.
+        /// Defaults to 1 (true), set this to 0 to return data for non-standard modes/matches.
         /// </summary>
         public int? Significant { get; set; }
 
         /// <summary>
-        /// The minimum number of games played, for filtering hero stats.
+        /// Gets or sets the minimum number of games played, for filtering hero stats.
         /// </summary>
         public int? Having { get; set; }
 
         /// <summary>
-        /// The field to return matches sorted by in descending order.
+        /// Gets or sets the field to return matches sorted by in descending order.
         /// </summary>
         public string Sort { get; set; }
 
         /// <summary>
-        /// Fields to project (array).
+        /// Gets or sets the fields to project (array).
         /// </summary>
-        public List<string> Project { get; set; }
+        public IEnumerable<string> Project { get; set; }
     }
 }

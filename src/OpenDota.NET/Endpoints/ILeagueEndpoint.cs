@@ -11,6 +11,6 @@
         /// Get league data.
         /// </summary>
         /// <returns>League data.</returns>
-        Task<List<League>> GetLeaguesAsync();
+        Task<IEnumerable<League>> GetLeaguesAsync();
     }
 }

@@ -60,7 +60,7 @@
         public int DireScore { get; set; }
 
         [JsonPropertyName("players")]
-        public List<LiveGamePlayer> Players { get; set; }
+        public IEnumerable<LiveGamePlayer> Players { get; set; }
 
         [JsonPropertyName("building_state")]
         public long BuildingState { get; set; }

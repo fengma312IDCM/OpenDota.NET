@@ -29,7 +29,7 @@
             this.testOutputHelper.WriteLine(result.ToJsonString());
 
             Assert.Equal(HeroId, result.HeroId);
-            Assert.Equal(100, result.Rankings.Count);
+            Assert.Equal(100, result.Rankings.Count());
             Assert.True(result.Rankings.All(x => x.AccountId > 0));
             Assert.Contains(result.Rankings, x => x.RankTier > 0);
             Assert.True(result.Rankings.All(x => !x.RankTier.HasValue || x.RankTier > 0));

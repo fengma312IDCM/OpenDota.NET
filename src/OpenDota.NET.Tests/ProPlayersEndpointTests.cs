@@ -32,7 +32,7 @@
             Assert.True(result.All(x => !string.IsNullOrEmpty(x.Avatar.ToString())));
             Assert.True(result.All(x => !string.IsNullOrEmpty(x.AvatarMedium.ToString())));
             Assert.True(result.All(x => !string.IsNullOrEmpty(x.AvatarFull.ToString())));
-            Assert.True(result.Count >= 1000);
+            Assert.True(result.Count() >= 1000);
         }
     }
 }

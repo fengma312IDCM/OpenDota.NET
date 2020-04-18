@@ -63,31 +63,31 @@
         public int BenchmarksQueue { get; set; }
 
         [JsonPropertyName("retriever")]
-        public List<ApiPath> Retriever { get; set; }
+        public IEnumerable<ApiPath> Retriever { get; set; }
 
         /// <summary>
         /// Gets or sets all available API paths.
         /// </summary>
         [JsonPropertyName("api_paths")]
-        public List<ApiPath> ApiPaths { get; set; }
+        public IEnumerable<ApiPath> ApiPaths { get; set; }
 
         /// <summary>
         /// Gets or sets the last added matches.
         /// </summary>
         [JsonPropertyName("last_added")]
-        public List<Last> LastAddedMatches { get; set; }
+        public IEnumerable<Last> LastAddedMatches { get; set; }
 
         /// <summary>
         /// Gets or sets the last parsed matches.
         /// </summary>
         [JsonPropertyName("last_parsed")]
-        public List<Last> LastParsed { get; set; }
+        public IEnumerable<Last> LastParsed { get; set; }
 
         /// <summary>
         /// Gets or sets the load times.
         /// </summary>
         [JsonPropertyName("load_times")]
-        public Dictionary<string, long> LoadTimes { get; set; }
+        public IDictionary<string, long> LoadTimes { get; set; }
 
         /// <summary>
         /// Gets or sets the health.

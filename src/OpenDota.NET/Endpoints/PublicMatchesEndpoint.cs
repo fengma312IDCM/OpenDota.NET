@@ -15,15 +15,15 @@
         }
 
         /// <inheritdoc />
-        public async Task<List<PublicMatch>> GetPublicMatchesAsync(
+        public async Task<IEnumerable<PublicMatch>> GetPublicMatchesAsync(
             int? mmrAscending = null,
             int? mmrDescending = null,
             long? lessThanMatchId = null) =>
-            await this.requester.GetResponseAsync<List<PublicMatch>>(
+            await this.requester.GetResponseAsync<IEnumerable<PublicMatch>>(
                 "publicMatches",
-                this.CreateArgumentListForPublicMatchesRequest(mmrAscending, mmrDescending, lessThanMatchId));
+                this.GetArguments(mmrAscending, mmrDescending, lessThanMatchId));
 
-        private List<string> CreateArgumentListForPublicMatchesRequest(int? mmrAscending = null, int? mmrDescending = null, long? lessThanMatchId = null)
+        private IEnumerable<string> GetArguments(int? mmrAscending = null, int? mmrDescending = null, long? lessThanMatchId = null)
         {
             var addedArguments = new List<string>();
 

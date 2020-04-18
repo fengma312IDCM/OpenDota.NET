@@ -15,16 +15,16 @@
         }
 
         /// <inheritdoc />
-        public async Task<IList<ProMatch>> GetFeedAsync(
+        public async Task<IEnumerable<ProMatch>> GetFeedAsync(
             long? sequenceNumber = null,
             int? gameMode = null,
             int? leagueId = null,
             long? includedAccountId = null) =>
-            await this.requester.GetResponseAsync<List<ProMatch>>(
+            await this.requester.GetResponseAsync<IEnumerable<ProMatch>>(
                 "feed",
-                this.CreateArgumentListForDatabaseSchemaRequest(sequenceNumber, gameMode, leagueId, includedAccountId));
+                this.GetArguments(sequenceNumber, gameMode, leagueId, includedAccountId));
 
-        private List<string> CreateArgumentListForDatabaseSchemaRequest(
+        private IEnumerable<string> GetArguments(
             long? sequenceNumber = null,
             int? gameMode = null,
             int? leagueId = null,

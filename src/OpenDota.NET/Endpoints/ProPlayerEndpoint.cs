@@ -15,7 +15,7 @@
         }
 
         /// <inheritdoc />
-        public async Task<List<ProPlayer>> GetProPlayersAsync() =>
-            await this.requester.GetResponseAsync<List<ProPlayer>>("proPlayers");
+        public async Task<IEnumerable<ProPlayer>> GetProPlayersAsync() =>
+            await this.requester.GetResponseAsync<IEnumerable<ProPlayer>>("proPlayers");
     }
 }

@@ -16,7 +16,7 @@
         /// <param name="leagueId"></param>
         /// <param name="includedAccountId"></param>
         /// <returns>Streaming feed of latest matches.</returns>
-        Task<IList<ProMatch>> GetFeedAsync(
+        Task<IEnumerable<ProMatch>> GetFeedAsync(
             long? sequenceNumber = null,
             int? gameMode = null,
             int? leagueId = null,

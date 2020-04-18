@@ -27,7 +27,7 @@
         /// </summary>
         /// <param name="playerId">Steam32 account ID.</param>
         /// <returns>Recent matches played.</returns>
-        Task<List<PlayerRecentMatch>> GetPlayerRecentMatchesAsync(long playerId);
+        Task<IEnumerable<PlayerRecentMatch>> GetPlayerRecentMatchesAsync(long playerId);
 
         /// <summary>
         /// Gets matches played.
@@ -35,7 +35,7 @@
         /// <param name="playerId">Steam32 account ID.</param>
         /// <param name="parameters">Query parameters.</param>
         /// <returns>Matches played.</returns>
-        Task<List<PlayerMatch>> GetPlayerMatchesAsync(long playerId, PlayerEndpointParameters parameters = null);
+        Task<IEnumerable<PlayerMatch>> GetPlayerMatchesAsync(long playerId, PlayerEndpointParameters parameters = null);
 
         /// <summary>
         /// Gets heroes played.
@@ -43,7 +43,7 @@
         /// <param name="playerId">Steam32 account ID.</param>
         /// <param name="parameters">Query Parameters.</param>
         /// <returns>Heroes played.</returns>
-        Task<List<PlayerHero>> GetPlayerHeroesAsync(long playerId, PlayerEndpointParameters parameters = null);
+        Task<IEnumerable<PlayerHero>> GetPlayerHeroesAsync(long playerId, PlayerEndpointParameters parameters = null);
 
         /// <summary>
         /// Gets players played with.
@@ -51,7 +51,7 @@
         /// <param name="playerId">Steam32 account ID.</param>
         /// <param name="parameters">Query Parameters.</param>
         /// <returns>Players played with.</returns>
-        Task<List<PlayerPeer>> GetPlayerPeersAsync(long playerId, PlayerEndpointParameters parameters = null);
+        Task<IEnumerable<PlayerPeer>> GetPlayerPeersAsync(long playerId, PlayerEndpointParameters parameters = null);
 
         /// <summary>
         /// Gets pro players played with.
@@ -59,7 +59,7 @@
         /// <param name="playerId">Steam32 account ID.</param>
         /// <param name="parameters">Query Parameters.</param>
         /// <returns>Pro players played with.</returns>
-        Task<List<PlayerPro>> GetPlayerProsAsync(long playerId, PlayerEndpointParameters parameters = null);
+        Task<IEnumerable<PlayerPro>> GetPlayerProsAsync(long playerId, PlayerEndpointParameters parameters = null);
 
         /// <summary>
         /// Gets totals in stats.
@@ -67,7 +67,7 @@
         /// <param name="playerId">Steam32 account ID.</param>
         /// <param name="parameters">Query Parameters.</param>
         /// <returns>Totals in stats.</returns>
-        Task<List<PlayerTotal>> GetPlayerTotalsAsync(long playerId, PlayerEndpointParameters parameters = null);
+        Task<IEnumerable<PlayerTotal>> GetPlayerTotalsAsync(long playerId, PlayerEndpointParameters parameters = null);
 
         /// <summary>
         /// Gets counts in categories.
@@ -85,7 +85,7 @@
         /// <param name="field">Field to aggregate on.</param>
         /// <param name="parameters">Query Parameters.</param>
         /// <returns>Distribution of matches in a single stat.</returns>
-        Task<List<PlayerHistogram>> GetPlayerHistogramsAsync(long playerId, string field, PlayerEndpointParameters parameters = null);
+        Task<IEnumerable<PlayerHistogram>> GetPlayerHistogramsAsync(long playerId, string field, PlayerEndpointParameters parameters = null);
 
         /// <summary>
         /// Gets wards placed in matches played.
@@ -108,14 +108,14 @@
         /// </summary>
         /// <param name="playerId">Steam32 account ID.</param>
         /// <returns>Player rating history.</returns>
-        Task<List<PlayerRating>> GetPlayerRatingsAsync(long playerId);
+        Task<IEnumerable<PlayerRating>> GetPlayerRatingsAsync(long playerId);
 
         /// <summary>
         /// Gets player hero rankings.
         /// </summary>
         /// <param name="playerId">Steam32 account ID.</param>
         /// <returns>Player hero rankings.</returns>
-        Task<List<PlayerHeroRanking>> GetPlayerHeroRankingsAsync(long playerId);
+        Task<IEnumerable<PlayerHeroRanking>> GetPlayerHeroRankingsAsync(long playerId);
 
         /// <summary>
         /// Gets refresh player match history.

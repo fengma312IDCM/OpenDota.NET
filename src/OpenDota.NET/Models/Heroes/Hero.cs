@@ -39,7 +39,7 @@
         /// Gets or sets hero's role in the game.
         /// </summary>
         [JsonPropertyName("roles")]
-        public List<HeroRole> Roles { get; set; }
+        public IEnumerable<HeroRole> Roles { get; set; }
 
         /// <summary>
         /// Gets or sets hero's amount of legs.

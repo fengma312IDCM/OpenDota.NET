@@ -21,6 +21,6 @@
         public Dictionary<string, Pgroup> Pgroup { get; set; }
 
         [JsonPropertyName("ability_upgrades")]
-        public List<object> AbilityUpgrades { get; set; }
+        public IEnumerable<object> AbilityUpgrades { get; set; }
     }
 }

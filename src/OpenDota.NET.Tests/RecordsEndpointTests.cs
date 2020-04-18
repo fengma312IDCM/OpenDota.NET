@@ -27,7 +27,7 @@
             var result = await this.openDotaApi.Records.GetRecordsByFieldAsync(RecordField.Duration);
             this.testOutputHelper.WriteLine(result.ToJsonString());
 
-            Assert.Equal(100, result.Count);
+            Assert.Equal(100, result.Count());
             Assert.True(result.All(x => x.MatchId > 0));
             Assert.True(result.All(x => x.Score > 0));
             Assert.True(result.All(x => x.StartTime > 0));

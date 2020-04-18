@@ -9,10 +9,10 @@
         public long MatchId { get; set; }
 
         [JsonPropertyName("teama")]
-        public List<int> TeamA { get; set; }
+        public IEnumerable<int> TeamA { get; set; }
 
         [JsonPropertyName("teamb")]
-        public List<int> TeamB { get; set; }
+        public IEnumerable<int> TeamB { get; set; }
 
         [JsonPropertyName("teamawin")]
         public bool TeamAWin { get; set; }

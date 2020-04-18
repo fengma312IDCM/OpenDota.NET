@@ -21,18 +21,18 @@
             this.ApiKey = apiKey;
             this.httpClientHandler = new HttpClientHandler { UseProxy = true, Proxy = proxy, };
             this.httpClient = new HttpClient(this.httpClientHandler)
-                                  {
-                                      Timeout = TimeSpan.FromSeconds(30),
-                                      BaseAddress = new Uri("https://api.opendota.com/api/"),
-                                  };
+            {
+                Timeout = TimeSpan.FromSeconds(60),
+                BaseAddress = new Uri("https://api.opendota.com/api/"),
+            };
         }
 
         public string ApiKey { get; set; }
 
-        public async Task<T> GetResponseAsync<T>(string url, List<string> queryParameters = null)
+        public async Task<T> GetResponseAsync<T>(string url, IEnumerable<string> queryParameters = null)
             where T : class
         {
-            var response = await this.GetRequestResponseMessageAsync(url, queryParameters);
+            var response = await this.GetRequestResponseMessageAsync(url, queryParameters?.ToList());
             response.EnsureSuccessStatusCode();
             var options = new JsonSerializerOptions { IgnoreNullValues = true, PropertyNameCaseInsensitive = true };
             options.Converters.Add(new JsonStringEnumConverter());
@@ -72,49 +72,19 @@
             }
         }
 
-        private async Task<HttpResponseMessage> GetRequestResponseMessageAsync(string url, List<string> queryParameters = null)
+        private async Task<HttpResponseMessage> GetRequestResponseMessageAsync(string url, IList<string> queryParameters = null)
         {
-            try
-            {
-                var fullUrl = url;
-
-                if (queryParameters == null)
-                {
-                    if (this.ApiKey != null)
-                    {
-                        queryParameters = new List<string>();
-
-                        fullUrl = $@"{url}?{this.BuildArgumentsString(queryParameters)}";
-                    }
-                }
-                else
-                {
-                    fullUrl = $@"{url}?{this.BuildArgumentsString(queryParameters)}";
-                }
-
-                var message = await this.httpClient.GetAsync(fullUrl);
-
-                return message;
-            }
-            catch (HttpRequestException ex)
-            {
-                var innerExceptionMsg = ex.InnerException?.Message ?? string.Empty;
-
-                Console.WriteLine(innerExceptionMsg);
-
-                return null;
-            }
-        }
-
-        private string BuildArgumentsString(List<string> arguments)
-        {
+            queryParameters ??= new List<string>();
             if (this.ApiKey != null)
             {
-                arguments.Add($@"api_key={this.ApiKey}");
+                queryParameters.Add($@"api_key={this.ApiKey}");
             }
 
-            return arguments.Where(arg => !string.IsNullOrEmpty(arg))
-                            .Aggregate(string.Empty, (current, arg) => current + "&" + arg);
+            var argumentsString = string.Join("&", queryParameters.Where(arg => !string.IsNullOrEmpty(arg)));
+            var fullUrl = $@"{url}?{argumentsString}";
+
+            var message = await this.httpClient.GetAsync(fullUrl);
+            return message;
         }
     }
 }
