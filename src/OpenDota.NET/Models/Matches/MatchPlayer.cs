@@ -237,7 +237,7 @@
         public int? ObsPlaced { get; set; }
 
         [JsonPropertyName("party_id")]
-        public int PartyId { get; set; }
+        public int? PartyId { get; set; }
 
         // Size of the players party. If not in a party, will return 1.
         [JsonPropertyName("party_size")]

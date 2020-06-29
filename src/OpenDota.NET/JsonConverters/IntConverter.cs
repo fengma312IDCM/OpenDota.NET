@@ -27,8 +27,14 @@
                     return 0;
                 }
             }
-
-            return reader.GetInt32();
+            else if (reader.TokenType == JsonTokenType.Number)
+            {
+                return reader.GetInt32();
+            }
+            else
+            {
+                return 0;
+            }
         }
 
         public override void Write(Utf8JsonWriter writer, int value, JsonSerializerOptions options)
